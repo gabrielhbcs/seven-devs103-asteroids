@@ -39,7 +39,8 @@ namespace Asteroid
         Fase15 fase15;
         Creditos creditos;
      
-        public enum estados { CREDITOS, FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15 };
+        public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE,
+            FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15 };
         
         public static estados estadoAtual = estados.FASE1;
         
@@ -115,66 +116,121 @@ namespace Asteroid
                     break;
                 case estados.FASE1:
                     fase1.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE2;
+                    }
                     break;
                 case estados.FASE2:
                     fase2.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE3;
+                    }
                     break;
 
                 case estados.FASE3:
                     fase3.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE4;
+                    }
                     break;
 
                 case estados.FASE4:
                     //fase4.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE5;
+                    }
                     break;
 
                 case estados.FASE5:
                     //fase5.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE6;
+                    }
                     break;
 
                 case estados.FASE6:
                     //fase6.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE7;
+                    }
                     break;
 
                 case estados.FASE7:
                     fase7.Update(gameTime, teclado, tecladoanterior);
-                    if (fase7.proxima_fase)
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         estadoAtual = estados.FASE8;
-                        MediaPlayer.Stop();
                     }
                     break;
 
                 case estados.FASE8:
                     //fase8.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE9;
+                    }
                     break;
 
                 case estados.FASE9:
                     //fase9.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE10;
+                    }
                     break;
 
                 case estados.FASE10:
                     //fase10.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE11;
+                    }
                     break;
 
                 case estados.FASE11:
                     //fase11.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE12;
+                    }
                     break;
 
                 case estados.FASE12:
                     //fase12.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE13;
+                    }
                     break;
 
                 case estados.FASE13:
                     //fase13.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE14;
+                    }
                     break;
 
                 case estados.FASE14:
                     //fase14.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE15;
+                    }
                     break;
 
                 case estados.FASE15:
                     //fase15.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE1;
+                    }
                     break;   
             }
             tecladoanterior = teclado;
