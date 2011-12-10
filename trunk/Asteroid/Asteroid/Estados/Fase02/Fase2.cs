@@ -27,11 +27,11 @@ namespace Asteroid
 
         public Fase2(ContentManager Content) {
             playing_musica = false;
-            musica = Content.Load<Song>("musica_fase2");
-            texturaFundo = Content.Load<Texture2D>("fundoFase2");
+            musica = Content.Load<Song>("Estados/Fase02/musica_fase2");
+            texturaFundo = Content.Load<Texture2D>("Estados/Fase02/fundoFase2");
             tamanhoFundo.X = texturaFundo.Bounds.Width;
             tamanhoFundo.Y = texturaFundo.Bounds.Height;
-            texturaNave = Content.Load<Texture2D>("naveFase2");
+            texturaNave = Content.Load<Texture2D>("Estados/Fase02/naveFase2");
             tamanhoStage.X = 800;
             tamanhoStage.Y = 480;
             posicao_j1.X = (tamanhoStage.X - texturaNave.Bounds.Width) / 2;
