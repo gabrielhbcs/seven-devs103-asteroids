@@ -38,15 +38,11 @@ namespace Asteroid
         Fase14 fase14;
         Fase15 fase15;
         Creditos creditos;
-        Teste teste;
-
+     
         public enum estados { CREDITOS, FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15 };
         
-        public static estados estadoAtual = estados.FASE7;
-
-        bool teste2 = false;
-        //AlphaTestEffect TESTE;
-        
+        public static estados estadoAtual = estados.CREDITOS;
+                
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
