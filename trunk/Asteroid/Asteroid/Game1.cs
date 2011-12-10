@@ -113,6 +113,10 @@ namespace Asteroid
             {
                 case estados.CREDITOS:
                     creditos.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
+                        estadoAtual = estados.FASE1;
+                    }
                     break;
                 case estados.FASE1:
                     fase1.Update(gameTime, teclado, tecladoanterior);
@@ -229,7 +233,7 @@ namespace Asteroid
                     //fase15.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
-                        estadoAtual = estados.FASE1;
+                        estadoAtual = estados.CREDITOS;
                     }
                     break;   
             }
