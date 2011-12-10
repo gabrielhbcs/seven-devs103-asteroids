@@ -43,7 +43,7 @@ namespace Asteroid
         public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE,
             FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15 };
         
-        public static estados estadoAtual = estados.FASE1;
+        public static estados estadoAtual = estados.FASE9;
         
         public Game1()
         {
@@ -80,7 +80,7 @@ namespace Asteroid
             //fase6 = new Fase6(Content);
             fase7 = new Fase7(Content);
             //fase8 = new Fase8(Content);
-            //fase9 = new Fase9(Content);
+            fase9 = new Fase9(Content, Window);
             //fase10 = new Fase10(Content);
             //fase11 = new Fase11(Content);
             //fase12 = new Fase12(Content);
@@ -123,7 +123,7 @@ namespace Asteroid
                     fase1.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
-                        estadoAtual = estados.FASE2;
+                        estadoAtual = estados.FASE9;
                     }
                     break;
                 case estados.FASE2:
@@ -183,7 +183,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE9:
-                    //fase9.Update(gameTime, teclado, tecladoanterior);
+                    fase9.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         estadoAtual = estados.FASE10;
@@ -281,7 +281,7 @@ namespace Asteroid
                         // fase8.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE9:
-                        // fase9.Draw(gameTime, spriteBatch);
+                        fase9.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE10:
                         //fase10.Draw(gameTime, spriteBatch);
