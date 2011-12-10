@@ -30,7 +30,7 @@ namespace Asteroid
 
         public Fase7(ContentManager Content)
         {
-            Texture2D texturaNave = Content.Load<Texture2D>(Endereco + "Nave");
+            Texture2D texturaNave = Content.Load<Texture2D>("Nave");
             Texture2D texturaEscudo = Content.Load<Texture2D>(Endereco + "Escudo");
             Texture2D texturaTiro = Content.Load<Texture2D>(Endereco + "Tiro");
             Texture2D texturaBarra = Content.Load<Texture2D>(Endereco + "Barra");
