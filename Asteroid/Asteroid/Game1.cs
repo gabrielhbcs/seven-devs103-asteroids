@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Asteroid.Estados.Fase01;
 
 namespace Asteroid
 {
@@ -21,7 +22,7 @@ namespace Asteroid
         
         KeyboardState teclado;
         KeyboardState tecladoanterior;
-        
+
         Fase1 fase1;
         Fase2 fase2;
         Fase3 fase3;
