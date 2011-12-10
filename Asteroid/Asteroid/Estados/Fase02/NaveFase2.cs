@@ -15,8 +15,7 @@ namespace Asteroid
     /// Carlos Moffatt
     /// </summary>
 
-    class NaveFase2
-    {
+    class NaveFase2 {
         #region atributos
         Texture2D desenhoNave;
         Vector2 posicao;
