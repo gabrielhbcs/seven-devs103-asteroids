@@ -44,7 +44,7 @@ namespace Asteroid
             if (Comecar_fase7)
             {
                 Comecar_fase7 = false;
-                musica = Content.Load<Song>("Space music");
+                fmusica = Content.Load<Song>("Space music");
                 MediaPlayer.Play(musica);
                 MediaPlayer.Volume = .5f;
             }
