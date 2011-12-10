@@ -25,16 +25,17 @@ namespace Asteroid
         Vector2 posicao;
         public bool proxima_fase;
         bool Comecar_fase7 = true;
+        string Endereco = "Estados/Fase07/";
 
 
         public Fase7(ContentManager Content)
         {
-            Texture2D texturaNave = Content.Load<Texture2D>("Estados/Fase07/Nave");
-            Texture2D texturaEscudo = Content.Load<Texture2D>("Estados/Fase07/Escudo");
-            Texture2D texturaTiro = Content.Load<Texture2D>("Estados/Fase07/Tiro");
-            Texture2D texturaBarra = Content.Load<Texture2D>("Estados/Fase07/Barra");
-            fundo = Content.Load<Texture2D>("Estados/Fase07/Galaxia");
-            musica = Content.Load<Song>("Estados/Fase07/Space music");
+            Texture2D texturaNave = Content.Load<Texture2D>(Endereco + "Nave");
+            Texture2D texturaEscudo = Content.Load<Texture2D>(Endereco + "Escudo");
+            Texture2D texturaTiro = Content.Load<Texture2D>(Endereco + "Tiro");
+            Texture2D texturaBarra = Content.Load<Texture2D>(Endereco + "Barra");
+            fundo = Content.Load<Texture2D>(Endereco + "Galaxia");
+            musica = Content.Load<Song>(Endereco + "Space music");
             posicao.X = Window.ClientBounds.Width / 2 - texturaNave.Width / 2;
             posicao.Y = Window.ClientBounds.Height / 2 - texturaNave.Height / 2;
             Jogador = new NaveGabriel(texturaNave, Color.White, posicao, 0f, "Teste", 3, 0, Window, texturaEscudo, Content.Load<SoundEffect>("chord"), texturaTiro, texturaBarra);
