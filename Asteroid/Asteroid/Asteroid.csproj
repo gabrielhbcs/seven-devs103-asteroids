@@ -126,12 +126,13 @@
     <Compile Include="Creditos.cs" />
     <Compile Include="Fase1.cs" />
     <Compile Include="Fase2.cs" />
+    <Compile Include="NaveFase2.cs" />
     <Compile Include="NaveGabriel.cs" />
     <Compile Include="Nave_fase3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Teste.cs" />
+    <Compile Include="TiroFase2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
