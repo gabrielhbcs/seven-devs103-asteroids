@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Asteroid.Estados.Fase01;
 
 namespace Asteroid.Estados.Fase01
 {
@@ -32,7 +33,7 @@ namespace Asteroid.Estados.Fase01
             playing_musica = false;
             musica = Content.Load<Song>("Kalimba");
             fundo = Content.Load<Texture2D>("FundoFase1");
-            desenhoParam = Content.Load<Texture2D>("Nave");
+            desenhoParam = Content.Load<Texture2D>("NaveFase1");
             posicao.X = (gw.ClientBounds.Width / 2) - desenhoParam.Width / 2 - 150;
             posicao.Y = (gw.ClientBounds.Height / 2) - desenhoParam.Height / 2;
             //Nave = new Nave1(desenhoParam, posicao, Color.White, gw);
