@@ -68,6 +68,10 @@ namespace Asteroid
             {
                 this.aceleracao += 0.1f;
             }
+            if (teclado.IsKeyDown(Keys.Down))
+            {
+                this.aceleracao -= 0.1f;
+            }
 
             if ((teclado.IsKeyDown(Keys.Space)) && !(tecladoAnterior.IsKeyDown(Keys.Space)))
             {
