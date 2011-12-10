@@ -28,7 +28,7 @@ namespace Asteroid
         public Fase3(ContentManager Content, GameWindow Window)
         {
             playing_musica = false;
-            musica = Content.Load<Song>("Kalimba");
+            musica = Content.Load<Song>("fase3");
             fundo = Content.Load<Texture2D>("fundo_fase3");
 
             naveGraph = Content.Load<Texture2D>("Nave_fase3");
@@ -38,25 +38,23 @@ namespace Asteroid
         }
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoanterior)
         {
-            if (!playing_musica)
+            if (Game1.estadoAtual == Game1.estados.FASE3)
             {
-                playing_musica = true;
-                MediaPlayer.Play(musica);
-                MediaPlayer.Volume = 0.5f;
-            }
-            if ((teclado.IsKeyDown(Keys.PageUp)) && !(tecladoanterior.IsKeyDown(Keys.PageUp)))
-            {
-                MediaPlayer.Volume += 0.1f;
-            }
+                if (!playing_musica)
+                {
+                    playing_musica = true;
+                    MediaPlayer.Play(musica);
+                    MediaPlayer.Volume = 0.5f;
+                }
+                if ((teclado.IsKeyDown(Keys.PageUp)) && !(tecladoanterior.IsKeyDown(Keys.PageUp)))
+                {
+                    MediaPlayer.Volume += 0.1f;
+                }
 
-            if ((teclado.IsKeyDown(Keys.PageDown)) && !(tecladoanterior.IsKeyDown(Keys.PageDown)))
-            {
-                MediaPlayer.Volume -= 0.1f;
-            }
-
-            if ((teclado.IsKeyDown(Keys.Enter)) && !(tecladoanterior.IsKeyDown(Keys.Enter)))
-            {
-                Game1.estadoAtual = Game1.estados.FASE2;
+                if ((teclado.IsKeyDown(Keys.PageDown)) && !(tecladoanterior.IsKeyDown(Keys.PageDown)))
+                {
+                    MediaPlayer.Volume -= 0.1f;
+                }
             }
 
             jogador1.Update(gameTime, teclado, tecladoanterior);
