@@ -25,6 +25,7 @@ namespace Asteroid
         Vector2 posicao;
         public bool proxima_fase;
         bool Comecar_fase7 = true;
+        Vector2 velocidade;
         string Endereco = "Estados/Fase07/";
 
 
