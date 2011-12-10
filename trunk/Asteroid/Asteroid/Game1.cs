@@ -43,7 +43,7 @@ namespace Asteroid
         public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE,
             FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15 };
         
-        public static estados estadoAtual = estados.FASE1;
+        public static estados estadoAtual = estados.FASE7;
         
         public Game1()
         {

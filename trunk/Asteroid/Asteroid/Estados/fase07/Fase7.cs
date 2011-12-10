@@ -29,11 +29,12 @@ namespace Asteroid
 
         public Fase7(ContentManager Content)
         {
-            Texture2D texturaNave = Content.Load<Texture2D>("Nave");
-            Texture2D texturaEscudo = Content.Load<Texture2D>("Escudo");
-            Texture2D texturaTiro = Content.Load<Texture2D>("Tiro");
-            Texture2D texturaBarra = Content.Load<Texture2D>("Barra");
-            fundo = Content.Load<Texture2D>("Galaxia");
+            Texture2D texturaNave = Content.Load<Texture2D>("Estados/Fase07/Nave");
+            Texture2D texturaEscudo = Content.Load<Texture2D>("Estados/Fase07/Escudo");
+            Texture2D texturaTiro = Content.Load<Texture2D>("Estados/Fase07/Tiro");
+            Texture2D texturaBarra = Content.Load<Texture2D>("Estados/Fase07/Barra");
+            fundo = Content.Load<Texture2D>("Estados/Fase07/Galaxia");
+            musica = Content.Load<Song>("Estados/Fase07/Space music");
             posicao.X = Window.ClientBounds.Width / 2 - texturaNave.Width / 2;
             posicao.Y = Window.ClientBounds.Height / 2 - texturaNave.Height / 2;
             Jogador = new NaveGabriel(texturaNave, Color.White, posicao, 0f, "Teste", 3, 0, Window, texturaEscudo, Content.Load<SoundEffect>("chord"), texturaTiro, texturaBarra);
@@ -44,7 +45,6 @@ namespace Asteroid
             if (Comecar_fase7)
             {
                 Comecar_fase7 = false;
-                //fmusica = Content.Load<Song>("Space music");
                 MediaPlayer.Play(musica);
                 MediaPlayer.Volume = .5f;
             }
