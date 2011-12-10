@@ -70,7 +70,7 @@ namespace Asteroid
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            fase1 = new Fase1(Content);
+            fase1 = new Fase1(Content, Window);
             fase2 = new Fase2(Content);
             fase3 = new Fase3(Content, Window);
             //fase4 = new Fase4(Content);
