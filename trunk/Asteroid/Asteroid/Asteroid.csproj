@@ -107,6 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barra.cs" />
+    <Compile Include="Escudo.cs" />
     <Compile Include="Fase10.cs" />
     <Compile Include="Fase11.cs" />
     <Compile Include="Fase12.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Creditos.cs" />
     <Compile Include="Fase1.cs" />
     <Compile Include="Fase2.cs" />
+    <Compile Include="NaveGabriel.cs" />
     <Compile Include="Nave_fase3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

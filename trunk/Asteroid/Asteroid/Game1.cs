@@ -41,7 +41,7 @@ namespace Asteroid
 
         public enum estados { CREDITOS, FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15 };
         
-        public static estados estadoAtual = estados.FASE3;
+        public static estados estadoAtual = estados.FASE1;
         
         public Game1()
         {
@@ -76,7 +76,7 @@ namespace Asteroid
             //fase4 = new Fase4(Content);
             //fase5 = new Fase5(Content);
             //fase6 = new Fase6(Content);
-            // fase7 = new Fase7(Content);
+            fase7 = new Fase7(Content);
             //fase8 = new Fase8(Content);
             // fase9 = new Fase9(Content);
             //fase10 = new Fase10(Content);
@@ -137,7 +137,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE7:
-                    //fase7.Update(gameTime, teclado, tecladoanterior);
+                    fase7.Update(gameTime, teclado, tecladoanterior);
                     break;
 
                 case estados.FASE8:
@@ -209,7 +209,7 @@ namespace Asteroid
                         //fase6.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE7:
-                        //fase7.Draw(gameTime, spriteBatch);
+                        fase7.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE8:
                         // fase8.Draw(gameTime, spriteBatch);
