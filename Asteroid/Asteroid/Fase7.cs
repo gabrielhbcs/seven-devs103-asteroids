@@ -23,7 +23,6 @@ namespace Asteroid
         int max = 25;
         bool tocandoMusica = true;
         Vector2 posicao;
-        public bool proxima_fase;
         bool Comecar_fase7 = true;
 
 
@@ -33,6 +32,8 @@ namespace Asteroid
             Texture2D texturaEscudo = Content.Load<Texture2D>("Escudo");
             Texture2D texturaTiro = Content.Load<Texture2D>("Tiro");
             Texture2D texturaBarra = Content.Load<Texture2D>("Barra");
+            musica = Content.Load<Song>("Space music");
+
             fundo = Content.Load<Texture2D>("Galaxia");
             posicao.X = Window.ClientBounds.Width / 2 - texturaNave.Width / 2;
             posicao.Y = Window.ClientBounds.Height / 2 - texturaNave.Height / 2;
@@ -44,7 +45,6 @@ namespace Asteroid
             if (Comecar_fase7)
             {
                 Comecar_fase7 = false;
-                fmusica = Content.Load<Song>("Space music");
                 MediaPlayer.Play(musica);
                 MediaPlayer.Volume = .5f;
             }
@@ -52,8 +52,6 @@ namespace Asteroid
             if (contVolume > max) contVolume = max;
 
             Jogador.Update(time, teclado, tecladoanterior);
-
-            if (teclado.IsKeyDown(Keys.Q)) proxima_fase = true;
 
             #region Volume
             if (teclado.IsKeyDown(Keys.PageDown) && contVolume >= max)
