@@ -79,11 +79,11 @@ namespace Asteroid
             //fase6 = new Fase6(Content);
             fase7 = new Fase7(Content);
             //fase8 = new Fase8(Content);
-            // fase9 = new Fase9(Content);
+            //fase9 = new Fase9(Content);
             //fase10 = new Fase10(Content);
-            //  fase11 = new Fase11(Content);
-            // fase12 = new Fase12(Content);
-            // fase13 = new Fase13(Content);
+            //fase11 = new Fase11(Content);
+            //fase12 = new Fase12(Content);
+            //fase13 = new Fase13(Content);
             //fase14 = new Fase14(Content);
             //fase15 = new Fase15(Content);
 
