@@ -42,7 +42,7 @@ namespace Asteroid
         public enum estados { CREDITOS, FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15 };
         
         public static estados estadoAtual = estados.CREDITOS;
-                
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -138,6 +138,11 @@ namespace Asteroid
 
                 case estados.FASE7:
                     fase7.Update(gameTime, teclado, tecladoanterior);
+                    if (fase7.proxima_fase)
+                    {
+                        estadoAtual = estados.FASE8;
+                        MediaPlayer.Stop();
+                    }
                     break;
 
                 case estados.FASE8:
