@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Estados\fase07\Barra.cs" />
     <Compile Include="Estados\fase07\Escudo.cs" />
+    <Compile Include="Estados\Fase09\Nave_fase9.cs" />
     <Compile Include="Estados\Fase10\Fase10.cs" />
     <Compile Include="Estados\Fase11\Fase11.cs" />
     <Compile Include="Estados\Fase12\Fase12.cs" />
