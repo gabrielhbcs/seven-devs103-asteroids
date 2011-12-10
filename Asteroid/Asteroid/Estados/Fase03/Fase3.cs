@@ -21,6 +21,7 @@ namespace Asteroid
         Texture2D fundo, naveGraph;
         Nave_fase3 jogador1;
         Vector2 posicao1;
+        string file_path = "Estados/Fase03/";
 
         /// <summary>
         /// Construtor da fase1
@@ -28,10 +29,10 @@ namespace Asteroid
         public Fase3(ContentManager Content, GameWindow Window)
         {
             playing_musica = false;
-            musica = Content.Load<Song>("Kalimba");
-            fundo = Content.Load<Texture2D>("fundo_fase3");
+            musica = Content.Load<Song>(file_path + "fase3");
+            fundo = Content.Load<Texture2D>(file_path + "fundo_fase3");
 
-            naveGraph = Content.Load<Texture2D>("Nave_fase3");
+            naveGraph = Content.Load<Texture2D>(file_path + "Nave_fase3");
             posicao1.X = (Window.ClientBounds.Width / 2) - naveGraph.Width / 2 - 150;
             posicao1.Y = (Window.ClientBounds.Height / 2) - naveGraph.Height / 2;
             jogador1 = new Nave_fase3(naveGraph, posicao1, Color.White, Window, Content.Load<SoundEffect>("chord"));
