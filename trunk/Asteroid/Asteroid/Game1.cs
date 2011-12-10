@@ -45,7 +45,7 @@ namespace Asteroid
         public static estados estadoAtual = estados.FASE7;
 
         bool teste2 = false;
-        AlphaTestEffect TESTE;
+        //AlphaTestEffect TESTE;
         
         public Game1()
         {
