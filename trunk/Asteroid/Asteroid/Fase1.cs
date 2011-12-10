@@ -35,7 +35,6 @@ namespace Asteroid
             desenhoParam = Content.Load<Texture2D>("NaveFase1");
             posicao.X = (gw.ClientBounds.Width / 2) - desenhoParam.Width / 2 - 150;
             posicao.Y = (gw.ClientBounds.Height / 2) - desenhoParam.Height / 2;
-            //Nave = new Nave1(desenhoParam, posicao, Color.White, gw);
             Nave = new Nave1(desenhoParam, posicao, Color.White, gw, Content.Load<SoundEffect>("chord"));
         }
         public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior)
