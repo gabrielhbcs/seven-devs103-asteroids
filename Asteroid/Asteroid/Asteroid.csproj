@@ -107,33 +107,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Barra.cs" />
-    <Compile Include="Escudo.cs" />
-    <Compile Include="Fase10.cs" />
-    <Compile Include="Fase11.cs" />
-    <Compile Include="Fase12.cs" />
-    <Compile Include="Fase13.cs" />
-    <Compile Include="Fase14.cs" />
-    <Compile Include="Fase15.cs" />
-    <Compile Include="Fase3.cs" />
-    <Compile Include="Fase4.cs" />
-    <Compile Include="Fase5.cs" />
-    <Compile Include="Fase6.cs" />
-    <Compile Include="Fase7.cs" />
-    <Compile Include="Fase8.cs" />
-    <Compile Include="Fase9.cs" />
+    <Compile Include="Estados\fase07\Barra.cs" />
+    <Compile Include="Estados\fase07\Escudo.cs" />
+    <Compile Include="Estados\Fase10\Fase10.cs" />
+    <Compile Include="Estados\Fase11\Fase11.cs" />
+    <Compile Include="Estados\Fase12\Fase12.cs" />
+    <Compile Include="Estados\Fase13\Fase13.cs" />
+    <Compile Include="Estados\Fase14\Fase14.cs" />
+    <Compile Include="Estados\Fase15\Fase15.cs" />
+    <Compile Include="Estados\Fase03\Fase3.cs" />
+    <Compile Include="Estados\Fase04\Fase4.cs" />
+    <Compile Include="Estados\Fase05\Fase5.cs" />
+    <Compile Include="Estados\Fase06\Fase6.cs" />
+    <Compile Include="Estados\fase07\Fase7.cs" />
+    <Compile Include="Estados\Fase08\Fase8.cs" />
+    <Compile Include="Estados\Fase09\Fase9.cs" />
     <Compile Include="Nave.cs" />
-    <Compile Include="Creditos.cs" />
-    <Compile Include="Fase1.cs" />
-    <Compile Include="Fase2.cs" />
-    <Compile Include="Nave1.cs" />
-    <Compile Include="NaveFase2.cs" />
-    <Compile Include="NaveGabriel.cs" />
-    <Compile Include="Nave_fase3.cs" />
+    <Compile Include="Estados\Creditos\Creditos.cs" />
+    <Compile Include="Estados\Fase01\Fase1.cs" />
+    <Compile Include="Estados\Fase02\Fase2.cs" />
+    <Compile Include="Estados\Fase01\Nave1.cs" />
+    <Compile Include="Estados\Fase02\NaveFase2.cs" />
+    <Compile Include="Estados\fase07\NaveGabriel.cs" />
+    <Compile Include="Estados\Fase03\Nave_fase3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="TiroFase2.cs" />
+    <Compile Include="Estados\Fase02\TiroFase2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
@@ -171,6 +171,13 @@
       <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Estados\Controles\" />
+    <Folder Include="Estados\Game Over\" />
+    <Folder Include="Estados\Intro\" />
+    <Folder Include="Estados\Menu\" />
+    <Folder Include="Estados\The End\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
