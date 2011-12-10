@@ -24,6 +24,7 @@ namespace Asteroid
         bool tocandoMusica = true;
         Vector2 posicao;
         public bool proxima_fase;
+        bool Comecar_fase7 = true;
 
 
         public Fase7(ContentManager Content)
@@ -33,11 +34,6 @@ namespace Asteroid
             Texture2D texturaTiro = Content.Load<Texture2D>("Tiro");
             Texture2D texturaBarra = Content.Load<Texture2D>("Barra");
             fundo = Content.Load<Texture2D>("Galaxia");
-
-
-            musica = Content.Load<Song>("Space music");
-            MediaPlayer.Play(musica);
-            MediaPlayer.Volume = .5f;
             posicao.X = Window.ClientBounds.Width / 2 - texturaNave.Width / 2;
             posicao.Y = Window.ClientBounds.Height / 2 - texturaNave.Height / 2;
             Jogador = new NaveGabriel(texturaNave, Color.White, posicao, 0f, "Teste", 3, 0, Window, texturaEscudo, Content.Load<SoundEffect>("chord"), texturaTiro, texturaBarra);
@@ -45,6 +41,13 @@ namespace Asteroid
         }
         public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior)
         {
+            if (Comecar_fase7)
+            {
+                Comecar_fase7 = false;
+                musica = Content.Load<Song>("Space music");
+                MediaPlayer.Play(musica);
+                MediaPlayer.Volume = .5f;
+            }
             contVolume++;
             if (contVolume > max) contVolume = max;
 
