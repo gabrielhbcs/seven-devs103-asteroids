@@ -126,6 +126,7 @@
     <Compile Include="Creditos.cs" />
     <Compile Include="Fase1.cs" />
     <Compile Include="Fase2.cs" />
+    <Compile Include="Nave1.cs" />
     <Compile Include="NaveFase2.cs" />
     <Compile Include="NaveGabriel.cs" />
     <Compile Include="Nave_fase3.cs" />
