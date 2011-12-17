@@ -36,7 +36,7 @@ namespace Asteroid
             tamanhoStage.Y = 480;
             posicao_j1.X = (tamanhoStage.X - texturaNave.Bounds.Width) / 2;
             posicao_j1.Y = (tamanhoStage.Y - texturaNave.Bounds.Height) / 2;
-            jogador1 = new NaveFase2(1, texturaNave, posicao_j1, Color.White, 0.0f, "teste", 2, 0, Content, tamanhoStage);
+           
         }
 
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior)
@@ -47,12 +47,12 @@ namespace Asteroid
             }
             posFundo.X = (tamanhoStage.X / 2) - (tamanhoFundo.X / 2);
             posFundo.Y = (tamanhoStage.Y / 2) - (tamanhoFundo.Y / 2);
-            jogador1.Update(gameTime, teclado, tecladoAnterior);
+            //jogador1.Update(gameTime, teclado, tecladoAnterior);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             spriteBatch.Draw(texturaFundo, posFundo, Color.White);
-            jogador1.Draw(gameTime, spriteBatch);
+            //jogador1.Draw(gameTime, spriteBatch);
         }
     
     }//fim da classe

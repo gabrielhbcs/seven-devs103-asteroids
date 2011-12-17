@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Media;
 namespace Asteroid {
     class TiroFase2 {
         #region atributos
-        Texture2D textura;
+        static Texture2D textura;
         Vector2 posicao;
         Vector2 velocidade;
         float angulo;
@@ -34,7 +34,9 @@ namespace Asteroid {
             posicao.X = _posicao.X + ((float)Math.Cos(Math.PI * angulo / 180) * 30);
             posicao.Y = _posicao.Y + ((float)Math.Sin(Math.PI * angulo / 180) * 30);
             Content = _content;
-            textura = Content.Load<Texture2D>("tiroFase2");
+            textura = Content.Load<Texture2D>("Estados/Fase02/tiroFase2");
+            //TODO tirar este load daqui
+            //TODO fazer uma Lista de tiros
         }
 
         public void Update(GameTime _gameTime) {

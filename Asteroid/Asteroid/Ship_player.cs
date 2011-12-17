@@ -12,52 +12,49 @@ using Microsoft.Xna.Framework.Media;
 namespace Asteroid
 {
     /// <summary>
-    /// Carlos Moffatt
+    /// Classe Nave do Jogador HERDANDO as características dos objetos que aparecem em cena
     /// </summary>
-
-    class NaveFase2 {
-        #region atributos
-        Texture2D desenhoNave;
-        Vector2 posicao;
-        Vector2 velocidade;
-        Vector2 aceleracao;
-        float angulo;
-        Rectangle colisao;
+    class Nave_jogador:Objeto
+    {
+        int jogador;
+        string nome;
         int vidas;
         int pontos;
-        int jogador;
-        String nomeJogador;
-        Color cor;
-        GameWindow janela;
+
         TiroFase2 tiro;
         String tipoTiro;
         //SoundEffect tiroSom;
         bool atirando;
-        ContentManager Content;
-        Vector2 tamanhoStage;
 
-        #endregion
-
-        public NaveFase2(int _jogador, Texture2D _desenho, Vector2 _posicao, Color _cor, float _angulo, string _nomeJogador, int _vidas, int _pontos, ContentManager _content, Vector2 _tamanhoStage)
+        public Nave_jogador(
+            int jogador,
+            Texture2D textura,
+            Vector2 posicao,
+            float angulo,
+            GameWindow gw,
+            string nome,
+            int vidas,
+            int pontos)
+            : base(
+            textura,
+            posicao,
+            angulo,
+            gw)
         {
-            jogador = _jogador;
-            desenhoNave = _desenho;
-            posicao = _posicao;
-            cor = _cor;
-            angulo = _angulo;
-            nomeJogador = _nomeJogador;
-            vidas = _vidas;
-            pontos = _pontos;
-            velocidade = Vector2.Zero;
+            this.jogador = jogador;
             tipoTiro = "plasma";
             //tiroSom = _tirosom;
             atirando = false;
-            Content = _content;
-            tamanhoStage = _tamanhoStage;
+            this.nome = nome;
+            this.vidas = vidas;
+            this.pontos = pontos;
         }
 
-        public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior) {
-            if (jogador == 1) {
+
+        public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior)
+        {
+            if (jogador == 1)
+            {
                 #region ESQUERDA
                 if (_teclado.IsKeyDown(Keys.A))
                 {
@@ -87,7 +84,8 @@ namespace Asteroid
                     // COICE do tiro
                     velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
                     velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
-                    tiro = new TiroFase2(tipoTiro, posicao, janela, angulo, Content);
+                    //tiro = new TiroFase2(tipoTiro, posicao, janela, angulo, Content);
+
                     atirando = true;
                 }
                 #endregion
@@ -124,35 +122,46 @@ namespace Asteroid
             #region Verifica nave nos limites da tela
             if (posicao.X < 0)
             {
-                posicao.X = tamanhoStage.X;
+                posicao.X = gw.ClientBounds.Width;
             }
-            else if (posicao.X > tamanhoStage.X)
+            else if (posicao.X > gw.ClientBounds.Width)
             {
                 posicao.X = 0;
             }
 
             if (posicao.Y < 0)
             {
-                posicao.Y = tamanhoStage.Y;
+                posicao.Y = gw.ClientBounds.Height;
             }
-            else if (posicao.Y > tamanhoStage.Y)
+            else if (posicao.Y > gw.ClientBounds.Height)
             {
                 posicao.Y = 0;
             }
             #endregion
 
-            if (atirando) {
+            if (atirando)
+            {
                 tiro.Update(_gameTime);
             }
 
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch sb) {
-            if (atirando) {
-                tiro.Draw(gameTime, sb);
-            }
-            sb.Draw(desenhoNave, posicao, new Rectangle(0, 0, desenhoNave.Width, desenhoNave.Height), cor, MathHelper.ToRadians(angulo), new Vector2(desenhoNave.Width / 2, desenhoNave.Height / 2), 1, SpriteEffects.None, 0);
+        public void Draw(GameTime gameTime, SpriteBatch sb)
+        {
+            sb.Draw(
+                textura,
+                posicao,
+                new Rectangle(0, 0, textura.Width, textura.Height),
+                cor,
+                MathHelper.ToRadians(angulo),
+                new Vector2(textura.Width / 2, textura.Height / 2),
+                1,
+                SpriteEffects.None,
+                0);
+
+            //sb.Draw(textura, Vector2.Zero, Color.White);
         }
 
-    }
-}
+
+    }//fim classe
+}//fim namespace
