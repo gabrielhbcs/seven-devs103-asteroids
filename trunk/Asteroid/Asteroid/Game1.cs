@@ -38,10 +38,11 @@ namespace Asteroid
         Fase13 fase13;
         Fase14 fase14;
         Fase15 fase15;
+        Fase16 fase16;
         Creditos creditos;
      
         public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE,
-            FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15 };
+            FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15, FASE16 };
         
         public static estados estadoAtual = estados.FASE1;
         
@@ -87,6 +88,7 @@ namespace Asteroid
             //fase13 = new Fase13(Content);
             //fase14 = new Fase14(Content);
             //fase15 = new Fase15(Content);
+            fase16 = new Fase16(Content, Window);
 
             creditos = new Creditos(Content);
             
@@ -234,9 +236,16 @@ namespace Asteroid
                     //fase15.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        estadoAtual = estados.FASE16;
+                    }
+                    break;
+                case estados.FASE16:
+                    fase16.Update(gameTime, teclado, tecladoanterior);
+                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    {
                         estadoAtual = estados.CREDITOS;
                     }
-                    break;   
+                    break;
             }
             tecladoanterior = teclado;
             base.Update(gameTime);
@@ -301,7 +310,9 @@ namespace Asteroid
                     case estados.FASE15:
                         //fase15.Draw(gameTime, spriteBatch);
                         break;
-
+                    case estados.FASE16:
+                        fase16.Draw(gameTime, spriteBatch);
+                        break;
                 }
             spriteBatch.End();
             base.Draw(gameTime);
