@@ -86,7 +86,7 @@ namespace Asteroid
                     velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
                     //tiro = new TiroFase2(tipoTiro, posicao, janela, angulo, Content);
 
-                    atirando = true;
+                    //atirando = true;
                 }
                 #endregion
             }
@@ -141,7 +141,7 @@ namespace Asteroid
 
             if (atirando)
             {
-                tiro.Update(_gameTime);
+                //tiro.Update(_gameTime);
             }
 
         }

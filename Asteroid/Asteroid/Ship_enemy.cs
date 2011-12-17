@@ -29,7 +29,7 @@ namespace Asteroid
             Vector2 posicao,
             float angulo,
             GameWindow gw,
-            int tiros,)
+            int tiros)
             : base(
             textura,
             posicao,
