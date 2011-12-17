@@ -49,7 +49,7 @@ namespace Asteroid
             // SE ACABAR A MUNIÇÃO
                 // A nave gira para a direção que está a nave do jogador, e acelera (Tipo nave Kamikaze)
 
-            //angulo -= 2;
+            angulo -= 2;
             
             // ACELERAÇÃO
             //velocidade.X += (float)Math.Cos(Math.PI * angulo / 180) * 0.02f;
@@ -92,7 +92,7 @@ namespace Asteroid
 
             if (atirando)
             {
-                tiro.Update(_gameTime);
+                //tiro.Update(_gameTime);
             }
 
         }
