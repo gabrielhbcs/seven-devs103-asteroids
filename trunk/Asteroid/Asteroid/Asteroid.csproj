@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asteroid.cs" />
     <Compile Include="Estados\fase07\Barra.cs" />
     <Compile Include="Estados\fase07\Escudo.cs" />
     <Compile Include="Estados\Fase09\Nave_fase9.cs" />
@@ -123,7 +124,6 @@
     <Compile Include="Estados\fase07\Fase7.cs" />
     <Compile Include="Estados\Fase08\Fase8.cs" />
     <Compile Include="Estados\Fase09\Fase9.cs" />
-    <Compile Include="Nave.cs" />
     <Compile Include="Estados\Creditos\Creditos.cs" />
     <Compile Include="Estados\Fase01\Fase1.cs" />
     <Compile Include="Estados\Fase02\Fase2.cs" />
@@ -131,10 +131,13 @@
     <Compile Include="Estados\Fase02\NaveFase2.cs" />
     <Compile Include="Estados\fase07\NaveGabriel.cs" />
     <Compile Include="Estados\Fase03\Nave_fase3.cs" />
+    <Compile Include="Object.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Estados\Fase02\TiroFase2.cs" />
+    <Compile Include="Ship_enemy.cs" />
+    <Compile Include="Ship_player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
