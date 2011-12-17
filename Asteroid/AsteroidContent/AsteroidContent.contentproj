@@ -181,7 +181,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="nave_inimiga1.png">
+    <Compile Include="Estados\Fase02\nave_inimiga1.png">
       <Name>nave_inimiga1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
