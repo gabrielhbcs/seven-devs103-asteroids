@@ -73,7 +73,7 @@ namespace Asteroid
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             fase1 = new Fase1(Content, Window);
-            fase2 = new Fase2(Content);
+            fase2 = new Fase2(Content, Window);
             fase3 = new Fase3(Content, Window);
             //fase4 = new Fase4(Content);
             //fase5 = new Fase5(Content);
@@ -127,7 +127,7 @@ namespace Asteroid
                     }
                     break;
                 case estados.FASE2:
-                    fase2.Update(gameTime, teclado, tecladoanterior);
+                    fase2.Update(gameTime, teclado, tecladoanterior, Window);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         estadoAtual = estados.FASE3;
