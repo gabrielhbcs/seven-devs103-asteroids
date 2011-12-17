@@ -19,10 +19,14 @@ namespace Asteroid
         Song musica;
         Texture2D texturaFundo;
         Texture2D texturaNave;
+        Texture2D texturaInimigo;
         Vector2 tamanhoFundo;
         Vector2 posFundo;
         Vector2 posicao_j1;
+        Vector2 posicao_i1;
         Nave_jogador jogador1;
+        Nave_inimigo inimigo1;
+        Random randomizador = new Random();
 
         public Fase2(ContentManager Content, GameWindow gw)
         {
@@ -35,6 +39,11 @@ namespace Asteroid
             posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
             posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
             jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, "Teste", 10, 0);
+
+            texturaInimigo = Content.Load<Texture2D>("nave_inimiga1");
+            posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+            posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+            inimigo1 = new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15);
         }
 
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior, GameWindow gw)
@@ -46,11 +55,13 @@ namespace Asteroid
             posFundo.X = (gw.ClientBounds.Width / 2) - (tamanhoFundo.X / 2);
             posFundo.Y = (gw.ClientBounds.Height / 2) - (tamanhoFundo.Y / 2);
             jogador1.Update(gameTime, teclado, tecladoAnterior);
+            inimigo1.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             spriteBatch.Draw(texturaFundo, posFundo, Color.White);
             jogador1.Draw(gameTime, spriteBatch);
+            inimigo1.Draw(gameTime, spriteBatch);
         }
     
     }//fim da classe
