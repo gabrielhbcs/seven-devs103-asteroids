@@ -131,6 +131,7 @@
     <Compile Include="Estados\Fase02\NaveFase2.cs" />
     <Compile Include="Estados\fase07\NaveGabriel.cs" />
     <Compile Include="Estados\Fase03\Nave_fase3.cs" />
+    <Compile Include="Estados\Fase16\Fase16.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
