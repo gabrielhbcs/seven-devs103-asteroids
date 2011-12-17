@@ -20,8 +20,6 @@ namespace Asteroid
         Texture2D texturaFundo;
         Texture2D texturaNave;
         Texture2D texturaInimigo;
-        Vector2 tamanhoFundo;
-        Vector2 posFundo;
         Vector2 posicao_j1;
         Vector2 posicao_i1;
         Nave_jogador jogador1;
@@ -33,8 +31,6 @@ namespace Asteroid
             playing_musica = false;
             musica = Content.Load<Song>("Estados/Fase02/musica_fase2");
             texturaFundo = Content.Load<Texture2D>("Estados/Fase02/fundoFase2");
-            tamanhoFundo.X = texturaFundo.Bounds.Width;
-            tamanhoFundo.Y = texturaFundo.Bounds.Height;
             texturaNave = Content.Load<Texture2D>("Estados/Fase02/naveFase2");
             posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
             posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
@@ -52,14 +48,12 @@ namespace Asteroid
                 MediaPlayer.Play(musica);
                 playing_musica = true;
             }
-            posFundo.X = (gw.ClientBounds.Width / 2) - (tamanhoFundo.X / 2);
-            posFundo.Y = (gw.ClientBounds.Height / 2) - (tamanhoFundo.Y / 2);
             jogador1.Update(gameTime, teclado, tecladoAnterior);
             inimigo1.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-            spriteBatch.Draw(texturaFundo, posFundo, Color.White);
+            spriteBatch.Draw(texturaFundo, Vector2.Zero, Color.White);
             jogador1.Draw(gameTime, spriteBatch);
             inimigo1.Draw(gameTime, spriteBatch);
         }
