@@ -39,12 +39,14 @@ namespace Asteroid
         Fase14 fase14;
         Fase15 fase15;
         Fase16 fase16;
+        MenuInicial Menu;
+        
         Creditos creditos;
      
         public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE,
             FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15, FASE16 };
         
-        public static estados estadoAtual = estados.FASE1;
+        public static estados estadoAtual = estados.MENU;
         
         public Game1()
         {
@@ -90,6 +92,8 @@ namespace Asteroid
             //fase15 = new Fase15(Content);
             fase16 = new Fase16(Content, Window);
 
+            Menu = new MenuInicial(Content, Window);
+
             creditos = new Creditos(Content);
             
             // TODO: use this.Content to load your game content here
@@ -114,12 +118,18 @@ namespace Asteroid
             teclado = Keyboard.GetState();
             switch (estadoAtual)
             {
+                case estados.MENU:
+                    Menu.Update(gameTime, teclado, Content);
+                    if (teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter)) && Menu.cont == 1) estadoAtual = estados.FASE1;
+                    if (teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter)) && Menu.cont == 2) estadoAtual = estados.CONTROLES;
+                    if (teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter)) && Menu.cont == 3) estadoAtual = estados.CREDITOS;
+                    break;
                 case estados.CREDITOS:
                     creditos.Update(gameTime, teclado, tecladoanterior);
-                    if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
-                    {
-                        estadoAtual = estados.FASE1;
-                    }
+                    //if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
+                    //{
+                    //    estadoAtual = estados.FASE1;
+                    //}
                     break;
                 case estados.FASE1:
                     fase1.Update(gameTime, teclado, tecladoanterior);
@@ -243,7 +253,7 @@ namespace Asteroid
                     fase16.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
-                        estadoAtual = estados.CREDITOS;
+                        estadoAtual = estados.FASE1;
                     }
                     break;
             }
@@ -261,6 +271,9 @@ namespace Asteroid
             spriteBatch.Begin();
                 switch (estadoAtual)
                 {
+                    case estados.MENU:
+                        Menu.Draw(gameTime, spriteBatch);
+                        break;
                     case estados.CREDITOS:
                         creditos.Draw(gameTime, spriteBatch);
                         break;

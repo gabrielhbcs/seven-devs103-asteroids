@@ -141,7 +141,6 @@
     <Folder Include="Estados\Fase15\" />
     <Folder Include="Estados\GameOver\" />
     <Folder Include="Estados\Intro\" />
-    <Folder Include="Estados\Menu\" />
     <Folder Include="Estados\The End\" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +194,59 @@
     </Compile>
     <Compile Include="Estados\Fase16\NaveFase1.png">
       <Name>NaveFase1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Menu\comecar.png">
+      <Name>comecar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Estados\Menu\comecar2.png">
+      <Name>comecar2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Menu\sair.png">
+      <Name>sair</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Estados\Menu\Sair2.png">
+      <Name>Sair2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Menu\controles.png">
+      <Name>controles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Estados\Menu\controles2.png">
+      <Name>controles2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Estados\Menu\creditos.png">
+      <Name>creditos</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Estados\Menu\creditos2.png">
+      <Name>creditos2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Fase07\Nave.png">
+      <Name>Nave</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
