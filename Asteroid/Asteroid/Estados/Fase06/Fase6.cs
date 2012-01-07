@@ -24,7 +24,7 @@ namespace Asteroid
         Vector2 tamanhoFundo;
         Vector2 posFundo;
         Vector2 posicao_j1;
-        NaveFase2 jogador1;
+        //NaveFase2 jogador1;
 
     }
 }

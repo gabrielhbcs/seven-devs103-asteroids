@@ -21,7 +21,7 @@ namespace Asteroid
         int vidas;
         int pontos;
 
-        TiroFase2 tiro;
+        //TiroFase2 tiro;
         String tipoTiro;
         //SoundEffect tiroSom;
         bool atirando;
@@ -89,7 +89,7 @@ namespace Asteroid
                     // COICE do tiro
                     velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
                     velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
-                    tiro = new TiroFase2(tipoTiro, posicao, gw, angulo, Content);
+                    //tiro = new TiroFase2(tipoTiro, posicao, gw, angulo, Content);
                     
                     atirando = true;
                 }
@@ -146,7 +146,7 @@ namespace Asteroid
 
             if (atirando)
             {
-                tiro.Update(_gameTime);
+                //tiro.Update(_gameTime);
             }
 
         }
@@ -166,7 +166,7 @@ namespace Asteroid
 
             if (atirando)
             {
-                tiro.Draw(gameTime, sb);
+                //tiro.Draw(gameTime, sb);
             }
 
             //sb.Draw(textura, Vector2.Zero, Color.White);
