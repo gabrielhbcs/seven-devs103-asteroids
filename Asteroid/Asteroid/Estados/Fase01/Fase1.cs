@@ -57,9 +57,9 @@ namespace Asteroid.Estados.Fase01
 
             //objetosemtipo = new Object(desenhoParam, Vector2.Zero, 0f, gw);//NAO posso fazer isso
         }
-        public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior)
+        public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState _controle, GamePadState _controleanterior)
         {
-            jogador1.Update(time, teclado, tecladoanterior);
+            jogador1.Update(time, teclado, tecladoanterior, _controle, _controleanterior);
             if (!playing_musica)
             {
                 playing_musica = true;

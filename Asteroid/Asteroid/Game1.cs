@@ -185,7 +185,7 @@ namespace Asteroid
         
                     break;
                 case estados.FASE1:
-                    fase1.Update(gameTime, teclado, tecladoanterior);
+                    fase1.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -193,7 +193,7 @@ namespace Asteroid
                     }
                     break;
                 case estados.FASE2:
-                    fase2.Update(gameTime, teclado, tecladoanterior);
+                    fase2.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -202,7 +202,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE3:
-                    fase3.Update(gameTime, teclado, tecladoanterior);
+                    fase3.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -211,7 +211,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE4:
-                    fase4.Update(gameTime, teclado, tecladoanterior);
+                    fase4.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -220,7 +220,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE5:
-                    fase5.Update(gameTime, teclado, tecladoanterior);
+                    fase5.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -229,7 +229,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE6:
-                    fase6.Update(gameTime, teclado, tecladoanterior);
+                    fase6.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -238,7 +238,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE7:
-                    fase7.Update(gameTime, teclado, tecladoanterior);
+                    fase7.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if (Fase7.Objetivo >= 7)
                     {
                         MediaPlayer.Stop();
@@ -252,7 +252,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE8:
-                    fase8.Update(gameTime, teclado, tecladoanterior);
+                    fase8.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -261,7 +261,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE9:
-                    fase9.Update(gameTime, teclado, tecladoanterior);
+                    fase9.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -270,7 +270,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE10:
-                    fase10.Update(gameTime, teclado, tecladoanterior);
+                    fase10.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -279,7 +279,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE11:
-                    fase11.Update(gameTime, teclado, tecladoanterior);
+                    fase11.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -288,7 +288,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE12:
-                    fase12.Update(gameTime, teclado, tecladoanterior);
+                    fase12.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -297,7 +297,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE13:
-                    fase13.Update(gameTime, teclado, tecladoanterior);
+                    fase13.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -306,7 +306,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE14:
-                    fase14.Update(gameTime, teclado, tecladoanterior);
+                    fase14.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -315,7 +315,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE15:
-                    fase15.Update(gameTime, teclado, tecladoanterior);
+                    fase15.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
@@ -323,7 +323,7 @@ namespace Asteroid
                     }
                     break;
                 case estados.FASE16:
-                    fase16.Update(gameTime, teclado, tecladoanterior);
+                    fase16.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
