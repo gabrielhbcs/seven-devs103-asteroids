@@ -24,9 +24,11 @@ namespace Asteroid
         Vector2 posicao_j1;
         Vector2 posicao_i1;
         Nave_jogador jogador1;
-        Nave_inimigo inimigo1;
+        //Nave_inimigo inimigo1;
         GameWindow gw;
         Random randomizador = new Random();
+
+        List<Nave_inimigo> lista_inimigos = new List<Nave_inimigo>();
 
         public Fase2(ContentManager Content, GameWindow gw)
         {
@@ -44,7 +46,12 @@ namespace Asteroid
             texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
             posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
             posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-            inimigo1 = new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content);
+            lista_inimigos.Add(new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content));
+            posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+            posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+            
+            lista_inimigos.Add(new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content));
+
         }
 
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior)
@@ -54,7 +61,11 @@ namespace Asteroid
                 playing_musica = true;
             }
             jogador1.Update(gameTime, teclado, tecladoAnterior);
-            inimigo1.Update(gameTime);
+
+            foreach (Nave_inimigo inimigo in lista_inimigos)
+            {
+                inimigo.Update(gameTime);
+            }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
@@ -67,7 +78,12 @@ namespace Asteroid
                     5), Color.White);
 
             jogador1.Draw(gameTime, spriteBatch);
-            inimigo1.Draw(gameTime, spriteBatch);
+            
+            foreach (Nave_inimigo inimigo in lista_inimigos)
+            {
+                inimigo.Draw(gameTime, spriteBatch);
+            }
+            
         }
     
     }//fim da classe
