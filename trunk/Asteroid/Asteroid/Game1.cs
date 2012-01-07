@@ -13,7 +13,7 @@ using Asteroid.Estados.Fase01;
 namespace Asteroid
 {
     /// <summary>
-    /// This is the main type for your game
+    /// Jogo da turma DEVS103
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
