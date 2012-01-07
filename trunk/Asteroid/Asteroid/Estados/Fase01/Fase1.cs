@@ -74,6 +74,9 @@ namespace Asteroid.Estados.Fase01
         {
             spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 600), Color.White);
 
+            spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
+            spriteBatch.DrawString(Game1.fonte, "FASE 1 - Arthur", new Vector2(560, 5), Color.White);
+
             jogador1.Draw(gameTime, spriteBatch);
         }
 
