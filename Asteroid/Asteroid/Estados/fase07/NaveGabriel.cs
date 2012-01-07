@@ -24,6 +24,7 @@ namespace Asteroid
         SoundEffect Som;
         Texture2D texturaTiro;
         Vector2 velocidade;
+        public int Objetivo = 0;
 
         int maxCont = 15;
 
@@ -92,9 +93,11 @@ namespace Asteroid
             if (posicao.X > Stage.ClientBounds.Width + textura.Width / 2 - 10)
             {
                 posicao.X = -textura.Width / 2 + 10;
+                Objetivo++;
             }
             if (posicao.X < -textura.Width / 2 + 10)
             {
+                if (Objetivo > 0) Objetivo--;
                 posicao.X = Stage.ClientBounds.Width + textura.Width / 2 - 10;
             }
             if (posicao.Y > Stage.ClientBounds.Height - textura.Height)
