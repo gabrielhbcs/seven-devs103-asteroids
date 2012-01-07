@@ -12,13 +12,14 @@ using Microsoft.Xna.Framework.Media;
 namespace Asteroid
 {
     /// <summary>
-    /// gabriel
+    /// Gabriel Henrique
     /// </summary>
     class Fase7
     {
         String autor;
         Nave_jogador jogador1;
-        Texture2D fundo;
+        Texture2D fundo1;
+        Texture2D fundo2;
         Song musica;
         int contVolume;
         int max = 25;
@@ -30,17 +31,20 @@ namespace Asteroid
         Vector2 Texto;
         GameWindow gw;
         public static int Objetivo = 0;
+        Rectangle Tamanho1;
+        Rectangle Tamanho2;
 
 
         public Fase7(ContentManager Content, GameWindow Window)
         {
             this.gw = Window;
-            autor = "FASE 7 - Gabriel";
+            autor = "FASE 7 - Gabriel Henrique";
             Texture2D texturaNave = Content.Load<Texture2D>(Endereco + "Nave");
             Texture2D texturaEscudo = Content.Load<Texture2D>(Endereco + "Escudo");
             Texture2D texturaTiro = Content.Load<Texture2D>(Endereco + "Tiro");
             Texture2D texturaBarra = Content.Load<Texture2D>(Endereco + "Barra");
-            fundo = Content.Load<Texture2D>(Endereco + "Galaxia");
+            fundo1 = Content.Load<Texture2D>(Endereco + "Galaxia");
+            fundo2 = Content.Load<Texture2D>(Endereco + "Galaxia");
             musica = Content.Load<Song>(Endereco + "Space music");
             posicao.X = Window.ClientBounds.Width / 2 - texturaNave.Width / 2;
             posicao.Y = Window.ClientBounds.Height / 2 - texturaNave.Height / 2;
@@ -49,12 +53,30 @@ namespace Asteroid
             Texto.X = 0;
             Texto.Y = Window.ClientBounds.Height - 30;
 
-            Console.Write(Window.ClientBounds.Height);
+            Tamanho1.Width = gw.ClientBounds.Width;
+            Tamanho1.Height = gw.ClientBounds.Height;
+            Tamanho1.X = 0;
+            Tamanho1.Y = 0;
 
-
+            Tamanho2.Width = gw.ClientBounds.Width;
+            Tamanho2.Height = gw.ClientBounds.Height;
+            Tamanho2.X = gw.ClientBounds.Width;
+            Tamanho2.Y = 0;
         }
         public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior)
         {
+            Tamanho1.X -= 5;
+            Tamanho2.X -= 5;
+
+            if (Tamanho1.X <= -gw.ClientBounds.Width)
+            {
+                Tamanho1.X *= -1;
+            }
+            if (Tamanho2.X <= -gw.ClientBounds.Width)
+            {
+                Tamanho2.X *= -1;
+            }
+
             if (Comecar_fase7)
             {
                 Comecar_fase7 = false;
@@ -93,7 +115,8 @@ namespace Asteroid
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(fundo, new Rectangle(0, 0, gw.ClientBounds.Width, gw.ClientBounds.Height), Color.White);
+            spriteBatch.Draw(fundo1, Tamanho1, Color.White);
+            spriteBatch.Draw(fundo2, Tamanho2, Color.White);
 
             spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
             spriteBatch.DrawString(Game1.fonte, autor,
@@ -102,7 +125,7 @@ namespace Asteroid
                     5), Color.White);
 
             jogador1.Draw(gameTime, spriteBatch);
-            spriteBatch.DrawString(Game1.fonte, "Objetivo: Atravesse a galáxia 7 vezes para a direita", Texto, Color.White);
+            //spriteBatch.DrawString(Game1.fonte, "Objetivo: Atravesse a galáxia 7 vezes para a direita", Texto, Color.White);
 
 
         }
