@@ -20,7 +20,7 @@ namespace Asteroid.Estados.Fase01
         Boolean playing_musica;
         Song musica;
         Texture2D fundo;
-        Nave_jogador Nave;
+        Nave_jogador jogador1;
         Objeto objetosemtipo;
 
         Texture2D desenhoParam;
@@ -38,8 +38,8 @@ namespace Asteroid.Estados.Fase01
             desenhoParam = Content.Load<Texture2D>("Estados/Fase01/NaveFase1");
             posicao.X = (gw.ClientBounds.Width / 2) - desenhoParam.Width / 2 - 150;
             posicao.Y = (gw.ClientBounds.Height / 2) - desenhoParam.Height / 2;
-           
-            Nave = new Nave_jogador(
+
+            jogador1 = new Nave_jogador(
                 1,
                 desenhoParam,
                 posicao,
@@ -53,7 +53,7 @@ namespace Asteroid.Estados.Fase01
         }
         public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior)
         {
-             Nave.Update(time, teclado, tecladoanterior);
+            jogador1.Update(time, teclado, tecladoanterior);
             if (!playing_musica)
             {
                 playing_musica = true;
@@ -74,9 +74,7 @@ namespace Asteroid.Estados.Fase01
         {
             spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 600), Color.White);
 
-            Nave.Draw(gameTime, spriteBatch);
-
-            spriteBatch.DrawString(Game1.fonte, "PONTOS: ", Vector2.Zero, Color.White);
+            jogador1.Draw(gameTime, spriteBatch);
         }
 
     }
