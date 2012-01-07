@@ -158,9 +158,9 @@ namespace Asteroid
                     break;
                 case estados.CREDITOS:
                    
-                 if (teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape)))
+                 if (teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escapewdwsawwsawsdwas)))
 
-                  {
+                  {wwsedwaswsdwsdwasdwwwdwswa
                      creditos.Update(gameTime, teclado, tecladoanterior);
                       estadoAtual = estados.MENU;
                   }
