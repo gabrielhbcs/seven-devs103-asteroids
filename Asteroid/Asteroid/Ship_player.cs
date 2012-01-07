@@ -20,7 +20,6 @@ namespace Asteroid
         string nome;
         int vidas;
         int pontos;
-        List<Shot> listaTiros = new List<Shot>();
         //TiroFase2 tiro;
         String tipoTiro;
         bool atirando;
@@ -87,8 +86,7 @@ namespace Asteroid
                     // COICE do tiro
                     velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
                     velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
-                    Shot tiro = new Shot(tipoTiro, posicao, gw, angulo, Content);
-                    listaTiros.Add(tiro);
+                    Shot.listaTiros.Add(new Shot(tipoTiro, posicao, gw, angulo, Content));
                 }
                 #endregion
             }
@@ -141,10 +139,7 @@ namespace Asteroid
             }
             #endregion
 
-            foreach (Shot tiro in listaTiros)
-            {
-                tiro.Update(_gameTime);
-            }
+            Shot.Update(_gameTime);
 
         }
 
@@ -161,10 +156,7 @@ namespace Asteroid
                 SpriteEffects.None,
                 0);
 
-            foreach (Shot tiro in listaTiros)
-            {
-                tiro.Draw(gameTime, sb);
-            }
+            Shot.Draw(gameTime, sb);
             
 
             //sb.Draw(textura, Vector2.Zero, Color.White);
