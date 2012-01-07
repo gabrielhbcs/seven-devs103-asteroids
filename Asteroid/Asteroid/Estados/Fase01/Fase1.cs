@@ -13,7 +13,7 @@ using Asteroid.Estados.Fase01;
 namespace Asteroid.Estados.Fase01
 {
     /// <summary>
-    /// arthur
+    /// Arthur 
     /// </summary>
     class Fase1//fazer com herança
     {
