@@ -25,6 +25,7 @@ namespace Asteroid
         String tipoTiro;
         //SoundEffect tiroSom;
         bool atirando;
+        SpriteBatch sb;
 
         public Nave_jogador(
             int jogador,
@@ -34,12 +35,16 @@ namespace Asteroid
             GameWindow gw,
             string nome,
             int vidas,
-            int pontos)
+            int pontos,
+            ContentManager Content
+            )
             : base(
             textura,
             posicao,
             angulo,
-            gw)
+            gw,
+            Content)
+            
         {
             this.jogador = jogador;
             tipoTiro = "plasma";
@@ -84,9 +89,9 @@ namespace Asteroid
                     // COICE do tiro
                     velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
                     velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
-                    //tiro = new TiroFase2(tipoTiro, posicao, janela, angulo, Content);
-
-                    //atirando = true;
+                    tiro = new TiroFase2(tipoTiro, posicao, gw, angulo, Content);
+                    
+                    atirando = true;
                 }
                 #endregion
             }
@@ -141,7 +146,7 @@ namespace Asteroid
 
             if (atirando)
             {
-                //tiro.Update(_gameTime);
+                tiro.Update(_gameTime);
             }
 
         }
@@ -158,6 +163,11 @@ namespace Asteroid
                 1,
                 SpriteEffects.None,
                 0);
+
+            if (atirando)
+            {
+                tiro.Draw(gameTime, sb);
+            }
 
             //sb.Draw(textura, Vector2.Zero, Color.White);
         }

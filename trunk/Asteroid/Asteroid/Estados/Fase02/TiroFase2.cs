@@ -25,7 +25,9 @@ namespace Asteroid {
         ContentManager Content;
         #endregion
 
-        public TiroFase2(String _tipo, Vector2 _posicao, GameWindow _janela, float _angulo, ContentManager _content) {
+        public TiroFase2(String _tipo, Vector2 _posicao, GameWindow _janela, float _angulo, ContentManager _content)
+        {
+            Console.WriteLine("TIroFase2");
             janela = _janela;
             angulo = _angulo;
             tipo = _tipo;
@@ -47,7 +49,10 @@ namespace Asteroid {
 
         public void Draw(GameTime gameTime, SpriteBatch sb) {
             //if (tipo == "plasma") {
+            
+            Console.WriteLine("Desenhando");
             sb.Draw(textura, posicao, new Rectangle(0, 0, textura.Width, textura.Height), Color.White, MathHelper.ToRadians(angulo), new Vector2(textura.Width / 2, textura.Height / 2), 1, SpriteEffects.None, 0);
+            
             //}
         }
 

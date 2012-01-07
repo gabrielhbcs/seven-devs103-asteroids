@@ -47,7 +47,8 @@ namespace Asteroid.Estados.Fase01
                 gw,
                 "Teste",
                 10,
-                0);
+                0,
+                Content);
 
             //objetosemtipo = new Object(desenhoParam, Vector2.Zero, 0f, gw);//NAO posso fazer isso
         }

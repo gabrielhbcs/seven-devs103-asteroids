@@ -29,12 +29,14 @@ namespace Asteroid
             Vector2 posicao,
             float angulo,
             GameWindow gw,
-            int tiros)
+            int tiros,
+            ContentManager Content)
             : base(
             textura,
             posicao,
             angulo,
-            gw)
+            gw,
+            Content)
         {
             this.inimigo = inimigo;
             atirando = false;
