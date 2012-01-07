@@ -157,12 +157,14 @@ namespace Asteroid
                     if (teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter)) && Menu.cont == 3) estadoAtual = estados.CREDITOS;
                     break;
                 case estados.CREDITOS:
-                    creditos.Update(gameTime, teclado, tecladoanterior);
-                    if (teclado.IsKeyDown(Keys.Back) && !tecladoanterior.IsKeyDown(Keys.F)) estadoAtual = estados.MENU;
-                    //if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
-                    //{
-                    //    estadoAtual = estados.FASE1;
-                    //}
+                   
+                 if (teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape)))
+
+                  {
+                     creditos.Update(gameTime, teclado, tecladoanterior);
+                      estadoAtual = estados.MENU;
+                  }
+               
                     break;
                 case estados.CONTROLES:
                     break;
