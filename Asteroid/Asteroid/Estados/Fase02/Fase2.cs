@@ -15,6 +15,7 @@ namespace Asteroid
     /// Carlos Moffatt
     /// </summary>
     class Fase2 {
+        String autor;
         Boolean playing_musica;
         Song musica;
         Texture2D texturaFundo;
@@ -24,10 +25,13 @@ namespace Asteroid
         Vector2 posicao_i1;
         Nave_jogador jogador1;
         Nave_inimigo inimigo1;
+        GameWindow gw;
         Random randomizador = new Random();
 
         public Fase2(ContentManager Content, GameWindow gw)
         {
+            this.gw = gw;
+            autor = "FASE 2 - Carlos Moffatt";
             playing_musica = false;
             musica = Content.Load<Song>("Estados/Fase02/musica_fase2");
             texturaFundo = Content.Load<Texture2D>("Estados/Fase02/fundoFase2");
@@ -56,7 +60,10 @@ namespace Asteroid
             spriteBatch.Draw(texturaFundo, Vector2.Zero, Color.White);
 
             spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
-            spriteBatch.DrawString(Game1.fonte, "FASE 2 - Carlos Moffatt", new Vector2(560, 5), Color.White);
+            spriteBatch.DrawString(Game1.fonte, autor,
+                new Vector2(
+                    gw.ClientBounds.Width - Game1.fonte.MeasureString(autor).X - 5,
+                    5), Color.White);
 
             jogador1.Draw(gameTime, spriteBatch);
             inimigo1.Draw(gameTime, spriteBatch);
