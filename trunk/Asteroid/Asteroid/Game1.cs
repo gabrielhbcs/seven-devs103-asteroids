@@ -86,10 +86,10 @@ namespace Asteroid
             fase5 = new Fase5(Content, Window);
             fase6 = new Fase6(Content, Window);
             fase7 = new Fase7(Content, Window);
-            //fase8 = new Fase8(Content, Window);
+            fase8 = new Fase8(Content, Window);
             fase9 = new Fase9(Content, Window);
-            //fase10 = new Fase10(Content, Window);
-            //fase11 = new Fase11(Content, Window);
+            fase10 = new Fase10(Content, Window);
+            fase11 = new Fase11(Content, Window);
             //fase12 = new Fase12(Content, Window);
             //fase13 = new Fase13(Content, Window);
             //fase14 = new Fase14(Content, Window);
@@ -116,10 +116,10 @@ namespace Asteroid
             fase5 = new Fase5(Content, Window);
             fase6 = new Fase6(Content, Window);
             fase7 = new Fase7(Content, Window);
-            //fase8 = new Fase8(Content, Window);
+            fase8 = new Fase8(Content, Window);
             fase9 = new Fase9(Content, Window);
-            //fase10 = new Fase10(Content, Window);
-            //fase11 = new Fase11(Content, Window);
+            fase10 = new Fase10(Content, Window);
+            fase11 = new Fase11(Content, Window);
             //fase12 = new Fase12(Content, Window);
             //fase13 = new Fase13(Content, Window);
             //fase14 = new Fase14(Content, Window);
@@ -236,7 +236,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE8:
-                    //fase8.Update(gameTime, teclado, tecladoanterior);
+                    fase8.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -254,7 +254,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE10:
-                    //fase10.Update(gameTime, teclado, tecladoanterior);
+                    fase10.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -263,7 +263,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE11:
-                    //fase11.Update(gameTime, teclado, tecladoanterior);
+                    fase11.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -359,16 +359,16 @@ namespace Asteroid
                         fase7.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE8:
-                        // fase8.Draw(gameTime, spriteBatch);
+                         fase8.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE9:
                         fase9.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE10:
-                        //fase10.Draw(gameTime, spriteBatch);
+                        fase10.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE11:
-                        // fase11.Draw(gameTime, spriteBatch);
+                        fase11.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE12:
                         // fase12.Draw(gameTime, spriteBatch);
