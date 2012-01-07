@@ -35,7 +35,7 @@ namespace Asteroid
             naveGraph = Content.Load<Texture2D>(file_path + "Nave_fase3");
             posicao1.X = (Window.ClientBounds.Width / 2) - naveGraph.Width / 2 - 150;
             posicao1.Y = (Window.ClientBounds.Height / 2) - naveGraph.Height / 2;
-            jogador1 = new Nave_jogador(1, naveGraph, posicao1, 0f, Window, "Teste", 10, 0);
+            jogador1 = new Nave_jogador(1, naveGraph, posicao1, 0f, Window, "Teste", 10, 0, Content);
         }
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoanterior)
         {
