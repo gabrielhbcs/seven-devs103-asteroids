@@ -14,7 +14,7 @@ namespace Asteroid
     /// <summary>
     /// gabriel
     /// </summary>
-    class Fase7 : Microsoft.Xna.Framework.Game
+    class Fase7
     {
         NaveGabriel Jogador;
         Texture2D fundo;
@@ -25,12 +25,14 @@ namespace Asteroid
         Vector2 posicao;
         public bool proxima_fase;
         bool Comecar_fase7 = true;
-        Vector2 velocidade;
         string Endereco = "Estados/Fase07/";
+        Vector2 Texto;
+        GameWindow Window;
 
 
-        public Fase7(ContentManager Content)
+        public Fase7(ContentManager Content, GameWindow Window)
         {
+            this.Window = Window;
             Texture2D texturaNave = Content.Load<Texture2D>(Endereco + "Nave");
             Texture2D texturaEscudo = Content.Load<Texture2D>(Endereco + "Escudo");
             Texture2D texturaTiro = Content.Load<Texture2D>(Endereco + "Tiro");
@@ -40,6 +42,11 @@ namespace Asteroid
             posicao.X = Window.ClientBounds.Width / 2 - texturaNave.Width / 2;
             posicao.Y = Window.ClientBounds.Height / 2 - texturaNave.Height / 2;
             Jogador = new NaveGabriel(texturaNave, Color.White, posicao, 0f, "Teste", 3, 0, Window, texturaEscudo, Content.Load<SoundEffect>("chord"), texturaTiro, texturaBarra);
+            Texto.X = 0;
+            Texto.Y = Window.ClientBounds.Height - 30;
+
+            Console.Write(Window.ClientBounds.Height);
+
 
         }
         public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior)
@@ -84,6 +91,7 @@ namespace Asteroid
         {
             spriteBatch.Draw(fundo, new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height), Color.White);
             Jogador.Draw(gameTime, spriteBatch);
+            spriteBatch.DrawString(Game1.fonte, "Objetivo: Atravesse a galáxia 10 vezes para a direita", Texto, Color.White);
         }
     }
 }

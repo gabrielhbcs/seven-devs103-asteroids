@@ -85,7 +85,7 @@ namespace Asteroid
             //fase4 = new Fase4(Content);
             //fase5 = new Fase5(Content);
             //fase6 = new Fase6(Content);
-            fase7 = new Fase7(Content);
+            fase7 = new Fase7(Content, Window);
             //fase8 = new Fase8(Content);
             fase9 = new Fase9(Content, Window);
             //fase10 = new Fase10(Content);
@@ -115,7 +115,7 @@ namespace Asteroid
             //fase4 = new Fase4(Content);
             //fase5 = new Fase5(Content);
             //fase6 = new Fase6(Content);
-            fase7 = new Fase7(Content);
+            fase7 = new Fase7(Content, Window);
             //fase8 = new Fase8(Content);
             fase9 = new Fase9(Content, Window);
             //fase10 = new Fase10(Content);
