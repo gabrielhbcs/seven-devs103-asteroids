@@ -47,18 +47,18 @@ namespace Asteroid
             posSair.Y = 4 * Window.ClientBounds.Height / 5;
             sair = new Sair(Content, cont, posSair);
         }
-        public void Update(GameTime time, KeyboardState teclado, ContentManager Content)
+        public void Update(GameTime time, KeyboardState teclado, GamePadState _controle, ContentManager Content)
         {
             cont_tecla++;
             if (cont_tecla >= max) cont_tecla = max;
 
             #region Escolha botão
-            if ((teclado.IsKeyDown(Keys.S) || teclado.IsKeyDown(Keys.Down)) && cont_tecla == max)
+            if ((teclado.IsKeyDown(Keys.S) || teclado.IsKeyDown(Keys.Down) || _controle.IsButtonDown(Buttons.DPadDown) || _controle.IsButtonDown(Buttons.LeftThumbstickDown)) && cont_tecla == max)
             {
                 cont++;
                 cont_tecla = 0;
             }
-            if ((teclado.IsKeyDown(Keys.W) || teclado.IsKeyDown(Keys.Up)) && cont_tecla == max)
+            if ((teclado.IsKeyDown(Keys.W) || teclado.IsKeyDown(Keys.Up) || _controle.IsButtonDown(Buttons.DPadUp) || _controle.IsButtonDown(Buttons.LeftThumbstickUp)) && cont_tecla == max)
             {
                 cont--;
                 cont_tecla = 0;
