@@ -12,52 +12,53 @@ using Microsoft.Xna.Framework.Media;
 namespace Asteroid
 {
     /// <summary>
-    /// Classe Nave do Jogador HERDANDO as características dos objetos que aparecem em cena
+    /// Carlos Moffatt
     /// </summary>
-    class Nave_jogador:Objeto
-    {
-        int jogador;
-        string nome;
+
+    class NaveFase2 {
+        #region atributos
+        Texture2D desenhoNave;
+        Vector2 posicao;
+        Vector2 velocidade;
+        Vector2 aceleracao;
+        float angulo;
+        Rectangle colisao;
         int vidas;
         int pontos;
-        List<Shot> listaTiros = new List<Shot>();
+        int jogador;
+        String nomeJogador;
+        Color cor;
+        GameWindow janela;
         //TiroFase2 tiro;
+        List<TiroFase2> listaTiros = new List<TiroFase2>();
         String tipoTiro;
+        //SoundEffect tiroSom;
         bool atirando;
+        ContentManager Content;
+        Vector2 tamanhoStage;
 
-        public Nave_jogador(
-            int jogador,
-            Texture2D textura,
-            Vector2 posicao,
-            float angulo,
-            GameWindow gw,
-            string nome,
-            int vidas,
-            int pontos,
-            ContentManager Content
-            )
-            : base(
-            textura,
-            posicao,
-            angulo,
-            gw,
-            Content)
-            
+        #endregion
+
+        public NaveFase2(int _jogador, Texture2D _desenho, Vector2 _posicao, Color _cor, float _angulo, string _nomeJogador, int _vidas, int _pontos, ContentManager _content, Vector2 _tamanhoStage)
         {
-            this.jogador = jogador;
+            jogador = _jogador;
+            desenhoNave = _desenho;
+            posicao = _posicao;
+            cor = _cor;
+            angulo = _angulo;
+            nomeJogador = _nomeJogador;
+            vidas = _vidas;
+            pontos = _pontos;
+            velocidade = Vector2.Zero;
             tipoTiro = "plasma";
             //tiroSom = _tirosom;
             atirando = false;
-            this.nome = nome;
-            this.vidas = vidas;
-            this.pontos = pontos;
+            Content = _content;
+            tamanhoStage = _tamanhoStage;
         }
 
-
-        public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior)
-        {
-            if (jogador == 1)
-            {
+        public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior) {
+            if (jogador == 1) {
                 #region ESQUERDA
                 if (_teclado.IsKeyDown(Keys.A))
                 {
@@ -85,14 +86,16 @@ namespace Asteroid
                 {
                     //tiroSom.Play();
                     // COICE do tiro
+                    Console.WriteLine("atirando");
                     velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
                     velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
-                    Shot tiro = new Shot(tipoTiro, posicao, gw, angulo, Content);
-                    listaTiros.Add(tiro);
+                    listaTiros.Add( new TiroFase2(tipoTiro, posicao, janela, angulo, Content) );
+                    //atirando = true;
                 }
                 #endregion
             }
-
+            Console.WriteLine(
+                listaTiros.Count+ "<<<");
             #region Jogador 2 (Não implementado)
             if (jogador == 2)
             {
@@ -124,52 +127,56 @@ namespace Asteroid
             #region Verifica nave nos limites da tela
             if (posicao.X < 0)
             {
-                posicao.X = gw.ClientBounds.Width;
+                posicao.X = tamanhoStage.X;
             }
-            else if (posicao.X > gw.ClientBounds.Width)
+            else if (posicao.X > tamanhoStage.X)
             {
                 posicao.X = 0;
             }
 
             if (posicao.Y < 0)
             {
-                posicao.Y = gw.ClientBounds.Height;
+                posicao.Y = tamanhoStage.Y;
             }
-            else if (posicao.Y > gw.ClientBounds.Height)
+            else if (posicao.Y > tamanhoStage.Y)
             {
                 posicao.Y = 0;
             }
             #endregion
 
-            foreach (Shot tiro in listaTiros)
-            {
-                tiro.Update(_gameTime);
-            }
+                //listaTiros.ForEach(shot);
+                //listaTiros.ForEach(delegate( TiroFase2 tiro )
+                //{
+                //    tiro.Update(_gameTime);
+                //});
+
+                foreach (TiroFase2 tiro in listaTiros)
+                {
+                    tiro.Update(_gameTime);
+                }
 
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch sb)
+        public void shot(TiroFase2 tiro)
         {
-            sb.Draw(
-                textura,
-                posicao,
-                new Rectangle(0, 0, textura.Width, textura.Height),
-                cor,
-                MathHelper.ToRadians(angulo),
-                new Vector2(textura.Width / 2, textura.Height / 2),
-                1,
-                SpriteEffects.None,
-                0);
+            Console.WriteLine("atirando");
+        }
 
-            foreach (Shot tiro in listaTiros)
+        public void Draw(GameTime gameTime, SpriteBatch sb) {
+            
+                //listaTiros.ForEach(shot);
+                //listaTiros.ForEach(delegate(TiroFase2 tiro)
+                //{
+                //    tiro.Draw(gameTime, sb);
+                //});
+
+            foreach (TiroFase2 tiro in listaTiros)
             {
                 tiro.Draw(gameTime, sb);
             }
             
-
-            //sb.Draw(textura, Vector2.Zero, Color.White);
+            sb.Draw(desenhoNave, posicao, new Rectangle(0, 0, desenhoNave.Width, desenhoNave.Height), cor, MathHelper.ToRadians(angulo), new Vector2(desenhoNave.Width / 2, desenhoNave.Height / 2), 1, SpriteEffects.None, 0);
         }
 
-
-    }//fim classe
-}//fim namespace
+    }
+}

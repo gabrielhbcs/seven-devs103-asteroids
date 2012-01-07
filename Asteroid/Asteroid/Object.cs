@@ -64,6 +64,8 @@ namespace Asteroid
 
         protected ContentManager Content;
 
+        
+
         public Objeto(
             Texture2D _desenho,
             Vector2 _posicao,
