@@ -53,12 +53,12 @@ namespace Asteroid
             if (cont_tecla >= max) cont_tecla = max;
 
             #region Escolha botão
-            if (teclado.IsKeyDown(Keys.S) && cont_tecla == max)
+            if ((teclado.IsKeyDown(Keys.S) || teclado.IsKeyDown(Keys.Down)) && cont_tecla == max)
             {
                 cont++;
                 cont_tecla = 0;
             }
-            if (teclado.IsKeyDown(Keys.W) && cont_tecla == max)
+            if ((teclado.IsKeyDown(Keys.W) || teclado.IsKeyDown(Keys.Up)) && cont_tecla == max)
             {
                 cont--;
                 cont_tecla = 0;
