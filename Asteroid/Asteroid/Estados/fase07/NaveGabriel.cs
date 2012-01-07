@@ -24,7 +24,6 @@ namespace Asteroid
         SoundEffect Som;
         Texture2D texturaTiro;
         Vector2 velocidade;
-        public int Objetivo = 0;
 
         int maxCont = 15;
 
@@ -90,23 +89,23 @@ namespace Asteroid
             posicao += velocidade;
             #endregion
             #region Limites da tela
-            if (posicao.X > Stage.ClientBounds.Width + textura.Width / 2 - 10)
+            if (posicao.X > Stage.ClientBounds.Width + textura.Width / 2)
             {
                 posicao.X = -textura.Width / 2 + 10;
-                Objetivo++;
+                Fase7.Objetivo++;
             }
             if (posicao.X < -textura.Width / 2 + 10)
             {
-                if (Objetivo > 0) Objetivo--;
-                posicao.X = Stage.ClientBounds.Width + textura.Width / 2 - 10;
+                if (Fase7.Objetivo > 0) Fase7.Objetivo--;
+                posicao.X = Stage.ClientBounds.Width + textura.Width / 2;
             }
-            if (posicao.Y > Stage.ClientBounds.Height - textura.Height)
+            if (posicao.Y > Stage.ClientBounds.Height + textura.Height / 2)
             {
                 posicao.Y = 0 - textura.Height / 2;
             }
             if (posicao.Y < 0 - textura.Height / 2)
             {
-                posicao.Y = Stage.ClientBounds.Height - textura.Height;
+                posicao.Y = Stage.ClientBounds.Height + textura.Height / 2;
             }
             #endregion
             #region Escudo e Barra

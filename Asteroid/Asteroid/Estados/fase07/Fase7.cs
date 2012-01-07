@@ -28,6 +28,7 @@ namespace Asteroid
         string Endereco = "Estados/Fase07/";
         Vector2 Texto;
         GameWindow Window;
+        public static int Objetivo = 0;
 
 
         public Fase7(ContentManager Content, GameWindow Window)
@@ -91,7 +92,7 @@ namespace Asteroid
         {
             spriteBatch.Draw(fundo, new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height), Color.White);
             Jogador.Draw(gameTime, spriteBatch);
-            spriteBatch.DrawString(Game1.fonte, "Objetivo: Atravesse a galáxia 10 vezes para a direita", Texto, Color.White);
+            spriteBatch.DrawString(Game1.fonte, "Objetivo: Atravesse a galáxia 7 vezes para a direita", Texto, Color.White);
         }
     }
 }

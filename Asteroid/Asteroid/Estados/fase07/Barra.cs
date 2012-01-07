@@ -19,7 +19,6 @@ namespace Asteroid
         int largura = 200;
 
         Texture2D textura;
-        Vector2 posBarra;
 
         public Barra(Texture2D textura)
         {
@@ -27,7 +26,7 @@ namespace Asteroid
             tamanho.Width = largura;
             tamanho.Height = 20;
             tamanho.X = 10;
-            tamanho.Y = 10;
+            tamanho.Y = 40;
             this.textura = textura;
         }
         public void Update(bool ativado)
