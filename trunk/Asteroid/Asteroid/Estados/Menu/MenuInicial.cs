@@ -27,7 +27,7 @@ namespace Asteroid
         Vector2 posSair;
 
         int cont_tecla;
-        int max = 20;
+        int max = 10;
 
         public MenuInicial(ContentManager Content, GameWindow Window)
         {
