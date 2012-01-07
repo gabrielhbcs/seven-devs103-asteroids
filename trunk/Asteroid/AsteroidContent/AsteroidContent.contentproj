@@ -56,11 +56,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Estados\Creditos\creditos.png">
-      <Name>creditos</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Estados\Fase01\FundoFase1.png">
       <Name>FundoFase1</Name>
       <Importer>TextureImporter</Importer>
@@ -149,7 +144,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="creditos.png">
+    <Compile Include="Estados\Creditos\creditos.png">
       <Name>creditos</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
