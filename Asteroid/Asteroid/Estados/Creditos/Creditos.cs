@@ -19,7 +19,7 @@ namespace Asteroid
 
         public Creditos(ContentManager Content)
         {
-            fundo = Content.Load<Texture2D>("creditos");
+            fundo = Content.Load<Texture2D>("Estados/Creditos/creditos");
         }
         public void Update(
            GameTime time,
