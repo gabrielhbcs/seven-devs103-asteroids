@@ -83,8 +83,8 @@ namespace Asteroid
             fase2 = new Fase2(Content, Window);
             fase3 = new Fase3(Content, Window);
             fase4 = new Fase4(Content, Window);
-            //fase5 = new Fase5(Content, Window);
-            //fase6 = new Fase6(Content, Window);
+            fase5 = new Fase5(Content, Window);
+            fase6 = new Fase6(Content, Window);
             fase7 = new Fase7(Content, Window);
             //fase8 = new Fase8(Content, Window);
             fase9 = new Fase9(Content, Window);
@@ -112,18 +112,18 @@ namespace Asteroid
             fase1 = new Fase1(Content, Window);
             fase2 = new Fase2(Content, Window);
             fase3 = new Fase3(Content, Window);
-            //fase4 = new Fase4(Content);
-            //fase5 = new Fase5(Content);
-            //fase6 = new Fase6(Content);
+            fase4 = new Fase4(Content, Window);
+            fase5 = new Fase5(Content, Window);
+            fase6 = new Fase6(Content, Window);
             fase7 = new Fase7(Content, Window);
-            //fase8 = new Fase8(Content);
+            //fase8 = new Fase8(Content, Window);
             fase9 = new Fase9(Content, Window);
-            //fase10 = new Fase10(Content);
-            //fase11 = new Fase11(Content);
-            //fase12 = new Fase12(Content);
-            //fase13 = new Fase13(Content);
-            //fase14 = new Fase14(Content);
-            //fase15 = new Fase15(Content);
+            //fase10 = new Fase10(Content, Window);
+            //fase11 = new Fase11(Content, Window);
+            //fase12 = new Fase12(Content, Window);
+            //fase13 = new Fase13(Content, Window);
+            //fase14 = new Fase14(Content, Window);
+            //fase15 = new Fase15(Content, Window);
             fase16 = new Fase16(Content, Window);
 
             Menu = new MenuInicial(Content, Window);
@@ -177,7 +177,7 @@ namespace Asteroid
                     }
                     break;
                 case estados.FASE2:
-                    fase2.Update(gameTime, teclado, tecladoanterior, Window);
+                    fase2.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -195,7 +195,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE4:
-                    //fase4.Update(gameTime, teclado, tecladoanterior);
+                    fase4.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -204,7 +204,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE5:
-                    //fase5.Update(gameTime, teclado, tecladoanterior);
+                    fase5.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -213,7 +213,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE6:
-                    //fase6.Update(gameTime, teclado, tecladoanterior);
+                    fase6.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -347,13 +347,13 @@ namespace Asteroid
                         fase3.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE4:
-                        //fase4.Draw(gameTime, spriteBatch);
+                        fase4.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE5:
-                        //fase5.Draw(gameTime, spriteBatch);
+                        fase5.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE6:
-                        //fase6.Draw(gameTime, spriteBatch);
+                        fase6.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE7:
                         fase7.Draw(gameTime, spriteBatch);
