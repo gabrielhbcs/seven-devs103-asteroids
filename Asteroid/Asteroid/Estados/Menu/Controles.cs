@@ -11,13 +11,13 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Asteroid
 {
-    class Controles
+    class Controles_Botao
     {
         Texture2D textura;
         Vector2 pos;
         string endereco = "Estados/Menu/";
 
-        public Controles(ContentManager Content, int cont, Vector2 posicao)
+        public Controles_Botao(ContentManager Content, int cont, Vector2 posicao)
         {
             if (cont == 2)
             {

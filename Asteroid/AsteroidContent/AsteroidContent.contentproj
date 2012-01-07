@@ -123,7 +123,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Estados\Controles\" />
     <Folder Include="Estados\Fase05\" />
     <Folder Include="Estados\Fase06\" />
     <Folder Include="Estados\Fase08\" />
@@ -251,6 +250,13 @@
       <Name>Arial</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Controles\controles.png">
+      <Name>controles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

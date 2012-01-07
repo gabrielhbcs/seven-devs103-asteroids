@@ -18,7 +18,7 @@ namespace Asteroid
         Comecar comecar;
 
         Vector2 posControles;
-        Controles controles;
+        Controles_Botao controles;
 
         Vector2 posCreditos;
         menuCredito creditos;
@@ -37,7 +37,7 @@ namespace Asteroid
 
             posControles.X = 100;
             posControles.Y = 2 * Window.ClientBounds.Height / 5;
-            controles = new Controles(Content, cont, posControles);
+            controles = new Controles_Botao(Content, cont, posControles);
 
             posCreditos.X = 100;
             posCreditos.Y = 3 * Window.ClientBounds.Height / 5;
@@ -71,28 +71,28 @@ namespace Asteroid
             {
                 comecar = new Comecar(Content, cont, posComecar);
                 sair = new Sair(Content, cont, posSair);
-                controles = new Controles(Content, cont, posControles);
+                controles = new Controles_Botao(Content, cont, posControles);
                 creditos = new menuCredito(Content, cont, posCreditos);
             }
             if (cont == 2)
             {
                 comecar = new Comecar(Content, cont, posComecar);
                 sair = new Sair(Content, cont, posSair);
-                controles = new Controles(Content, cont, posControles);
+                controles = new Controles_Botao(Content, cont, posControles);
                 creditos = new menuCredito(Content, cont, posCreditos);
             }
             if (cont == 3)
             {
                 comecar = new Comecar(Content, cont, posComecar);
                 sair = new Sair(Content, cont, posSair);
-                controles = new Controles(Content, cont, posControles);
+                controles = new Controles_Botao(Content, cont, posControles);
                 creditos = new menuCredito(Content, cont, posCreditos);
             }
             if (cont == 4)
             {
                 comecar = new Comecar(Content, cont, posComecar);
                 sair = new Sair(Content, cont, posSair);
-                controles = new Controles(Content, cont, posControles);
+                controles = new Controles_Botao(Content, cont, posControles);
                 creditos = new menuCredito(Content, cont, posCreditos);
             }
             #endregion
