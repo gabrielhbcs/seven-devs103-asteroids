@@ -35,10 +35,11 @@ namespace Asteroid
         bool atirando;
         ContentManager Content;
         Vector2 tamanhoStage;
+        SpriteBatch sb;
 
         #endregion
 
-        public NaveFase2(int _jogador, Texture2D _desenho, Vector2 _posicao, Color _cor, float _angulo, string _nomeJogador, int _vidas, int _pontos, ContentManager _content, Vector2 _tamanhoStage)
+        public NaveFase2(int _jogador, Texture2D _desenho, Vector2 _posicao, Color _cor, float _angulo, string _nomeJogador, int _vidas, int _pontos, ContentManager _content, Vector2 _tamanhoStage, SpriteBatch sb)
         {
             jogador = _jogador;
             desenhoNave = _desenho;
@@ -54,6 +55,7 @@ namespace Asteroid
             atirando = false;
             Content = _content;
             tamanhoStage = _tamanhoStage;
+            this.sb = sb;
         }
 
         public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior) {
@@ -85,9 +87,11 @@ namespace Asteroid
                 {
                     //tiroSom.Play();
                     // COICE do tiro
+                    Console.WriteLine("atirando");
                     velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
                     velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
                     tiro = new TiroFase2(tipoTiro, posicao, janela, angulo, Content);
+                    tiro.Draw(_gameTime, sb);
                     atirando = true;
                 }
                 #endregion

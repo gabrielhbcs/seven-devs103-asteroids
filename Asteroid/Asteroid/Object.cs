@@ -30,7 +30,7 @@ namespace Asteroid
 
         /// <summary>
         /// 
-        /// </summary>
+        /// </summary> 
         protected Vector2 velocidade;
 
         /// <summary>
@@ -61,12 +61,15 @@ namespace Asteroid
         /// 
         /// </summary>
         protected GameWindow gw;
-        
+
+        protected ContentManager Content;
+
         public Objeto(
             Texture2D _desenho,
             Vector2 _posicao,
             float _angulo,
-            GameWindow gw)
+            GameWindow gw,
+            ContentManager Content)
         {
             textura = _desenho;
             posicao = _posicao;
@@ -74,6 +77,7 @@ namespace Asteroid
             velocidade = Vector2.Zero;
             this.gw = gw;
             this.cor = Color.White;
+            this.Content = Content;
         }
 
 
