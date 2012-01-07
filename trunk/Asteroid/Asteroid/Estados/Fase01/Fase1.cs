@@ -17,11 +17,11 @@ namespace Asteroid.Estados.Fase01
     /// </summary>
     class Fase1//fazer com herança
     {
+        String autor;
         Boolean playing_musica;
         Song musica;
         Texture2D fundo;
         Nave_jogador jogador1;
-        Objeto objetosemtipo;
 
         Texture2D desenhoParam;
         Vector2 posicao;
@@ -33,6 +33,7 @@ namespace Asteroid.Estados.Fase01
         public Fase1(ContentManager Content, GameWindow gw)
         {
             this.gw = gw;
+            autor = "FASE 1 - Arthur";
 
             playing_musica = false;
             musica = Content.Load<Song>("Kalimba");
@@ -79,12 +80,10 @@ namespace Asteroid.Estados.Fase01
         {
             spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 600), Color.White);
 
-            string autor = "FASE 1 - Arthur";
-
             spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
             spriteBatch.DrawString(Game1.fonte, autor,
                 new Vector2(
-                    gw.ClientBounds.Width-Game1.fonte.MeasureString(autor).X,
+                    gw.ClientBounds.Width-Game1.fonte.MeasureString(autor).X - 5,
                     5), Color.White);
 
             jogador1.Draw(gameTime, spriteBatch);
