@@ -35,14 +35,14 @@ namespace Asteroid
             posicaoInicial_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
             jogador1 = new Nave_jogador(1, texturaNave, posicaoInicial_j1, 0, gw, "Fábio", 3, 0, Content);
         }
-        public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior)
+        public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
         {
             if (!playing_musica)
             {
                 MediaPlayer.Play(musica);
                 playing_musica = true;
             }
-            jogador1.Update(gameTime, teclado, tecladoAnterior);
+            jogador1.Update(gameTime, teclado, tecladoAnterior, _controle, _controleanterior);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

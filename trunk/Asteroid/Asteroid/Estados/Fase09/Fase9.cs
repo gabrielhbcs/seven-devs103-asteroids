@@ -53,7 +53,7 @@ namespace Asteroid
             jogador2 = new Nave_fase9(nave, posicao2, Color.Blue, janela, conteudo.Load<SoundEffect>("ding")); */
         }
 
-        public void Update(GameTime time, /* int keyboardType,*/ KeyboardState teclado, KeyboardState tecladoAnterior)
+        public void Update(GameTime time, /* int keyboardType,*/ KeyboardState teclado, KeyboardState tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
         {
             if (inicio_fase9)
             {
@@ -65,7 +65,7 @@ namespace Asteroid
             }
 
             //jogador1.Update(time, 1, teclado, tecladoAnterior);
-            jogador1.Update(time, teclado, tecladoAnterior);
+            jogador1.Update(time, teclado, tecladoAnterior, _controle, _controleanterior);
 
             if (teclado.IsKeyDown(Keys.PageUp) && !(tecladoAnterior.IsKeyDown(Keys.PageUp)))
             {

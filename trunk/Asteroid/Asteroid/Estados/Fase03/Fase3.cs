@@ -44,7 +44,7 @@ namespace Asteroid
             posicao_j1.Y = (Window.ClientBounds.Height / 2) - texturaNave.Height / 2;
             jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, Window, "Teste", 10, 0, Content);
         }
-        public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoanterior)
+        public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState _controle, GamePadState _controleanterior)
         {
             if (!playing_musica)
             {
@@ -67,7 +67,7 @@ namespace Asteroid
                 Game1.estadoAtual = Game1.estados.FASE2;
             }
 
-            jogador1.Update(gameTime, teclado, tecladoanterior);
+            jogador1.Update(gameTime, teclado, tecladoanterior, _controle, _controleanterior);
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {

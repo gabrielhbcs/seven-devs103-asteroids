@@ -63,7 +63,7 @@ namespace Asteroid
             Tamanho2.X = gw.ClientBounds.Width;
             Tamanho2.Y = 0;
         }
-        public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior)
+        public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState _controle, GamePadState _controleanterior)
         {
             Tamanho1.X -= 5;
             Tamanho2.X -= 5;
@@ -86,7 +86,7 @@ namespace Asteroid
             contVolume++;
             if (contVolume > max) contVolume = max;
 
-            jogador1.Update(time, teclado, tecladoanterior);
+            jogador1.Update(time, teclado, tecladoanterior, _controle, _controleanterior);
 
             if (teclado.IsKeyDown(Keys.Q)) proxima_fase = true;
 

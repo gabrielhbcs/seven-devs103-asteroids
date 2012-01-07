@@ -53,26 +53,26 @@ namespace Asteroid
         }
 
 
-        public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior)
+        public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
         {
             if (jogador == 1)
             {
                 #region ESQUERDA
-                if (_teclado.IsKeyDown(Keys.A))
+                if (_teclado.IsKeyDown(Keys.A) || _controle.IsButtonDown(Buttons.DPadLeft) || _controle.IsButtonDown(Buttons.LeftThumbstickLeft))
                 {
                     angulo -= 2;
                 }
                 #endregion
 
                 #region DIREITA
-                if (_teclado.IsKeyDown(Keys.D))
+                if (_teclado.IsKeyDown(Keys.D) || _controle.IsButtonDown(Buttons.DPadRight) || _controle.IsButtonDown(Buttons.LeftThumbstickRight))
                 {
                     angulo += 2;
                 }
                 #endregion
 
                 #region CIMA (Acelera)
-                if (_teclado.IsKeyDown(Keys.W))
+                if (_teclado.IsKeyDown(Keys.W) || _controle.IsButtonDown(Buttons.DPadUp) || _controle.IsButtonDown(Buttons.LeftThumbstickUp))
                 {
                     velocidade.X += (float)Math.Cos(Math.PI * angulo / 180) * 0.02f;
                     velocidade.Y += (float)Math.Sin(Math.PI * angulo / 180) * 0.02f;
@@ -80,7 +80,7 @@ namespace Asteroid
                 #endregion
 
                 #region SPACE (Atira)
-                if (_teclado.IsKeyDown(Keys.Space) && _tecladoAnterior.IsKeyUp(Keys.Space))
+                if ((_teclado.IsKeyDown(Keys.Space) && _tecladoAnterior.IsKeyUp(Keys.Space)) || (_controle.IsButtonDown(Buttons.A) && _controleanterior.IsButtonUp(Buttons.A)))
                 {
                     //tiroSom.Play();
                     // COICE do tiro

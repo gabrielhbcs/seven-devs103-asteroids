@@ -48,14 +48,14 @@ namespace Asteroid
             //inimigo1 = new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content);
         }
 
-        public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior)
+        public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
         {
             if (!playing_musica)
             {
                 MediaPlayer.Play(musica);
                 playing_musica = true;
             }
-            jogador1.Update(gameTime, teclado, tecladoAnterior);
+            jogador1.Update(gameTime, teclado, tecladoAnterior, _controle, _controleanterior);
             //inimigo1.Update(gameTime);
         }
 
