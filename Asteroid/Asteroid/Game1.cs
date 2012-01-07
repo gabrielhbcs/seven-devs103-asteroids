@@ -90,10 +90,10 @@ namespace Asteroid
             fase9 = new Fase9(Content, Window);
             fase10 = new Fase10(Content, Window);
             fase11 = new Fase11(Content, Window);
-            //fase12 = new Fase12(Content, Window);
-            //fase13 = new Fase13(Content, Window);
-            //fase14 = new Fase14(Content, Window);
-            //fase15 = new Fase15(Content, Window);
+            fase12 = new Fase12(Content, Window);
+            fase13 = new Fase13(Content, Window);
+            fase14 = new Fase14(Content, Window);
+            fase15 = new Fase15(Content, Window);
             fase16 = new Fase16(Content, Window);
 
             Menu = new MenuInicial(Content, Window);
@@ -120,10 +120,10 @@ namespace Asteroid
             fase9 = new Fase9(Content, Window);
             fase10 = new Fase10(Content, Window);
             fase11 = new Fase11(Content, Window);
-            //fase12 = new Fase12(Content, Window);
-            //fase13 = new Fase13(Content, Window);
-            //fase14 = new Fase14(Content, Window);
-            //fase15 = new Fase15(Content, Window);
+            fase12 = new Fase12(Content, Window);
+            fase13 = new Fase13(Content, Window);
+            fase14 = new Fase14(Content, Window);
+            fase15 = new Fase15(Content, Window);
             fase16 = new Fase16(Content, Window);
 
             Menu = new MenuInicial(Content, Window);
@@ -272,7 +272,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE12:
-                    //fase12.Update(gameTime, teclado, tecladoanterior);
+                    fase12.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -281,7 +281,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE13:
-                    //fase13.Update(gameTime, teclado, tecladoanterior);
+                    fase13.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -290,7 +290,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE14:
-                    //fase14.Update(gameTime, teclado, tecladoanterior);
+                    fase14.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -299,7 +299,7 @@ namespace Asteroid
                     break;
 
                 case estados.FASE15:
-                    //fase15.Update(gameTime, teclado, tecladoanterior);
+                    fase15.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
@@ -371,16 +371,16 @@ namespace Asteroid
                         fase11.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE12:
-                        // fase12.Draw(gameTime, spriteBatch);
+                        fase12.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE13:
-                        //fase13.Draw(gameTime, spriteBatch);
+                        fase13.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE14:
-                        // fase14.Draw(gameTime, spriteBatch);
+                        fase14.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE15:
-                        //fase15.Draw(gameTime, spriteBatch);
+                        fase15.Draw(gameTime, spriteBatch);
                         break;
                     case estados.FASE16:
                         fase16.Draw(gameTime, spriteBatch);
