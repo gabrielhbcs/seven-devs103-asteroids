@@ -54,6 +54,10 @@ namespace Asteroid
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             spriteBatch.Draw(texturaFundo, Vector2.Zero, Color.White);
+
+            spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
+            spriteBatch.DrawString(Game1.fonte, "FASE 2 - Carlos Moffatt", new Vector2(560, 5), Color.White);
+
             jogador1.Draw(gameTime, spriteBatch);
             inimigo1.Draw(gameTime, spriteBatch);
         }
