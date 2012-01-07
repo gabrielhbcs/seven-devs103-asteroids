@@ -32,6 +32,8 @@ namespace Asteroid.Estados.Fase01
         /// </summary>
         public Fase1(ContentManager Content, GameWindow gw)
         {
+            this.gw = gw;
+
             playing_musica = false;
             musica = Content.Load<Song>("Kalimba");
             fundo = Content.Load<Texture2D>("Estados/Fase01/FundoFase1");
@@ -49,6 +51,8 @@ namespace Asteroid.Estados.Fase01
                 10,
                 0,
                 Content);
+
+            //Console.WriteLine("PASSANDO PELO CONTRUTOR DA FASE 1");
 
             //objetosemtipo = new Object(desenhoParam, Vector2.Zero, 0f, gw);//NAO posso fazer isso
         }
@@ -75,8 +79,13 @@ namespace Asteroid.Estados.Fase01
         {
             spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 600), Color.White);
 
+            string autor = "FASE 1 - Arthur";
+
             spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
-            spriteBatch.DrawString(Game1.fonte, "FASE 1 - Arthur", new Vector2(560, 5), Color.White);
+            spriteBatch.DrawString(Game1.fonte, autor,
+                new Vector2(
+                    gw.ClientBounds.Width-Game1.fonte.MeasureString(autor).X,
+                    5), Color.White);
 
             jogador1.Draw(gameTime, spriteBatch);
         }
