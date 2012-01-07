@@ -138,6 +138,7 @@ namespace Asteroid
                     fase1.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE2;
                     }
                     break;
@@ -145,6 +146,7 @@ namespace Asteroid
                     fase2.Update(gameTime, teclado, tecladoanterior, Window);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE3;
                     }
                     break;
@@ -153,6 +155,7 @@ namespace Asteroid
                     fase3.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE4;
                     }
                     break;
@@ -161,6 +164,7 @@ namespace Asteroid
                     //fase4.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE5;
                     }
                     break;
@@ -169,6 +173,7 @@ namespace Asteroid
                     //fase5.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE6;
                     }
                     break;
@@ -177,6 +182,7 @@ namespace Asteroid
                     //fase6.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE7;
                     }
                     break;
@@ -185,6 +191,7 @@ namespace Asteroid
                     fase7.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE8;
                     }
                     break;
@@ -193,6 +200,7 @@ namespace Asteroid
                     //fase8.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE9;
                     }
                     break;
@@ -201,6 +209,7 @@ namespace Asteroid
                     fase9.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE10;
                     }
                     break;
@@ -209,6 +218,7 @@ namespace Asteroid
                     //fase10.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE11;
                     }
                     break;
@@ -217,6 +227,7 @@ namespace Asteroid
                     //fase11.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE12;
                     }
                     break;
@@ -225,6 +236,7 @@ namespace Asteroid
                     //fase12.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE13;
                     }
                     break;
@@ -233,6 +245,7 @@ namespace Asteroid
                     //fase13.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE14;
                     }
                     break;
@@ -241,6 +254,7 @@ namespace Asteroid
                     //fase14.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE15;
                     }
                     break;
@@ -249,6 +263,7 @@ namespace Asteroid
                     //fase15.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE16;
                     }
                     break;
@@ -256,6 +271,7 @@ namespace Asteroid
                     fase16.Update(gameTime, teclado, tecladoanterior);
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
+                        MediaPlayer.Stop();
                         estadoAtual = estados.FASE1;
                     }
                     break;
