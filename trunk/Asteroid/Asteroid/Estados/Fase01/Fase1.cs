@@ -20,11 +20,11 @@ namespace Asteroid.Estados.Fase01
         String autor;
         Boolean playing_musica;
         Song musica;
-        Texture2D fundo;
-        Nave_jogador jogador1;
+        Texture2D texturaFundo;
+        Texture2D texturaNave;
 
-        Texture2D desenhoParam;
-        Vector2 posicao;
+        Vector2 posicao_j1;
+        Nave_jogador jogador1;
         GameWindow gw;
 
         /// <summary>
@@ -37,15 +37,15 @@ namespace Asteroid.Estados.Fase01
 
             playing_musica = false;
             musica = Content.Load<Song>("Kalimba");
-            fundo = Content.Load<Texture2D>("Estados/Fase01/FundoFase1");
-            desenhoParam = Content.Load<Texture2D>("Estados/Fase01/NaveFase1");
-            posicao.X = (gw.ClientBounds.Width / 2) - desenhoParam.Width / 2 - 150;
-            posicao.Y = (gw.ClientBounds.Height / 2) - desenhoParam.Height / 2;
+            texturaFundo = Content.Load<Texture2D>("Estados/Fase01/FundoFase1");
+            texturaNave = Content.Load<Texture2D>("Estados/Fase01/NaveFase1");
+            posicao_j1.X = (gw.ClientBounds.Width / 2) - texturaNave.Width / 2 - 150;
+            posicao_j1.Y = (gw.ClientBounds.Height / 2) - texturaNave.Height / 2;
 
             jogador1 = new Nave_jogador(
                 1,
-                desenhoParam,
-                posicao,
+                texturaNave,
+                posicao_j1,
                 0f,
                 gw,
                 "Teste",
@@ -78,7 +78,7 @@ namespace Asteroid.Estados.Fase01
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 600), Color.White);
+            spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, 800, 600), Color.White);
 
             spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
             spriteBatch.DrawString(Game1.fonte, autor,
