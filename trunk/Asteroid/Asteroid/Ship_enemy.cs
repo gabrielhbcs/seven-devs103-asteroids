@@ -19,8 +19,9 @@ namespace Asteroid
         int inimigo;
         int tiros;
 
-        TiroFase2 tiro;
+        //TiroFase2 tiro;
         //SoundEffect tiroSom;
+
         bool atirando;
 
         public Nave_inimigo(
