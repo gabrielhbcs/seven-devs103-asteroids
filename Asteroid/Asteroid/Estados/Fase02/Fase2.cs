@@ -32,6 +32,7 @@ namespace Asteroid
         {
             this.gw = gw;
             autor = "FASE 2 - Carlos Moffatt";
+
             playing_musica = false;
             musica = Content.Load<Song>("Estados/Fase02/musica_fase2");
             texturaFundo = Content.Load<Texture2D>("Estados/Fase02/fundoFase2");
