@@ -223,6 +223,11 @@ namespace Asteroid
 
                 case estados.FASE7:
                     fase7.Update(gameTime, teclado, tecladoanterior);
+                    if (Fase7.Objetivo >= 7)
+                    {
+                        MediaPlayer.Stop();
+                        estadoAtual = estados.FASE8;
+                    }
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
