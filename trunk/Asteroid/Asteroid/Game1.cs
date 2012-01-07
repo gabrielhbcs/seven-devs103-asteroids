@@ -23,6 +23,8 @@ namespace Asteroid
         KeyboardState teclado;
         KeyboardState tecladoanterior;
 
+        public static SpriteFont fonte;
+
         Fase1 fase1;
         Fase2 fase2;
         Fase3 fase3;
@@ -97,6 +99,8 @@ namespace Asteroid
             Menu = new MenuInicial(Content, Window);
 
             creditos = new Creditos(Content);
+
+            fonte = Content.Load<SpriteFont>("Arial");
             
             // TODO: use this.Content to load your game content here
         }
