@@ -9,75 +9,69 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
 namespace Asteroid
 {
     /// <summary>
-    /// germano
+    /// Germano
     /// </summary>
-    class Fase16//fazer com herança
+    class Fase16
     {
+        String autor;
         Boolean playing_musica;
         Song musica;
-        Texture2D fundo;
-        Nave_jogador Nave;
-        Objeto objetosemtipo;
-
-        Texture2D desenhoParam;
-        Vector2 posicao;
+        Texture2D texturaFundo;
+        Texture2D texturaNave;
+        Texture2D texturaInimigo;
+        Vector2 posicao_j1;
+        Vector2 posicao_i1;
+        Nave_jogador jogador1;
+        Nave_inimigo inimigo1;
         GameWindow gw;
+        Random randomizador = new Random();
 
-        /// <summary>
-        /// Construtor da fase16
-        /// </summary>
         public Fase16(ContentManager Content, GameWindow gw)
         {
+            this.gw = gw;
+            autor = "FASE 16 - Germano";
+
             playing_musica = false;
             musica = Content.Load<Song>("Kalimba");
-            fundo = Content.Load<Texture2D>("Estados/Fase16/FundoFase16");
-            desenhoParam = Content.Load<Texture2D>("Estados/Fase16/NaveFase1");
-            posicao.X = (gw.ClientBounds.Width / 2) - desenhoParam.Width / 2 - 150;
-            posicao.Y = (gw.ClientBounds.Height / 2) - desenhoParam.Height / 2;
-           
-            Nave = new Nave_jogador(
-                1,
-                desenhoParam,
-                posicao,
-                0f,
-                gw,
-                "Teste",
-                10,
-                0,
-                Content
-                 );
+            texturaFundo = Content.Load<Texture2D>("Estados/Fase16/FundoFase16");
+            texturaNave = Content.Load<Texture2D>("Estados/Fase16/NaveFase1");
+            posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
+            posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
+            jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, "Teste", 10, 0, Content);
 
-            //objetosemtipo = new Object(desenhoParam, Vector2.Zero, 0f, gw);//NAO posso fazer isso
+            //texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
+            //posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+            //posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+            //inimigo1 = new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content);
         }
-        public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior)
+
+        public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior)
         {
-             Nave.Update(time, teclado, tecladoanterior);
             if (!playing_musica)
             {
-                playing_musica = true;
                 MediaPlayer.Play(musica);
-                MediaPlayer.Volume = 0.5f;
+                playing_musica = true;
             }
-            if ((teclado.IsKeyDown(Keys.PageUp)) && !(tecladoanterior.IsKeyDown(Keys.PageUp)))
-            {
-                MediaPlayer.Volume += 0.1f;
-            }
-
-            if ((teclado.IsKeyDown(Keys.PageDown)) && !(tecladoanterior.IsKeyDown(Keys.PageDown)))
-            {
-                MediaPlayer.Volume -= 0.1f;
-            } 
+            jogador1.Update(gameTime, teclado, tecladoAnterior);
+            //inimigo1.Update(gameTime);
         }
+
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 600), Color.White);
-           
-            Nave.Draw(gameTime, spriteBatch);
+            spriteBatch.Draw(texturaFundo, Vector2.Zero, Color.White);
+
+            spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
+            spriteBatch.DrawString(Game1.fonte, autor,
+                new Vector2(
+                    gw.ClientBounds.Width - Game1.fonte.MeasureString(autor).X - 5,
+                    5), Color.White);
+
+            jogador1.Draw(gameTime, spriteBatch);
+            //inimigo1.Draw(gameTime, spriteBatch);
         }
 
-    }
+    }//fim da classe
 }
