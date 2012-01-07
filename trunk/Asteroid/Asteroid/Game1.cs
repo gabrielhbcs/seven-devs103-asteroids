@@ -43,7 +43,7 @@ namespace Asteroid
         
         Creditos creditos;
      
-        public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE,
+        public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE, RESET,
             FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15, FASE16 };
         
         public static estados estadoAtual = estados.MENU;
@@ -66,6 +66,8 @@ namespace Asteroid
 
             base.Initialize();
         }
+
+        // MUDAR A FUN플O RESETAR() QUANDO TROCAR A FUN플O LOADCONTENT!
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -97,6 +99,32 @@ namespace Asteroid
             creditos = new Creditos(Content);
             
             // TODO: use this.Content to load your game content here
+        }
+
+        // MUDAR A FUN플O RESETAR() QUANDO TROCAR A FUN플O LOADCONTENT!
+
+        public void Resetar()
+        {
+            fase1 = new Fase1(Content, Window);
+            fase2 = new Fase2(Content, Window);
+            fase3 = new Fase3(Content, Window);
+            //fase4 = new Fase4(Content);
+            //fase5 = new Fase5(Content);
+            //fase6 = new Fase6(Content);
+            fase7 = new Fase7(Content);
+            //fase8 = new Fase8(Content);
+            fase9 = new Fase9(Content, Window);
+            //fase10 = new Fase10(Content);
+            //fase11 = new Fase11(Content);
+            //fase12 = new Fase12(Content);
+            //fase13 = new Fase13(Content);
+            //fase14 = new Fase14(Content);
+            //fase15 = new Fase15(Content);
+            fase16 = new Fase16(Content, Window);
+
+            Menu = new MenuInicial(Content, Window);
+
+            creditos = new Creditos(Content);
         }
 
         /// <summary>
@@ -272,7 +300,8 @@ namespace Asteroid
                     if ((teclado.IsKeyDown(Keys.F)) && !(tecladoanterior.IsKeyDown(Keys.F)))
                     {
                         MediaPlayer.Stop();
-                        estadoAtual = estados.FASE1;
+                        estadoAtual = estados.MENU;
+                        Resetar();
                     }
                     break;
             }
