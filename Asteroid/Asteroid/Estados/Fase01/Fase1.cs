@@ -73,8 +73,10 @@ namespace Asteroid.Estados.Fase01
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 600), Color.White);
-           
+
             Nave.Draw(gameTime, spriteBatch);
+
+            spriteBatch.DrawString(Game1.fonte, "PONTOS: ", Vector2.Zero, Color.White);
         }
 
     }
