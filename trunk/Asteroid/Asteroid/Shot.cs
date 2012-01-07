@@ -42,6 +42,15 @@ namespace Asteroid
             textura = Content.Load<Texture2D>("Estados/Fase02/tiroFase2");
         }
 
+        public Boolean Colisao(Vector2 alvo)
+        {
+            if((posicao.X==alvo.X)&&(posicao.Y==alvo.Y)){
+                return true;
+            }
+            else
+                return false;
+        }
+
         public void Update(GameTime _gameTime) {
             this.velocidade.X = (float)Math.Cos(Math.PI * angulo / 180) * 10;
             this.velocidade.Y = (float)Math.Sin(Math.PI * angulo / 180) * 10;
