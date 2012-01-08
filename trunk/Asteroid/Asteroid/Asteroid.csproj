@@ -135,6 +135,12 @@
     <Compile Include="Estados\Menu\menuCredito.cs" />
     <Compile Include="Estados\Menu\MenuInicial.cs" />
     <Compile Include="Estados\Menu\Sair.cs" />
+    <Compile Include="Estados\Menu\menuStatus.cs" />
+    <Compile Include="Estados\Status\btnEscudo.cs" />
+    <Compile Include="Estados\Status\btnReset.cs" />
+    <Compile Include="Estados\Status\btnVelNave.cs" />
+    <Compile Include="Estados\Status\btnVelTiro.cs" />
+    <Compile Include="Estados\Status\Status.cs" />
     <Compile Include="Shot.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

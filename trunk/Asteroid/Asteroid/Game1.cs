@@ -49,8 +49,10 @@ namespace Asteroid
         Creditos creditos;
 
         Controles controles;
+
+        Status status;
      
-        public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE,
+        public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE, STATUS,
             FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15, FASE16 };
         
         public static estados estadoAtual = estados.MENU;
@@ -107,6 +109,8 @@ namespace Asteroid
 
             controles = new Controles(Content);
 
+            status = new Status(Content);
+
             fonte = Content.Load<SpriteFont>("Arial");
             
             // TODO: use this.Content to load your game content here
@@ -138,6 +142,8 @@ namespace Asteroid
             controles = new Controles(Content);
 
             creditos = new Creditos(Content);
+
+            
         }   
 
         /// <summary>
@@ -162,18 +168,18 @@ namespace Asteroid
             switch (estadoAtual)
             {
                 case estados.MENU:
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 1) estadoAtual = estados.FASE1;
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 2) estadoAtual = estados.CONTROLES;
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 3) estadoAtual = estados.CREDITOS;
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 4) estadoAtual = estados.STATUS;
                     Menu.Update(gameTime, teclado, controle, Content);
-                    if ((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A))) && Menu.cont == 1) estadoAtual = estados.FASE1;
-                    if ((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A))) && Menu.cont == 2) estadoAtual = estados.CONTROLES;
-                    if ((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A))) && Menu.cont == 3) estadoAtual = estados.CREDITOS;
                     break;
                 case estados.CREDITOS:
-                   
-                 if ((teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape))) || (controle.IsButtonDown(Buttons.Back) && !(controleanterior.IsButtonDown(Buttons.Back))))
-                 {
-                     creditos.Update(gameTime, teclado, tecladoanterior);
-                      estadoAtual = estados.MENU;
-                 }
+                    if ((teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape))) || (controle.IsButtonDown(Buttons.Back) && !(controleanterior.IsButtonDown(Buttons.Back))))
+                    {
+                        creditos.Update(gameTime, teclado, tecladoanterior);
+                        estadoAtual = estados.MENU;
+                    }
                
                     break;
                 case estados.CONTROLES:
@@ -182,7 +188,17 @@ namespace Asteroid
                         controles.Update(gameTime, teclado, tecladoanterior);
                         estadoAtual = estados.MENU;
                     }
-        
+                    break;
+                case estados.STATUS:
+                    {
+                        status.Update(gameTime, teclado, tecladoanterior, controle);
+                        if ((teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape))) || (controle.IsButtonDown(Buttons.Back) && !(controleanterior.IsButtonDown(Buttons.Back))))
+                        {
+                            creditos.Update(gameTime, teclado, tecladoanterior);
+                            estadoAtual = estados.MENU;
+                        }
+                    }
+
                     break;
                 case estados.FASE1:
                     fase1.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
@@ -356,13 +372,15 @@ namespace Asteroid
                     case estados.CONTROLES:
                         controles.Draw(gameTime, spriteBatch);
                         break;
+                    case estados.STATUS:
+                        status.Draw(gameTime, spriteBatch);
+                        break;
                     case estados.FASE1:
                         fase1.Draw(gameTime, spriteBatch);
                        break;
                     case estados.FASE2:
                         fase2.Draw(gameTime, spriteBatch);
                         break;
-
                     case estados.FASE3:
                         fase3.Draw(gameTime, spriteBatch);
                         break;
