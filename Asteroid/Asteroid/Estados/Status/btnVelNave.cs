@@ -11,20 +11,21 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Asteroid
 {
-    class Sair
+    class btnVelNave
     {
         Texture2D textura;
         Vector2 pos;
-        string endereco = "Estados/Menu/";
-        public Sair(ContentManager Content, int cont, Vector2 posicao)
+        string endereco = "Estados/Status/";
+
+        public btnVelNave(ContentManager Content, int cont, Vector2 posicao)
         {
-            if (cont == 5)
+            if (cont == 1)
             {
-                textura = Content.Load<Texture2D>(endereco + "sair2");
+                textura = Content.Load<Texture2D>(endereco + "botao");
             }
             else
             {
-                textura = Content.Load<Texture2D>(endereco + "sair");
+                textura = Content.Load<Texture2D>(endereco + "botao2");
             }
             pos = posicao;
 

@@ -22,6 +22,9 @@ namespace Asteroid
 
         Vector2 posCreditos;
         menuCredito creditos;
+
+        Vector2 posStatus;
+        menuStatus status;
         
         Sair sair;
         Vector2 posSair;
@@ -32,39 +35,42 @@ namespace Asteroid
         public MenuInicial(ContentManager Content, GameWindow Window)
         {
             posComecar.X = 100;
-            posComecar.Y = Window.ClientBounds.Height / 5;
+            posComecar.Y = Window.ClientBounds.Height / 6;
             comecar = new Comecar(Content, cont, posComecar);
 
             posControles.X = 100;
-            posControles.Y = 2 * Window.ClientBounds.Height / 5;
+            posControles.Y = 2 * Window.ClientBounds.Height / 6;
             controles = new Controles_Botao(Content, cont, posControles);
 
             posCreditos.X = 100;
-            posCreditos.Y = 3 * Window.ClientBounds.Height / 5;
+            posCreditos.Y = 3 * Window.ClientBounds.Height / 6;
             creditos = new menuCredito(Content, cont, posCreditos);
 
+            posStatus.X = 100;
+            posStatus.Y = 4 * Window.ClientBounds.Height / 6;
+
             posSair.X = 100;
-            posSair.Y = 4 * Window.ClientBounds.Height / 5;
+            posSair.Y = 5 * Window.ClientBounds.Height / 6;
             sair = new Sair(Content, cont, posSair);
         }
-        public void Update(GameTime time, KeyboardState teclado, GamePadState _controle, ContentManager Content)
+        public void Update(GameTime time, KeyboardState teclado, GamePadState controle, ContentManager Content)
         {
             cont_tecla++;
             if (cont_tecla >= max) cont_tecla = max;
 
             #region Escolha botão
-            if ((teclado.IsKeyDown(Keys.S) || teclado.IsKeyDown(Keys.Down) || _controle.IsButtonDown(Buttons.DPadDown) || _controle.IsButtonDown(Buttons.LeftThumbstickDown)) && cont_tecla == max)
+            if ((teclado.IsKeyDown(Keys.S) || teclado.IsKeyDown(Keys.Down) || controle.IsButtonDown(Buttons.DPadDown) || controle.IsButtonDown(Buttons.LeftThumbstickDown)) && cont_tecla == max)
             {
                 cont++;
                 cont_tecla = 0;
             }
-            if ((teclado.IsKeyDown(Keys.W) || teclado.IsKeyDown(Keys.Up) || _controle.IsButtonDown(Buttons.DPadUp) || _controle.IsButtonDown(Buttons.LeftThumbstickUp)) && cont_tecla == max)
+            if ((teclado.IsKeyDown(Keys.W) || teclado.IsKeyDown(Keys.Up) || controle.IsButtonDown(Buttons.DPadUp) || controle.IsButtonDown(Buttons.LeftThumbstickUp)) && cont_tecla == max)
             {
                 cont--;
                 cont_tecla = 0;
             }
-            if (cont > 4) cont = 1;
-            if (cont < 1) cont = 4;
+            if (cont > 5) cont = 1;
+            if (cont < 1) cont = 5;
             #endregion
             #region Seleção dos botões
             if (cont == 1)
@@ -73,6 +79,7 @@ namespace Asteroid
                 sair = new Sair(Content, cont, posSair);
                 controles = new Controles_Botao(Content, cont, posControles);
                 creditos = new menuCredito(Content, cont, posCreditos);
+                status = new menuStatus(Content, cont, posStatus);
             }
             if (cont == 2)
             {
@@ -80,6 +87,7 @@ namespace Asteroid
                 sair = new Sair(Content, cont, posSair);
                 controles = new Controles_Botao(Content, cont, posControles);
                 creditos = new menuCredito(Content, cont, posCreditos);
+                status = new menuStatus(Content, cont, posStatus);
             }
             if (cont == 3)
             {
@@ -87,6 +95,7 @@ namespace Asteroid
                 sair = new Sair(Content, cont, posSair);
                 controles = new Controles_Botao(Content, cont, posControles);
                 creditos = new menuCredito(Content, cont, posCreditos);
+                status = new menuStatus(Content, cont, posStatus);
             }
             if (cont == 4)
             {
@@ -94,6 +103,15 @@ namespace Asteroid
                 sair = new Sair(Content, cont, posSair);
                 controles = new Controles_Botao(Content, cont, posControles);
                 creditos = new menuCredito(Content, cont, posCreditos);
+                status = new menuStatus(Content, cont, posStatus);
+            }
+            if (cont == 5)
+            {
+                comecar = new Comecar(Content, cont, posComecar);
+                sair = new Sair(Content, cont, posSair);
+                controles = new Controles_Botao(Content, cont, posControles);
+                creditos = new menuCredito(Content, cont, posCreditos);
+                status = new menuStatus(Content, cont, posStatus);
             }
             #endregion
         }
@@ -103,6 +121,7 @@ namespace Asteroid
             sair.Draw(gameTime, spriteBatch);
             controles.Draw(gameTime, spriteBatch);
             creditos.Draw(gameTime, spriteBatch);
+            status.Draw(gameTime, spriteBatch);
         }
     }
 }
