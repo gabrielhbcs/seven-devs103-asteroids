@@ -56,7 +56,7 @@ namespace Asteroid
             {
                 posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
                 posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, Content,randomizador.Next(360));
+                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, Content,randomizador.Next(60));
                 listaInimigos.Add(inimigo1);
             }
         }
