@@ -52,6 +52,8 @@ namespace Asteroid
             posSair.X = 100;
             posSair.Y = 5 * Window.ClientBounds.Height / 6;
             sair = new Sair(Content, cont, posSair);
+
+            status = new menuStatus(Content, 1, Vector2.Zero);
         }
         public void Update(GameTime time, KeyboardState teclado, GamePadState controle, ContentManager Content)
         {
@@ -107,11 +109,11 @@ namespace Asteroid
             }
             if (cont == 5)
             {
-                comecar = new Comecar(Content, cont, posComecar);
-                sair = new Sair(Content, cont, posSair);
-                controles = new Controles_Botao(Content, cont, posControles);
-                creditos = new menuCredito(Content, cont, posCreditos);
-                status = new menuStatus(Content, cont, posStatus);
+               comecar = new Comecar(Content, cont, posComecar);
+               sair = new Sair(Content, cont, posSair);
+               controles = new Controles_Botao(Content, cont, posControles);
+               creditos = new menuCredito(Content, cont, posCreditos);
+               status = new menuStatus(Content, cont, posStatus);
             }
             #endregion
         }
