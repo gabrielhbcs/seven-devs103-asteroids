@@ -22,7 +22,15 @@ namespace Asteroid
         //TiroFase2 tiro;
         //SoundEffect tiroSom;
 
+        public Rectangle hitBox;
+
         bool atirando;
+
+        double dx;
+        double dy;
+        int w;
+        int _t;
+        Random randomizador = new Random();
 
         public Nave_inimigo(
             int inimigo,
@@ -42,8 +50,37 @@ namespace Asteroid
             this.inimigo = inimigo;
             atirando = false;
             this.tiros = tiros;
+
+            this.w = randomizador.Next(30);
+
+            hitBox = new Rectangle((int) posicao.X,(int) posicao.Y, textura.Width, textura.Height);
         }
 
+
+        //novo construtor criado para receber velocidade angular _w do inimigo. com esse construtor os inimigos se movimentam na tela realizando orbitas.
+        public Nave_inimigo(
+            int inimigo,
+            Texture2D textura,
+            Vector2 posicao,
+            float angulo,
+            GameWindow gw,
+            int tiros,
+            ContentManager Content,int _w)
+            : base(
+            textura,
+            posicao,
+            angulo,
+            gw,
+            Content)
+        {
+            this.inimigo = inimigo;
+            atirando = false;
+            this.tiros = tiros;
+
+            w = _w;
+
+            hitBox = new Rectangle((int)posicao.X, (int)posicao.Y, textura.Width, textura.Height);
+        }
 
         public void Update(GameTime _gameTime)
         {
@@ -52,11 +89,18 @@ namespace Asteroid
             // SE ACABAR A MUNIÇÃO
                 // A nave gira para a direção que está a nave do jogador, e acelera (Tipo nave Kamikaze)
 
-            angulo -= 2;
-            
+            //angulo -= 2;
+            angulo -= this.w * (float)(3.14/180);
+
             // ACELERAÇÃO
-            //velocidade.X += (float)Math.Cos(Math.PI * angulo / 180) * 0.02f;
-            //velocidade.Y += (float)Math.Sin(Math.PI * angulo / 180) * 0.02f;
+            velocidade.X = (float)Math.Cos(Math.PI * angulo / 180) * 0.1f;
+            velocidade.Y = (float)Math.Sin(Math.PI * angulo / 180) * 0.1f;
+
+
+            //_t = (int)_gameTime;
+            dx = velocidade.X * _gameTime.ElapsedGameTime.Milliseconds;
+            dy = velocidade.Y * _gameTime.ElapsedGameTime.Milliseconds;
+
 
             // ATIROU COICE do tiro
             //velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
@@ -71,7 +115,16 @@ namespace Asteroid
             //if (velocidade.Y < -4) { velocidade.Y = -4; }
             //#endregion
 
-            //posicao += velocidade;
+            //posicao. += velocidade;
+
+
+
+            posicao.X +=(float) dx;
+            posicao.Y +=(float) dy;
+
+            hitBox.X = (int) posicao.X;
+            hitBox.Y = (int) posicao.Y;
+
 
             #region Verifica nave nos limites da tela
             if (posicao.X < 0)

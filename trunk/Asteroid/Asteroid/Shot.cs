@@ -41,6 +41,8 @@ namespace Asteroid
             posicao.Y = _posicao.Y + ((float)Math.Sin(Math.PI * angulo / 180) * 30);
             Content = _content;
             textura = Content.Load<Texture2D>("Estados/Fase02/tiroFase2");
+
+            colisao = new Rectangle((int)posicao.X, (int) posicao.Y, textura.Width, textura.Height);
         }
 
         public static void Update(GameTime _gameTime) 
@@ -50,6 +52,10 @@ namespace Asteroid
                 listaTiros[i].velocidade.X = (float)Math.Cos(Math.PI * listaTiros[i].angulo / 180) * 10;
                 listaTiros[i].velocidade.Y = (float)Math.Sin(Math.PI * listaTiros[i].angulo / 180) * 10;
                 listaTiros[i].posicao += listaTiros[i].velocidade;
+
+                listaTiros[i].colisao.X = (int) listaTiros[i].posicao.X;
+                listaTiros[i].colisao.Y = (int) listaTiros[i].posicao.Y;
+
                 if (listaTiros[i].posicao.X > listaTiros[i].janela.ClientBounds.Width)
                 {
                     listaTiros.RemoveAt(i);
@@ -69,13 +75,10 @@ namespace Asteroid
 		}
          
         //TODO Colisão com o inimigo
-        public Boolean Colisao(Vector2 alvo)
+        public bool Colisao(Rectangle hit)
         {
-            if((posicao.X==alvo.X)&&(posicao.Y==alvo.Y)){
-                return true;
-            }
-            else
-                return false;
+            if (colisao.Intersects(hit)) return true;
+            return false;
         }
 
        
