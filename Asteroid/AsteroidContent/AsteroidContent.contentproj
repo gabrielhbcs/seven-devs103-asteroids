@@ -130,7 +130,6 @@
     <Folder Include="Estados\Fase10\" />
     <Folder Include="Estados\Fase11\" />
     <Folder Include="Estados\Fase12\" />
-    <Folder Include="Estados\Fase13\" />
     <Folder Include="Estados\Fase14\" />
     <Folder Include="Estados\Fase15\" />
     <Folder Include="Estados\GameOver\" />
@@ -279,6 +278,27 @@
     </Compile>
     <Compile Include="Estados\Status\botao2.png">
       <Name>botao2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Fase13\bg.jpg">
+      <Name>bg</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SpriteFont1.spritefont">
+      <Name>SpriteFont1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Fase13\naveFase13.png">
+      <Name>naveFase13</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
