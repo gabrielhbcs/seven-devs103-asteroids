@@ -143,6 +143,8 @@ namespace Asteroid
 
             creditos = new Creditos(Content);
 
+            status = new Status(Content);
+
             
         }   
 
@@ -172,6 +174,7 @@ namespace Asteroid
                     if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 2) estadoAtual = estados.CONTROLES;
                     if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 3) estadoAtual = estados.CREDITOS;
                     if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 4) estadoAtual = estados.STATUS;
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 5) this.Exit();
                     Menu.Update(gameTime, teclado, controle, Content);
                     break;
                 case estados.CREDITOS:
