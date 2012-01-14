@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 namespace Asteroid
 {
     /// <summary>
-    /// Gilberto
+    /// Michel
     /// </summary>
     class Fase8
     {
