@@ -74,8 +74,8 @@ namespace Asteroid
                 #region CIMA (Acelera)
                 if (_teclado.IsKeyDown(Keys.W) || _controle.IsButtonDown(Buttons.DPadUp) || _controle.IsButtonDown(Buttons.LeftThumbstickUp))
                 {
-                    velocidade.X += (float)Math.Cos(Math.PI * angulo / 180) * 0.02f;
-                    velocidade.Y += (float)Math.Sin(Math.PI * angulo / 180) * 0.02f;
+                    //velocidade.X += (float)Math.Cos(Math.PI * angulo / 180) * 0.02f;
+                    //velocidade.Y += (float)Math.Sin(Math.PI * angulo / 180) * 0.02f;
                 }
                 #endregion
 
@@ -84,11 +84,31 @@ namespace Asteroid
                 {
                     //tiroSom.Play();
                     // COICE do tiro
-                    velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
-                    velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
+                  // velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
+                  // velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
                     Shot.listaTiros.Add(new Shot(tipoTiro, posicao, gw, angulo, Content));
                 }
                 #endregion
+
+
+
+                if (_teclado.IsKeyDown(Keys.Up) )
+                {
+                    posicao.Y -=1;
+                }
+                if (_teclado.IsKeyDown(Keys.Down))
+                {
+                    posicao.Y += 1;
+                }
+                if (_teclado.IsKeyDown(Keys.Left))
+                {
+                    posicao.X -= 1;
+                }
+                if (_teclado.IsKeyDown(Keys.Right))
+                {
+                    posicao.X += 1;
+                }
+
             }
 
             #region Jogador 2 (Não implementado)
@@ -117,7 +137,10 @@ namespace Asteroid
             if (velocidade.Y < -4) { velocidade.Y = -4; }
             #endregion
 
-            posicao += velocidade;
+            //posicao += velocidade;
+
+
+
 
             #region Verifica nave nos limites da tela
             if (posicao.X < 0)
