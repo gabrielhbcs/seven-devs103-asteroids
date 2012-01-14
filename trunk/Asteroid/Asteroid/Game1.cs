@@ -51,6 +51,7 @@ namespace Asteroid
         Controles controles;
 
         Status status;
+        GameOver gameOver;
      
         public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE, STATUS,
             FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15, FASE16 };
@@ -111,6 +112,8 @@ namespace Asteroid
 
             status = new Status(Content);
 
+            gameOver = new GameOver(Content);
+
             fonte = Content.Load<SpriteFont>("Arial");
             
             // TODO: use this.Content to load your game content here
@@ -144,6 +147,8 @@ namespace Asteroid
             creditos = new Creditos(Content);
 
             status = new Status(Content);
+
+            gameOver = new GameOver(Content);
 
             
         }   
@@ -350,6 +355,9 @@ namespace Asteroid
                         Resetar();
                     }
                     break;
+                case estados.THE_END:
+                    gameOver.Update(gameTime, spriteBatch);
+                    break;
             }
             tecladoanterior = teclado;
             controleanterior = controle;
@@ -425,6 +433,9 @@ namespace Asteroid
                         break;
                     case estados.FASE16:
                         fase16.Draw(gameTime, spriteBatch);
+                        break;
+                    case estados.THE_END:
+                        gameOver.Draw(gameTime, spriteBatch);
                         break;
                 }
             spriteBatch.End();

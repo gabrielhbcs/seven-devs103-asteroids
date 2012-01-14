@@ -141,6 +141,7 @@
     <Compile Include="Estados\Status\btnVelNave.cs" />
     <Compile Include="Estados\Status\btnVelTiro.cs" />
     <Compile Include="Estados\Status\Status.cs" />
+    <Compile Include="Estados\The End\GameOver.cs" />
     <Compile Include="Shot.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -189,7 +190,6 @@
   <ItemGroup>
     <Folder Include="Estados\Game Over\" />
     <Folder Include="Estados\Intro\" />
-    <Folder Include="Estados\The End\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
