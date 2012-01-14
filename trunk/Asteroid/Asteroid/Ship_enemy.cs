@@ -155,18 +155,18 @@ namespace Asteroid
 
         public void Draw(GameTime gameTime, SpriteBatch sb)
         {
-            /*sb.Draw(
+            sb.Draw(
                 textura,
                 posicao,
                 new Rectangle(0, 0, textura.Width, textura.Height),
                 cor,
-                MathHelper.ToRadians(angulo),
-                new Vector2(textura.Width / 2, textura.Height / 2),
+                MathHelper.ToRadians(0),
+                new Vector2(textura.Width/2, textura.Height/2),
                 1,
                 SpriteEffects.None,
-                0);*/
+                0);
 
-            sb.Draw(textura, posicao, Color.White);
+            //sb.Draw(textura, posicao, Color.White);
         }
 
 

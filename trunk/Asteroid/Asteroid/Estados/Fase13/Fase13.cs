@@ -31,10 +31,10 @@ namespace Asteroid
 
         List<Nave_inimigo> listaInimigos = new List<Nave_inimigo>();
 
+        int qtdInimigos = 1;
 
         ContentManager _Content;
-
-
+        
         public Fase13(ContentManager Content, GameWindow gw)
         {
             this.gw = gw;
@@ -52,11 +52,11 @@ namespace Asteroid
 
             texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < qtdInimigos; i++)
             {
                 posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
                 posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, Content,randomizador.Next(60));
+                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, Content, randomizador.Next(60));
                 listaInimigos.Add(inimigo1);
             }
         }
@@ -73,7 +73,7 @@ namespace Asteroid
 
             for (int i = 0; i < listaInimigos.Count; i++)
             {
-                listaInimigos[i].Update(gameTime);
+                //listaInimigos[i].Update(gameTime);
             }
 
             for (int i = 0; i < Shot.listaTiros.Count; i++)
@@ -88,7 +88,7 @@ namespace Asteroid
             }
 
 
-            if (listaInimigos.Count < 5)
+            if (listaInimigos.Count < qtdInimigos)
             {
 
                 posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);

@@ -293,8 +293,29 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Estados\Fase14\fundofase14.jpg">
-      <Name>fundofase14</Name>
+    <Compile Include="Estados\Fase14\naveFase14.png">
+      <Name>naveFase14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Fase06\naveFase6.png">
+      <Name>naveFase6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Fase08\naveFase8.png">
+      <Name>naveFase8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Fase10\naveFase10.png">
+      <Name>naveFase10</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -316,6 +337,13 @@
   <ItemGroup>
     <Compile Include="Estados\Fase10\fundofase10.jpg">
       <Name>fundofase10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Fase14\fundofase14.jpg">
+      <Name>fundofase14</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
