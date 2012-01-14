@@ -79,7 +79,7 @@ namespace Asteroid
 
             w = _w;
 
-            hitBox = new Rectangle((int)posicao.X, (int)posicao.Y, textura.Width, textura.Height);
+            hitBox = new Rectangle((int)(posicao.X-10), ((int)posicao.Y-30), textura.Width, textura.Height);
         }
 
         public void Update(GameTime _gameTime)
@@ -90,7 +90,7 @@ namespace Asteroid
                 // A nave gira para a direção que está a nave do jogador, e acelera (Tipo nave Kamikaze)
 
             //angulo -= 2;
-            angulo -= this.w * (float)(3.14/180);
+            //angulo -= this.w * (float)(3.14/180);
 
             // ACELERAÇÃO
             velocidade.X = (float)Math.Cos(Math.PI * angulo / 180) * 0.1f;
@@ -119,11 +119,11 @@ namespace Asteroid
 
 
 
-            posicao.X +=(float) dx;
-            posicao.Y +=(float) dy;
+       //posicao.X +=(float) dx;
+       //posicao.Y +=(float) dy;
 
-            hitBox.X = (int) posicao.X;
-            hitBox.Y = (int) posicao.Y;
+       //hitBox.X = (int) posicao.X;
+       //hitBox.Y = (int) posicao.Y;
 
 
             #region Verifica nave nos limites da tela
@@ -155,7 +155,7 @@ namespace Asteroid
 
         public void Draw(GameTime gameTime, SpriteBatch sb)
         {
-            sb.Draw(
+            /*sb.Draw(
                 textura,
                 posicao,
                 new Rectangle(0, 0, textura.Width, textura.Height),
@@ -164,9 +164,9 @@ namespace Asteroid
                 new Vector2(textura.Width / 2, textura.Height / 2),
                 1,
                 SpriteEffects.None,
-                0);
+                0);*/
 
-            //sb.Draw(textura, Vector2.Zero, Color.White);
+            sb.Draw(textura, posicao, Color.White);
         }
 
 

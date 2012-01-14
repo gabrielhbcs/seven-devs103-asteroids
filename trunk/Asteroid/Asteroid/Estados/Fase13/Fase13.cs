@@ -68,6 +68,7 @@ namespace Asteroid
             //    MediaPlayer.Play(musica);
             //    playing_musica = true;
             //}
+
             jogador1.Update(gameTime, teclado, tecladoAnterior, _controle, _controleanterior);
 
             for (int i = 0; i < listaInimigos.Count; i++)
