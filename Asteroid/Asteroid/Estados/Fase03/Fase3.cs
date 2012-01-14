@@ -98,6 +98,12 @@ namespace Asteroid
             for (int i = 0; i < listaInimigos.Count; i++)
             {
                 listaInimigos[i].Update(gameTime);
+
+                // checa a colisao da nava com os inimigos
+                if (jogador1.Colisao(listaInimigos[i].hitBox))
+                {
+                    Nave_jogador.vidas--;
+                }
             }
 
             for (int i = 0; i < Shot.listaTiros.Count; i++)
