@@ -361,10 +361,10 @@ namespace Asteroid
                     }
                     break;
                 case estados.GAME_OVER:
-                    gameOver.Update(gameTime, spriteBatch);
+                    gameOver.Update(gameTime, spriteBatch, teclado);
                     break;
                 case estados.THE_END:
-                    theEnd.Update(gameTime, spriteBatch);
+                    theEnd.Update(gameTime, spriteBatch, teclado);
                     break;
             }
             tecladoanterior = teclado;

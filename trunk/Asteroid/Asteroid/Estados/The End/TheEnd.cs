@@ -21,9 +21,12 @@ namespace Asteroid
             this.Content = Content;
         }
 
-        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime, SpriteBatch spriteBatch, KeyboardState teclado)
         {
-            
+            if (teclado.IsKeyDown(Keys.Enter))
+            {
+                Game1.estadoAtual = Game1.estados.MENU;
+            }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
