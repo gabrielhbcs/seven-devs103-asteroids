@@ -49,7 +49,7 @@ namespace Asteroid
             posicao.X = Window.ClientBounds.Width / 2 - texturaNave.Width / 2;
             posicao.Y = Window.ClientBounds.Height / 2 - texturaNave.Height / 2;
             //jogador1 = new NaveGabriel(texturaNave, Color.White, posicao, 0f, "Teste", 3, 0, Window, texturaEscudo, Content.Load<SoundEffect>("chord"), texturaTiro, texturaBarra);
-            jogador1 = new Nave_jogador(1, texturaNave, posicao, 0f, gw, "Teste", 10, 0, Content);
+            jogador1 = new Nave_jogador(1, texturaNave, posicao, 0f, gw, Content);
             Texto.X = 0;
             Texto.Y = Window.ClientBounds.Height - 30;
 

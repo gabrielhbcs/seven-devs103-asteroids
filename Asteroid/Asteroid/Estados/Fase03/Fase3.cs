@@ -54,7 +54,7 @@ namespace Asteroid
             texturaNave = Content.Load<Texture2D>(file_path + "Nave_fase3");
             posicao_j1.X = (gw.ClientBounds.Width / 2) - texturaNave.Width / 2 - 150;
             posicao_j1.Y = (gw.ClientBounds.Height / 2) - texturaNave.Height / 2;
-            jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, "Teste", 10, 0, Content);
+            jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, Content);
 
             texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
 

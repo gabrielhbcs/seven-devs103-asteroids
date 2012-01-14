@@ -160,7 +160,7 @@ namespace Asteroid
                 posicao,
                 new Rectangle(0, 0, textura.Width, textura.Height),
                 cor,
-                MathHelper.ToRadians(0),
+                MathHelper.ToRadians(angulo),
                 new Vector2(textura.Width/2, textura.Height/2),
                 1,
                 SpriteEffects.None,

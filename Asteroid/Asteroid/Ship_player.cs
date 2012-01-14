@@ -20,6 +20,19 @@ namespace Asteroid
         string nome;
         public static int vidas;
         public static int pontos;
+
+        /// <summary>
+        /// Velocidade segundo a qual a nave anda para frente
+        /// Setada em Status
+        /// </summary>
+        public static int velocidade_linear;
+
+        /// <summary>
+        /// Velocidade segundo a qual a nave gira
+        /// Setada em Status
+        /// </summary>
+        public static int velocidade_angular;
+
         //TiroFase2 tiro;
         String tipoTiro;
         bool atirando;
@@ -30,9 +43,6 @@ namespace Asteroid
             Vector2 posicao,
             float angulo,
             GameWindow gw,
-            string nome,
-            int vidas,
-            int pontos,
             ContentManager Content
             )
             : base(
@@ -41,13 +51,11 @@ namespace Asteroid
             angulo,
             gw,
             Content)
-            
         {
             this.jogador = jogador;
             tipoTiro = "plasma";
             //tiroSom = _tirosom;
             atirando = false;
-            this.nome = nome;
             Nave_jogador.vidas = 7;
             Nave_jogador.pontos = 0;
         }
