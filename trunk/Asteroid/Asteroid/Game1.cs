@@ -60,7 +60,7 @@ namespace Asteroid
         public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE, STATUS,
             FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15, FASE16 };
 
-        public static estados estadoAtual = estados.FASE3;
+        public static estados estadoAtual = estados.FASE9;
         
         public Game1()
         {
@@ -196,9 +196,9 @@ namespace Asteroid
                
                     break;
                 case estados.CONTROLES:
+                    controles.Update(gameTime, teclado, tecladoanterior, controle);
                     if ((teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape))) || (controle.IsButtonDown(Buttons.Back) && !(controleanterior.IsButtonDown(Buttons.Back))))
                     {
-                        controles.Update(gameTime, teclado, tecladoanterior);
                         estadoAtual = estados.MENU;
                     }
                     break;
