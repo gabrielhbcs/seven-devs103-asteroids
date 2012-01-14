@@ -76,6 +76,14 @@ namespace Asteroid
 
         public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
         {
+            if (isGameOver())
+            {
+                Game1.estadoAtual = Game1.estados.THE_END;
+            }
+            if(_teclado.IsKeyDown(Keys.X)) {
+                vidas--;
+            }
+
             if (jogador == 1)
             {
                 #region ESQUERDA
@@ -207,6 +215,11 @@ namespace Asteroid
         {
             if (hitBox.Intersects(hit)) return true;
             return false;
+        }
+
+        public bool isGameOver()
+        {
+            return (vidas == 0);
         }
 
     }//fim classe
