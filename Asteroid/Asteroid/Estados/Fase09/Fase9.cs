@@ -32,6 +32,8 @@ namespace Asteroid
         bool inicio_fase9 = true;
         bool playing = false;
 
+        string file_path = "Estados/Fase09/";
+
         public Fase9(ContentManager conteudo, GameWindow janela)
         {
             autor = "FASE 9 - Lucas Abend";
@@ -39,7 +41,7 @@ namespace Asteroid
             this.conteudo = conteudo;
             this.gw = janela;
             // spriteBatch = new SpriteBatch(GraphicsDevice);
-            nave = conteudo.Load<Texture2D>("Nave");
+            nave = conteudo.Load<Texture2D>(file_path + "Nave_fase9");
             desenho = conteudo.Load<Texture2D>("Fundo_espaco");
             musica = conteudo.Load<Song>("Kalimba");
 

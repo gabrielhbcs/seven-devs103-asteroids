@@ -124,7 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Estados\Fase05\" />
-    <Folder Include="Estados\Fase09\" />
     <Folder Include="Estados\Fase11\" />
     <Folder Include="Estados\Fase12\" />
     <Folder Include="Estados\Fase15\" />
@@ -356,6 +355,28 @@
     </Compile>
     <Compile Include="Estados\Controles\botao2.png">
       <Name>botao2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Fase09\Asteroid1.png">
+      <Name>Asteroid1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Estados\Fase09\Asteroid2.png">
+      <Name>Asteroid2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Estados\Fase09\Nave_fase9.png">
+      <Name>Nave_fase9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Estados\Fase09\nave_inimiga.png">
+      <Name>nave_inimiga</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
