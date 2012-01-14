@@ -18,8 +18,8 @@ namespace Asteroid
     {
         int jogador;
         string nome;
-        int vidas;
-        int pontos;
+        public static int vidas;
+        public static int pontos;
         //TiroFase2 tiro;
         String tipoTiro;
         bool atirando;
@@ -48,8 +48,8 @@ namespace Asteroid
             //tiroSom = _tirosom;
             atirando = false;
             this.nome = nome;
-            this.vidas = vidas;
-            this.pontos = pontos;
+            Nave_jogador.vidas = 7;
+            Nave_jogador.pontos = 0;
         }
 
 
