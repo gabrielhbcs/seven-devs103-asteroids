@@ -16,9 +16,19 @@ namespace Asteroid
     /// </summary>
     class Nave_jogador:Objeto
     {
+        /// <summary>
+        /// usado para dizer qual controle vai usar (wasd, uhjk)
+        /// </summary>
         int jogador;
-        string nome;
+
+        /// <summary>
+        /// qtd de vidas do jogador
+        /// </summary>
         public static int vidas;
+
+        /// <summary>
+        /// qtd de pontos do jogador
+        /// </summary>
         public static int pontos;
 
         /// <summary>
