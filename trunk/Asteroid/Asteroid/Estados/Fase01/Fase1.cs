@@ -48,9 +48,6 @@ namespace Asteroid.Estados.Fase01
                 posicao_j1,
                 0f,
                 gw,
-                "Teste",
-                10,
-                0,
                 Content);
 
             //Console.WriteLine("PASSANDO PELO CONTRUTOR DA FASE 1");

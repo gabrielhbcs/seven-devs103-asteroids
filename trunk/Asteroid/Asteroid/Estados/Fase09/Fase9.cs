@@ -46,7 +46,7 @@ namespace Asteroid
             posicao1.X = (janela.ClientBounds.Width / 2) - nave.Width / 2 - 150;
             posicao1.Y = (janela.ClientBounds.Height / 2) - nave.Height / 2;
             //jogador1 = new Nave_fase9(nave, posicao1, Color.Red, janela, conteudo.Load<SoundEffect>("ding"));
-            jogador1 = new Nave_jogador(1, nave, posicao1, 0f, gw, "Teste", 10, 0, conteudo);
+            jogador1 = new Nave_jogador(1, nave, posicao1, 0f, gw,  conteudo);
 
             /* posicao2.X = (janela.ClientBounds.Width / 2) - nave.Width / 2 + 150;
             posicao2.Y = (janela.ClientBounds.Height / 2) - nave.Height / 2;
