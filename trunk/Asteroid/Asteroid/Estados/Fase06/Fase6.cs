@@ -32,15 +32,15 @@ namespace Asteroid
         public Fase6(ContentManager Content, GameWindow gw)
         {
             this.gw = gw;
-            autor = "FASE 6 - Fernando - NÃO IMPLEMENTADA";
+            autor = "FASE 6 - Fernando";
 
             //playing_musica = false;
             //musica = Content.Load<Song>("Estados/Fase02/musica_fase2");
-            //texturaFundo = Content.Load<Texture2D>("Estados/Fase02/fundoFase2");
-            //texturaNave = Content.Load<Texture2D>("Estados/Fase02/naveFase2");
-            //posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
-            //posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
-            //jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, "Teste", 10, 0, Content);
+            texturaFundo = Content.Load<Texture2D>("Estados/Fase06/fundofase6");
+            texturaNave = Content.Load<Texture2D>("Estados/Fase02/naveFase2");
+            posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
+            posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
+            jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, "Teste", 10, 0, Content);
 
             //texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
             //posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
@@ -55,13 +55,13 @@ namespace Asteroid
             //    MediaPlayer.Play(musica);
             //    playing_musica = true;
             //}
-            //jogador1.Update(gameTime, teclado, tecladoAnterior);
+            jogador1.Update(gameTime, teclado, tecladoAnterior,_controleanterior,_controle);
             //inimigo1.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(texturaFundo, Vector2.Zero, Color.White);
+            spriteBatch.Draw(texturaFundo, Vector2.Zero, Color.White);
 
             //spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
             spriteBatch.DrawString(Game1.fonte, autor,
@@ -69,7 +69,7 @@ namespace Asteroid
                     gw.ClientBounds.Width - Game1.fonte.MeasureString(autor).X - 5,
                     5), Color.White);
 
-            //jogador1.Draw(gameTime, spriteBatch);
+            jogador1.Draw(gameTime, spriteBatch);
             //inimigo1.Draw(gameTime, spriteBatch);
         }
 
