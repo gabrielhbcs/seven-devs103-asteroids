@@ -37,6 +37,8 @@ namespace Asteroid
         String tipoTiro;
         bool atirando;
 
+        public Rectangle hitBox;
+
         public Nave_jogador(
             int jogador,
             Texture2D textura,
@@ -58,6 +60,7 @@ namespace Asteroid
             atirando = false;
             Nave_jogador.vidas = 7;
             Nave_jogador.pontos = 0;
+            hitBox = new Rectangle((int)posicao.X, (int)posicao.Y, textura.Width, textura.Height);
         }
 
 
@@ -146,10 +149,7 @@ namespace Asteroid
             #endregion
 
             //posicao += velocidade;
-
-
-
-
+            
             #region Verifica nave nos limites da tela
             if (posicao.X < 0)
             {
@@ -193,6 +193,11 @@ namespace Asteroid
             //sb.Draw(textura, Vector2.Zero, Color.White);
         }
 
+        public bool Colisao(Rectangle hit)
+        {
+            if (hitBox.Intersects(hit)) return true;
+            return false;
+        }
 
     }//fim classe
 }//fim namespace
