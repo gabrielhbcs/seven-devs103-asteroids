@@ -16,7 +16,7 @@ namespace Asteroid
         Boolean playing_musica;
         Song musica;
         Texture2D fundo;
-        int cont = 1;
+        int cont = 0;
 
         btnSelect selTeclado;
         Vector2 posTeclado;
@@ -39,12 +39,13 @@ namespace Asteroid
 
             selTeclado = new btnSelect(conteudo, 1, posTeclado);
             selGamepad = new btnSelect(conteudo, 2, posGamepad);
-            Console.WriteLine("fim do construtor do Controles: cont=" + cont);
+
+            if (Game1.controleAtual == Game1.dispositivos_controle.TECLADO) {cont=1;}
+            if (Game1.controleAtual == Game1.dispositivos_controle.JOYSTICK) {cont=2;}
         }
 
         public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState controle)
         {
-            Console.WriteLine("cont="+cont);
             if ((teclado.IsKeyDown(Keys.D) && tecladoanterior.IsKeyUp(Keys.D)) || (teclado.IsKeyDown(Keys.Right) && tecladoanterior.IsKeyUp(Keys.Right)) || controle.IsButtonDown(Buttons.DPadRight) || controle.IsButtonDown(Buttons.LeftThumbstickRight))
             {
                 cont++;
