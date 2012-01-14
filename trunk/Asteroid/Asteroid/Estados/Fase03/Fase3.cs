@@ -45,8 +45,8 @@ namespace Asteroid
             _Content = Content;
 
             #region init audio
-            // playing_musica = false;
-            // musica = Content.Load<Song>(file_path + "fase3");
+            playing_musica = false;
+            musica = Content.Load<Song>(file_path + "fase3");
             #endregion
 
             inimigosRestantes = 5;
@@ -70,12 +70,12 @@ namespace Asteroid
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState _controle, GamePadState _controleanterior)
         {
             #region controle audio
-            //if ( !playing_musica )
-            //{
-            //    playing_musica = true;
-            //    MediaPlayer.Play(musica);
-            //    MediaPlayer.Volume = 0.5f;
-            //}
+            if (!playing_musica)
+            {
+                playing_musica = true;
+                MediaPlayer.Play(musica);
+                MediaPlayer.Volume = 0.5f;
+            }
 
             //if ( ( teclado.IsKeyDown(Keys.PageUp) ) && !( tecladoanterior.IsKeyDown(Keys.PageUp) ) )
             //{
