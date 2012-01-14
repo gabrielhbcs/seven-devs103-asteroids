@@ -36,7 +36,7 @@ namespace Asteroid
         /// <summary>
         /// Construtor da fase1
         /// </summary>
-        public Fase3( ContentManager Content, GameWindow gw )
+        public Fase3(ContentManager Content, GameWindow gw)
         {
             this.gw = gw;
             autor = "FASE 3 - Daniel Coimbra";
@@ -50,8 +50,8 @@ namespace Asteroid
 
             texturaFundo = Content.Load<Texture2D>(file_path + "fundo_fase3");
             texturaNave = Content.Load<Texture2D>(file_path + "Nave_fase3");
-            posicao_j1.X = ( gw.ClientBounds.Width / 2 ) - texturaNave.Width / 2 - 150;
-            posicao_j1.Y = ( gw.ClientBounds.Height / 2 ) - texturaNave.Height / 2;
+            posicao_j1.X = (gw.ClientBounds.Width / 2) - texturaNave.Width / 2 - 150;
+            posicao_j1.Y = (gw.ClientBounds.Height / 2) - texturaNave.Height / 2;
             jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, "Teste", 10, 0, Content);
 
             texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
@@ -65,7 +65,7 @@ namespace Asteroid
             }
         }
 
-        public void Update( GameTime gameTime, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState _controle, GamePadState _controleanterior )
+        public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState _controle, GamePadState _controleanterior)
         {
             #region controle audio
             //if ( !playing_musica )
@@ -86,13 +86,13 @@ namespace Asteroid
             //}
             #endregion
 
-            if ( ( teclado.IsKeyDown(Keys.Enter) ) && !( tecladoanterior.IsKeyDown(Keys.Enter) ) )
+            if ((teclado.IsKeyDown(Keys.Enter)) && !(tecladoanterior.IsKeyDown(Keys.Enter)))
             {
                 Game1.estadoAtual = Game1.estados.FASE2;
             }
 
             jogador1.Update(gameTime, teclado, tecladoanterior, _controle, _controleanterior);
-            
+
             for (int i = 0; i < listaInimigos.Count; i++)
             {
                 listaInimigos[i].Update(gameTime);
@@ -109,22 +109,38 @@ namespace Asteroid
                 }
             }
 
-            if (listaInimigos.Count < 5)
+            //if (listaInimigos.Count < 5)
+            //{
+            //    posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+            //    posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+            //    inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content);
+            //    listaInimigos.Add(inimigo1);
+            //}
+
+            if (listaInimigos.Count == 0)
             {
-                posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
-                posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content);
-                listaInimigos.Add(inimigo1);
+                Game1.estadoAtual = Game1.estados.FASE4;
             }
 
         }
 
-        public void Draw( GameTime gameTime, SpriteBatch spriteBatch )
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw( texturaFundo, new Rectangle(0, 0, 800, 480), Color.White );
+            spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, 800, 480), Color.White);
 
-            spriteBatch.DrawString( Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White );
-            spriteBatch.DrawString( Game1.fonte, autor, new Vector2( gw.ClientBounds.Width - Game1.fonte.MeasureString(autor).X - 5, 5 ), Color.White );
+            spriteBatch.DrawString(
+                Game1.fonte
+                , "Inimigos restantes: " + listaInimigos.Count
+                , new Vector2(5, 5)
+                , Color.White
+            );
+
+            spriteBatch.DrawString(
+                Game1.fonte
+                , autor
+                , new Vector2(gw.ClientBounds.Width - Game1.fonte.MeasureString(autor).X - 5, 5)
+                , Color.White
+            );
 
             jogador1.Draw(gameTime, spriteBatch);
 
