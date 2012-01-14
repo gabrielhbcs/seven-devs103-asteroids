@@ -78,7 +78,7 @@ namespace Asteroid
         {
             if (isGameOver())
             {
-                Game1.estadoAtual = Game1.estados.THE_END;
+                Game1.estadoAtual = Game1.estados.GAME_OVER;
             }
             if(_teclado.IsKeyDown(Keys.X)) {
                 vidas--;
