@@ -30,6 +30,7 @@ namespace Asteroid
         Random randomizador = new Random();
         List<Nave_inimigo> listaInimigos = new List<Nave_inimigo>();
         ContentManager _Content;
+        int inimigosRestantes;
 
         string file_path = "Estados/Fase03/";
 
@@ -48,6 +49,7 @@ namespace Asteroid
             // musica = Content.Load<Song>(file_path + "fase3");
             #endregion
 
+            inimigosRestantes = 5;
             texturaFundo = Content.Load<Texture2D>(file_path + "fundo_fase3");
             texturaNave = Content.Load<Texture2D>(file_path + "Nave_fase3");
             posicao_j1.X = (gw.ClientBounds.Width / 2) - texturaNave.Width / 2 - 150;
@@ -105,19 +107,20 @@ namespace Asteroid
                     if (Shot.listaTiros[i].Colisao(listaInimigos[j].hitBox))
                     {
                         listaInimigos.RemoveAt(j);
+                        inimigosRestantes--;
                     }
                 }
             }
 
-            //if (listaInimigos.Count < 5)
-            //{
-            //    posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
-            //    posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-            //    inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content);
-            //    listaInimigos.Add(inimigo1);
-            //}
+            if (listaInimigos.Count < 5)
+            {
+                posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+                posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content);
+                listaInimigos.Add(inimigo1);
+            }
 
-            if (listaInimigos.Count == 0)
+            if (inimigosRestantes == 0)
             {
                 Game1.estadoAtual = Game1.estados.FASE4;
             }
@@ -130,8 +133,15 @@ namespace Asteroid
 
             spriteBatch.DrawString(
                 Game1.fonte
-                , "Inimigos restantes: " + listaInimigos.Count
+                , "Inimigos restantes: " + inimigosRestantes
                 , new Vector2(5, 5)
+                , Color.White
+            );
+
+            spriteBatch.DrawString(
+                Game1.fonte
+                , "Naves: " + Nave_jogador.vidas
+                , new Vector2(Game1.fonte.MeasureString("Inimigos restantes: 999").X, 5)
                 , Color.White
             );
 
