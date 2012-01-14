@@ -42,10 +42,11 @@ namespace Asteroid
             posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
             jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, Content);
 
-            //texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
-            //posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
-            //posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-            //inimigo1 = new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content);
+            texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
+            posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+            posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+            inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, Content, randomizador.Next(60));
+            //listaInimigos.Add(inimigo1);
         }
 
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
@@ -56,7 +57,7 @@ namespace Asteroid
             //    playing_musica = true;
             //}
             jogador1.Update(gameTime, teclado, tecladoAnterior, _controle, _controleanterior);
-            //inimigo1.Update(gameTime);
+            inimigo1.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -70,7 +71,7 @@ namespace Asteroid
                     5), Color.White);
 
             jogador1.Draw(gameTime, spriteBatch);
-            //inimigo1.Draw(gameTime, spriteBatch);
+            inimigo1.Draw(gameTime, spriteBatch);
         }
 
     }//fim da classe
