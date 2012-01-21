@@ -54,6 +54,7 @@ namespace Asteroid
             this.w = randomizador.Next(30);
 
             hitBox = new Rectangle((int) posicao.X,(int) posicao.Y, textura.Width, textura.Height);
+
         }
 
 
@@ -79,7 +80,8 @@ namespace Asteroid
 
             w = _w;
 
-            hitBox = new Rectangle((int)(posicao.X-10), ((int)posicao.Y-30), textura.Width, textura.Height);
+            hitBox = new Rectangle((int)(posicao.X), ((int)posicao.Y), textura.Width, textura.Height);
+
         }
 
         public void Update(GameTime _gameTime)
@@ -89,15 +91,11 @@ namespace Asteroid
             // SE ACABAR A MUNIÇÃO
                 // A nave gira para a direção que está a nave do jogador, e acelera (Tipo nave Kamikaze)
 
-            //angulo -= 2;
-            //angulo -= this.w * (float)(3.14/180);
+            angulo -= MathHelper.ToRadians(this.w);
 
-            // ACELERAÇÃO
-            velocidade.X = (float)Math.Cos(Math.PI * angulo / 180) * 0.1f;
-            velocidade.Y = (float)Math.Sin(Math.PI * angulo / 180) * 0.1f;
+            velocidade.X = (float)Math.Cos(Math.PI * angulo / 180) * 0.05f;
+            velocidade.Y = (float)Math.Sin(Math.PI * angulo / 180) * 0.05f;
 
-
-            //_t = (int)_gameTime;
             dx = velocidade.X * _gameTime.ElapsedGameTime.Milliseconds;
             dy = velocidade.Y * _gameTime.ElapsedGameTime.Milliseconds;
 
@@ -119,11 +117,12 @@ namespace Asteroid
 
 
 
-       //posicao.X +=(float) dx;
-       //posicao.Y +=(float) dy;
+            posicao.X +=(float) dx;
+            posicao.Y +=(float) dy;
 
-       //hitBox.X = (int) posicao.X;
-       //hitBox.Y = (int) posicao.Y;
+
+            hitBox.X = (int)(posicao.X - 15);
+            hitBox.Y = (int)(posicao.Y - 22);
 
 
             #region Verifica nave nos limites da tela
@@ -155,6 +154,8 @@ namespace Asteroid
 
         public void Draw(GameTime gameTime, SpriteBatch sb)
         {
+            //sb.Draw(texturaTeste, hitBox, Color.White);
+
             sb.Draw(
                 textura,
                 posicao,
