@@ -43,8 +43,8 @@ namespace Asteroid
             remover = false;
         }
 
-        public static void Update(GameTime _gameTime) 
-        {
+        public static void Update(GameTime _gameTime)
+        {            
             for (int i = 0; i< listaTiros.Count; i++)
             {
                 listaTiros[i].velocidade.X = (float)Math.Cos(Math.PI * listaTiros[i].angulo / 180) * Status.VelTiro;
@@ -89,10 +89,12 @@ namespace Asteroid
             }
         }
 
-        //public void Remove()
-        //{
-            
-        //}
-
+        public static void removeAllShots()
+        {   
+            while(Shot.listaTiros.Count > 0) {
+                Shot.listaTiros.RemoveAt(0);
+            }
+        }
+        
     }
 }
