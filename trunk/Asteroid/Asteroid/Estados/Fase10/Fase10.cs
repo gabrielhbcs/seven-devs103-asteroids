@@ -36,16 +36,16 @@ namespace Asteroid
 
             //playing_musica = false;
             //musica = Content.Load<Song>("Estados/Fase02/musica_fase2");
-            texturaFundo = Content.Load<Texture2D>("Estados/Fase10/fundofase10");
-            texturaNave = Content.Load<Texture2D>("Estados/Fase02/naveFase2");
+            texturaFundo = Content.Load<Texture2D>("Estados/Fase10/galaxia");
+            texturaNave = Content.Load<Texture2D>("Estados/Fase10/naveFase10");
             posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
             posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
             jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, Content);
 
-            //texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
-            //posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
-            //posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-            //inimigo1 = new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content);
+            texturaInimigo = Content.Load<Texture2D>("Estados/Fase10/nave_inimiga1");
+            posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+            posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+            inimigo1 = new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content);
         }
 
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
@@ -56,12 +56,12 @@ namespace Asteroid
             //    playing_musica = true;
             //}
             jogador1.Update(gameTime, teclado, tecladoAnterior,_controle,_controleanterior);
-            //inimigo1.Update(gameTime);
+            inimigo1.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texturaFundo, Vector2.Zero, Color.White);
+            spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, 800, 500), Color.White);
 
             //spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
             spriteBatch.DrawString(Game1.fonte, autor,
@@ -70,7 +70,7 @@ namespace Asteroid
                     5), Color.White);
 
             jogador1.Draw(gameTime, spriteBatch);
-            //inimigo1.Draw(gameTime, spriteBatch);
+            inimigo1.Draw(gameTime, spriteBatch);
         }
 
     }//fim da classe
