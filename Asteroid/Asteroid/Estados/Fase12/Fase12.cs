@@ -43,7 +43,7 @@ namespace Asteroid
 
             playing_musica = false;
             musica = Content.Load<Song>("Estados/Fase02/musica_fase2");
-            texturaFundo = Content.Load<Texture2D>("Estados/Fase02/fundoFase2");
+            texturaFundo = Content.Load<Texture2D>("Estados/Fase12/FundoFase12");
             texturaNave = Content.Load<Texture2D>("Estados/Fase02/naveFase2");
             posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
             posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
