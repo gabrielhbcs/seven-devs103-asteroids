@@ -116,6 +116,7 @@ namespace Asteroid
                     Shot.listaTiros.RemoveAt(i);
                     if (inimigosRestantes == 0)
                     {
+                        Shot.listaTiros.Clear();
                         Game1.estadoAtual = Game1.estados.FASE4;
                     }
                     continue;
@@ -136,7 +137,7 @@ namespace Asteroid
             {
                 posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
                 posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-               
+
                 listaInimigos.Add(new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content));
             }
 
