@@ -28,6 +28,7 @@ namespace Asteroid
         String tipo;
         ContentManager Content;
         public static List<Shot> listaTiros = new List<Shot>();
+
         #endregion
 
         public Shot(String _tipo, Vector2 _posicao, GameWindow _janela, float _angulo, ContentManager _content)
