@@ -24,7 +24,6 @@ namespace Asteroid
         Vector2 posicao_j1;
         Vector2 posicao_i1;
         Nave_jogador jogador1;
-        //Nave_inimigo inimigo1;
         GameWindow gw;
         Random randomizador = new Random();
 

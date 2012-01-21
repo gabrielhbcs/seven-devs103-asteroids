@@ -13,8 +13,6 @@ namespace Asteroid
 {
     class Creditos
     {
-        Boolean playing_musica;
-        Song musica;
         Texture2D fundo;
 
         public Creditos(ContentManager Content)

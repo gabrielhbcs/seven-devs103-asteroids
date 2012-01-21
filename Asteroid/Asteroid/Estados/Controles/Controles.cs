@@ -13,8 +13,8 @@ namespace Asteroid
 {
     class Controles
     {
-        Boolean playing_musica;
-        Song musica;
+        
+        
         Texture2D fundo;
         int cont = 0;
 

@@ -17,8 +17,8 @@ namespace Asteroid
     class Fase10
     {
         String autor;
-        Boolean playing_musica;
-        Song musica;
+        //Boolean playing_musica;
+        //Song musica;
         Texture2D texturaFundo;
         Texture2D texturaNave;
         Texture2D texturaInimigo;

@@ -33,10 +33,7 @@ namespace Asteroid
         /// </summary> 
         protected Vector2 velocidade;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        protected Vector2 aceleracao;
+
 
         /// <summary>
         /// 
@@ -44,10 +41,6 @@ namespace Asteroid
         protected float angulo;
         //visivel somente nas classes derivadas
 
-        /// <summary>
-        /// 
-        /// </summary>
-        protected Rectangle colisao;
         //padrão: só visível na própria classe
 
         //ruim: public pode ser alterado de qualquer lugar/instância

@@ -26,8 +26,7 @@ namespace Asteroid
         Nave_jogador jogador1;
         //Nave_fase9 jogador1;
         // Nave_fase9 jogador2;
-        KeyboardState teclado;
-        KeyboardState tecladoAnterior;
+
         Song musica;
         bool inicio_fase9 = true;
         bool playing = false;
