@@ -19,17 +19,6 @@ namespace Asteroid
         {
             fundo = Content.Load<Texture2D>("Estados/Creditos/creditos");
         }
-        public void Update(
-           GameTime time,
-           KeyboardState teclado,
-           KeyboardState tecladoanterior
-           )
-        {
-            if (teclado.IsKeyDown(Keys.Enter))
-            {
-                Game1.estadoAtual = Game1.estados.FASE1;
-            }
-        }
         public void Draw(
             GameTime gameTime,
             SpriteBatch spriteBatch)
