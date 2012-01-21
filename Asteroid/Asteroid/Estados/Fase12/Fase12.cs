@@ -29,6 +29,13 @@ namespace Asteroid
         GameWindow gw;
         Random randomizador = new Random();
 
+        ContentManager Content;
+
+        List<Nave_inimigo> listaInimigos = new List<Nave_inimigo>();
+        
+        
+        int qtdInimigos = 10;
+
         public Fase12(ContentManager Content, GameWindow gw)
         {
             this.gw = gw;
@@ -45,7 +52,18 @@ namespace Asteroid
             texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
             posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
             posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-            inimigo1 = new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content);
+            
+
+            for (int i = 0; i < qtdInimigos; i++)
+            {
+                posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+                posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, Content, randomizador.Next(60));
+                listaInimigos.Add(inimigo1);
+           
+            }
+
+            this.Content = Content;
         }
 
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
@@ -56,7 +74,34 @@ namespace Asteroid
                 playing_musica = true;
             }
             jogador1.Update(gameTime, teclado, tecladoAnterior, _controle, _controleanterior);
-            inimigo1.Update(gameTime);
+            for (int i = 0; i < listaInimigos.Count; i++)
+            {
+                listaInimigos[i].Update(gameTime);
+            }
+
+            for (int i = 0; i < Shot.listaTiros.Count; i++)
+            {
+                for (int j = 0; j < listaInimigos.Count; j++)
+                {
+                    if (Shot.listaTiros[i].Colisao(listaInimigos[j].hitBox))
+                    {
+                        listaInimigos.RemoveAt(j);
+                    }
+                }
+            }
+
+
+            if (listaInimigos.Count < qtdInimigos)
+            {
+
+                posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+                posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+                listaInimigos.Add(new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, Content, randomizador.Next(60)));
+
+            }
+
+
+
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -70,7 +115,11 @@ namespace Asteroid
                     5), Color.White);
 
             jogador1.Draw(gameTime, spriteBatch);
-            inimigo1.Draw(gameTime, spriteBatch);
+            
+            for (int i = 0; i < listaInimigos.Count; i++)
+            {
+                listaInimigos[i].Draw(gameTime, spriteBatch);
+            }
         }
 
     }//fim da classe

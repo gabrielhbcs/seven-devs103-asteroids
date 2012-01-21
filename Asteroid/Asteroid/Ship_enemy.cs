@@ -66,7 +66,8 @@ namespace Asteroid
             float angulo,
             GameWindow gw,
             int tiros,
-            ContentManager Content,int _w)
+            ContentManager Content,
+            int _w)
             : base(
             textura,
             posicao,
