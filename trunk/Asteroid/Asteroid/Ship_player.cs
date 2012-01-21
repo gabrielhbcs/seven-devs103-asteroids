@@ -31,21 +31,7 @@ namespace Asteroid
         /// </summary>
         public static int pontos;
 
-        /// <summary>
-        /// Velocidade segundo a qual a nave anda para frente
-        /// Setada em Status
-        /// </summary>
-        public static int velocidade_linear;
-
-        /// <summary>
-        /// Velocidade segundo a qual a nave gira
-        /// Setada em Status
-        /// </summary>
-        public static int velocidade_angular;
-
-        //TiroFase2 tiro;
         String tipoTiro;
-        bool atirando;
 
         public Rectangle hitBox;
 
@@ -67,7 +53,6 @@ namespace Asteroid
             this.jogador = jogador;
             tipoTiro = "plasma";
             //tiroSom = _tirosom;
-            atirando = false;
             Nave_jogador.vidas = 7;
             Nave_jogador.pontos = 0;
             hitBox = new Rectangle((int)posicao.X, (int)posicao.Y, textura.Width, textura.Height);
@@ -89,14 +74,14 @@ namespace Asteroid
                 #region ESQUERDA
                 if (_teclado.IsKeyDown(Keys.A) || _controle.IsButtonDown(Buttons.DPadLeft) || _controle.IsButtonDown(Buttons.LeftThumbstickLeft))
                 {
-                    angulo -= 2;
+                    angulo -= Status.VelCurva;
                 }
                 #endregion
 
                 #region DIREITA
                 if (_teclado.IsKeyDown(Keys.D) || _controle.IsButtonDown(Buttons.DPadRight) || _controle.IsButtonDown(Buttons.LeftThumbstickRight))
                 {
-                    angulo += 2;
+                    angulo += Status.VelCurva;
                 }
                 #endregion
 
@@ -119,6 +104,24 @@ namespace Asteroid
                 }
                 #endregion
 
+
+
+                if (_teclado.IsKeyDown(Keys.Up) )
+                {
+                    posicao.Y -= Status.VelNave;
+                }
+                if (_teclado.IsKeyDown(Keys.Down))
+                {
+                    posicao.Y += Status.VelNave;
+                }
+                if (_teclado.IsKeyDown(Keys.Left))
+                {
+                    posicao.X -= Status.VelNave;
+                }
+                if (_teclado.IsKeyDown(Keys.Right))
+                {
+                    posicao.X += Status.VelNave;
+                }
 
                 hitBox.X = (int)posicao.X;
                 hitBox.Y = (int)posicao.Y;
@@ -145,10 +148,11 @@ namespace Asteroid
             //Console.WriteLine("JOGADOR "+ jogador + " / PosY=" + posicao.Y);
 
             #region Verificar os limites de velocidade (Falta parametrizar)
-            if (velocidade.X > 4) { velocidade.X = 4; }
-            if (velocidade.Y > 4) { velocidade.Y = 4; }
-            if (velocidade.X < -4) { velocidade.X = -4; }
-            if (velocidade.Y < -4) { velocidade.Y = -4; }
+            int velocidadeMaxima = Status.VelNave * 4;
+            if (velocidade.X >= velocidadeMaxima) { velocidade.X = velocidadeMaxima; }
+            if (velocidade.Y >= velocidadeMaxima) { velocidade.Y = velocidadeMaxima; }
+            if (velocidade.X <= -velocidadeMaxima) { velocidade.X = -velocidadeMaxima; }
+            if (velocidade.Y <= -velocidadeMaxima) { velocidade.Y = -velocidadeMaxima; }
             #endregion
 
             posicao += velocidade;
@@ -207,5 +211,6 @@ namespace Asteroid
             return (vidas == 0);
         }
 
+      
     }//fim classe
 }//fim namespace

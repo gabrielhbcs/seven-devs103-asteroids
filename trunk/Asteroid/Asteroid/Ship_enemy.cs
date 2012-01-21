@@ -80,7 +80,7 @@ namespace Asteroid
 
             w = _w;
 
-            hitBox = new Rectangle((int)(posicao.X), ((int)posicao.Y), textura.Width, textura.Height);
+            //hitBox = new Rectangle((int)(posicao.X), ((int)posicao.Y), textura.Width, textura.Height);
 
         }
 

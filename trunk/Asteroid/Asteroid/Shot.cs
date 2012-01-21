@@ -22,9 +22,7 @@ namespace Asteroid
         Vector2 velocidade;
         float angulo;
         Rectangle hitBox;
-        int dano;
         GameWindow janela;
-        bool visivel; //ativo
         String tipo;
         ContentManager Content;
         public static List<Shot> listaTiros = new List<Shot>();
@@ -42,7 +40,6 @@ namespace Asteroid
             posicao.Y = _posicao.Y + ((float)Math.Sin(Math.PI * angulo / 180) * 30);
             Content = _content;
             textura = Content.Load<Texture2D>("Estados/Fase02/tiroFase2");
-
             hitBox = new Rectangle((int)posicao.X, (int) posicao.Y, textura.Width, textura.Height);
         }
 
@@ -50,8 +47,8 @@ namespace Asteroid
         {
             for (int i = 0; i< listaTiros.Count; i++)
             {
-                listaTiros[i].velocidade.X = (float)Math.Cos(Math.PI * listaTiros[i].angulo / 180) * 10;
-                listaTiros[i].velocidade.Y = (float)Math.Sin(Math.PI * listaTiros[i].angulo / 180) * 10;
+                listaTiros[i].velocidade.X = (float)Math.Cos(Math.PI * listaTiros[i].angulo / 180) * Status.VelTiro;
+                listaTiros[i].velocidade.Y = (float)Math.Sin(Math.PI * listaTiros[i].angulo / 180) * Status.VelTiro;
                 listaTiros[i].posicao += listaTiros[i].velocidade;
 
                 listaTiros[i].hitBox.X = (int) listaTiros[i].posicao.X;

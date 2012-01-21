@@ -12,10 +12,10 @@ using Microsoft.Xna.Framework.Media;
 namespace Asteroid
 {
     class Status {
-        int pontos = 10;
-        public static int VelCurva = 0;
-        public static int VelTiro = 0;
-        public static int VelNave = 0;
+        int pontos = 0;
+        public static int VelCurva = 3;
+        public static int VelTiro = 4;
+        public static int VelNave = 3;
 
         btnSelect addVelNave;
         Vector2 posVelNave;
@@ -112,10 +112,10 @@ namespace Asteroid
 
             if (((teclado.IsKeyDown(Keys.Enter) && tecladoanterior.IsKeyUp(Keys.Enter)) || controle.IsButtonDown(Buttons.A)) && statusAtual==opcao_status.RESETAR)
             {
-                VelNave = 0;
-                VelTiro = 0;
-                VelCurva = 0;
-                pontos = 10;
+                VelNave = 1;
+                VelTiro = 1;
+                VelCurva = 1;
+                pontos = 7;
             }
 
             #endregion
