@@ -125,7 +125,6 @@
   <ItemGroup>
     <Folder Include="Estados\Fase05\" />
     <Folder Include="Estados\Fase11\" />
-    <Folder Include="Estados\Fase12\" />
     <Folder Include="Estados\Fase15\" />
     <Folder Include="Estados\Intro\" />
     <Folder Include="Estados\The End\" />
@@ -424,6 +423,13 @@
   <ItemGroup>
     <Compile Include="Estados\GameOver\game-over.jpg">
       <Name>game-over</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Fase12\FundoFase12.jpg">
+      <Name>FundoFase12</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
