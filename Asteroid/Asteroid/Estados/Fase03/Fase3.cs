@@ -111,13 +111,22 @@ namespace Asteroid
             #region teste hit tiro/inimigo
             for (int i = 0; i < Shot.listaTiros.Count; i++)
             {
+                if (Shot.listaTiros[i].remover)
+                {
+                    Shot.listaTiros.RemoveAt(i);
+                    if (inimigosRestantes == 0)
+                    {
+                        Game1.estadoAtual = Game1.estados.FASE4;
+                    }
+                    continue;
+                }
                 for (int j = 0; j < listaInimigos.Count; j++)
                 {
                     if (Shot.listaTiros[i].Colisao(listaInimigos[j].hitBox))
                     {
                         listaInimigos.RemoveAt(j);
                         inimigosRestantes--;
-                        //Shot.listaTiros[i].remover;
+                        Shot.listaTiros[i].remover = true;
                     }
                 }
             }
@@ -131,10 +140,6 @@ namespace Asteroid
                 listaInimigos.Add(new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content));
             }
 
-            if (inimigosRestantes == 0)
-            {
-                Game1.estadoAtual = Game1.estados.FASE4;
-            }
 
         }
 
