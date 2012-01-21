@@ -31,8 +31,6 @@ namespace Asteroid
         /// </summary>
         public static int pontos;
 
-        String tipoTiro;
-
         public Rectangle hitBox;
 
         public Nave_jogador(
@@ -42,8 +40,7 @@ namespace Asteroid
             float angulo,
             GameWindow gw,
             ContentManager Content
-            )
-            : base(
+        ) : base(
             textura,
             posicao,
             angulo,
@@ -51,8 +48,6 @@ namespace Asteroid
             Content)
         {
             this.jogador = jogador;
-            tipoTiro = "plasma";
-            //tiroSom = _tirosom;
             Nave_jogador.vidas = 7;
             Nave_jogador.pontos = 0;
             hitBox = new Rectangle((int)posicao.X, (int)posicao.Y, textura.Width, textura.Height);
@@ -63,69 +58,12 @@ namespace Asteroid
         {
             if (isGameOver())
             {
-                Game1.estadoAtual = Game1.estados.GAME_OVER;
-            }
-            if(_teclado.IsKeyDown(Keys.X)) {
-                vidas--;
+                doGameOver();
             }
 
             if (jogador == 1)
             {
-                #region ESQUERDA
-                if (_teclado.IsKeyDown(Keys.A) || _controle.IsButtonDown(Buttons.DPadLeft) || _controle.IsButtonDown(Buttons.LeftThumbstickLeft))
-                {
-                    angulo -= Status.VelCurva;
-                }
-                #endregion
-
-                #region DIREITA
-                if (_teclado.IsKeyDown(Keys.D) || _controle.IsButtonDown(Buttons.DPadRight) || _controle.IsButtonDown(Buttons.LeftThumbstickRight))
-                {
-                    angulo += Status.VelCurva;
-                }
-                #endregion
-
-                #region CIMA (Acelera)
-                if (_teclado.IsKeyDown(Keys.W) || _controle.IsButtonDown(Buttons.DPadUp) || _controle.IsButtonDown(Buttons.LeftThumbstickUp))
-                {
-                    velocidade.X += (float)Math.Cos(Math.PI * angulo / 180) * 0.05f;
-                    velocidade.Y += (float)Math.Sin(Math.PI * angulo / 180) * 0.05f;
-                }
-                #endregion
-
-                #region SPACE (Atira)
-                if ((_teclado.IsKeyDown(Keys.Space) && _tecladoAnterior.IsKeyUp(Keys.Space)) || (_controle.IsButtonDown(Buttons.A) && _controleanterior.IsButtonUp(Buttons.A)))
-                {
-                    //tiroSom.Play();
-                    // COICE do tiro
-                     velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
-                     velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
-                    Shot.listaTiros.Add(new Shot(tipoTiro, posicao, gw, angulo, Content));
-                }
-                #endregion
-
-
-
-                if (_teclado.IsKeyDown(Keys.Up) )
-                {
-                    posicao.Y -= Status.VelNave;
-                }
-                if (_teclado.IsKeyDown(Keys.Down))
-                {
-                    posicao.Y += Status.VelNave;
-                }
-                if (_teclado.IsKeyDown(Keys.Left))
-                {
-                    posicao.X -= Status.VelNave;
-                }
-                if (_teclado.IsKeyDown(Keys.Right))
-                {
-                    posicao.X += Status.VelNave;
-                }
-
-                hitBox.X = (int)posicao.X;
-                hitBox.Y = (int)posicao.Y;
-
+                movePlayerOne(ref _teclado, ref _tecladoAnterior, ref _controle, ref _controleanterior);
             }
 
             #region Jogador 2 (Não implementado)
@@ -145,14 +83,9 @@ namespace Asteroid
             }
             #endregion
 
-            //Console.WriteLine("JOGADOR "+ jogador + " / PosY=" + posicao.Y);
-
-            #region Verificar os limites de velocidade (Falta parametrizar)
-            int velocidadeMaxima = Status.VelNave * 4;
-            if (velocidade.X >= velocidadeMaxima) { velocidade.X = velocidadeMaxima; }
-            if (velocidade.Y >= velocidadeMaxima) { velocidade.Y = velocidadeMaxima; }
-            if (velocidade.X <= -velocidadeMaxima) { velocidade.X = -velocidadeMaxima; }
-            if (velocidade.Y <= -velocidadeMaxima) { velocidade.Y = -velocidadeMaxima; }
+            #region Verificar os limites de velocidade
+            int maxSpeed = Status.VelNave * 4;
+            if (isMaxSpeed(maxSpeed)) { velocidade.X = maxSpeed; }
             #endregion
 
             posicao += velocidade;
@@ -195,9 +128,79 @@ namespace Asteroid
                 0);
 
             Shot.Draw(gameTime, sb);
-            
 
-            //sb.Draw(textura, Vector2.Zero, Color.White);
+        }
+
+        private bool isMaxSpeed(int velocidadeMaxima)
+        {
+            return velocidade.X >= velocidadeMaxima || velocidade.X <= -velocidadeMaxima;
+        }
+
+        private void movePlayerOne(ref KeyboardState _teclado, ref KeyboardState _tecladoAnterior, ref GamePadState _controle, ref GamePadState _controleanterior)
+        {
+            #region ESQUERDA
+            if (leftButtonWasPressed(ref _teclado, ref _controle))
+            {
+                angulo -= Status.VelCurva;
+            }
+            #endregion
+
+            #region DIREITA
+            if (rightButtonWasPressed(ref _teclado, ref _controle))
+            {
+                angulo += Status.VelCurva;
+            }
+            #endregion
+
+            #region CIMA (Acelera)
+            if (upButtonWasPressed(ref _teclado, ref _controle))
+            {
+                velocidade.X += (float)Math.Cos(Math.PI * angulo / 180) * 0.05f;
+                velocidade.Y += (float)Math.Sin(Math.PI * angulo / 180) * 0.05f;
+            }
+            #endregion
+
+            #region SPACE (Atira)
+            if ((_teclado.IsKeyDown(Keys.Space) && _tecladoAnterior.IsKeyUp(Keys.Space)) || (_controle.IsButtonDown(Buttons.A) && _controleanterior.IsButtonUp(Buttons.A)))
+            {
+                shot();
+            }
+            #endregion
+
+            hitBox.X = (int)posicao.X;
+            hitBox.Y = (int)posicao.Y;
+        }
+
+        private void shot()
+        {
+            velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
+            velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
+            Shot.listaTiros.Add(new Shot(posicao, gw, angulo, Content));
+        }
+
+        private static bool upButtonWasPressed(ref KeyboardState _teclado, ref GamePadState _controle)
+        {
+            return _teclado.IsKeyDown(Keys.W) || _controle.IsButtonDown(Buttons.DPadUp) || _controle.IsButtonDown(Buttons.LeftThumbstickUp);
+        }
+
+        private static bool rightButtonWasPressed(ref KeyboardState _teclado, ref GamePadState _controle)
+        {
+            return _teclado.IsKeyDown(Keys.D) || _controle.IsButtonDown(Buttons.DPadRight) || _controle.IsButtonDown(Buttons.LeftThumbstickRight);
+        }
+
+        private static bool leftButtonWasPressed(ref KeyboardState _teclado, ref GamePadState _controle)
+        {
+            return _teclado.IsKeyDown(Keys.A) || _controle.IsButtonDown(Buttons.DPadLeft) || _controle.IsButtonDown(Buttons.LeftThumbstickLeft);
+        }
+
+        private static void looseLife()
+        {
+            vidas--;
+        }
+
+        private static void doGameOver()
+        {
+            Game1.estadoAtual = Game1.estados.GAME_OVER;
         }
 
         public bool Colisao(Rectangle hit)

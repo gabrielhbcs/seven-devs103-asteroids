@@ -29,11 +29,10 @@ namespace Asteroid
 
         #endregion
 
-        public Shot(String _tipo, Vector2 _posicao, GameWindow _janela, float _angulo, ContentManager _content)
+        public Shot(Vector2 _posicao, GameWindow _janela, float _angulo, ContentManager _content)
         {
             janela = _janela;
             angulo = _angulo;
-            tipo = _tipo;
             velocidade = Vector2.Zero;
             posicao = _posicao;
             posicao.X = _posicao.X + ((float)Math.Cos(Math.PI * angulo / 180) * 30);
@@ -79,7 +78,6 @@ namespace Asteroid
             return false;
         }
 
-       
         public static void Draw(GameTime gameTime, SpriteBatch sb)
         {
             //sb.Draw(textura, posicao, new Rectangle(0, 0, textura.Width, textura.Height), Color.White, MathHelper.ToRadians(angulo), new Vector2(textura.Width / 2, textura.Height / 2), 1, SpriteEffects.None, 0);
