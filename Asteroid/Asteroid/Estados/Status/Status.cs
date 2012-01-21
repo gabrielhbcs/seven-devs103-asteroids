@@ -11,34 +11,36 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Asteroid
 {
-    class Status
-    {
+    class Status {
         int pontos = 10;
-        int VelCurva = 0;
-        int Veltiro = 0;
-        int Velnave = 0;
+        public static int VelCurva = 0;
+        public static int VelTiro = 0;
+        public static int VelNave = 0;
 
-        int cont_tecla;
-        int max = 15;
-        int cont = 0;
-
-        btnVelNave addVelNave;
+        btnSelect addVelNave;
         Vector2 posVelNave;
 
-        btnVelTiro addVelTiro;
+        btnSelect addVelTiro;
         Vector2 posVelTiro;
 
-        btnVelCurva addVelCurva;
+        btnSelect addVelCurva;
         Vector2 posVelCurva;
 
-        btnReset resetar;
+        btnSelect resetar;
         Vector2 posResetar;
 
-        ContentManager content;
+        Texture2D fundo;
+        int cont = 1;
+
+        ContentManager conteudo;
+
+        enum opcao_status { VELNAVE, VELTIRO, VELCURVA, RESETAR };
+        opcao_status statusAtual = opcao_status.VELNAVE;
 
         public Status(ContentManager Content)
         {
-            this.content = Content;
+            this.conteudo = Content;
+            fundo = conteudo.Load<Texture2D>("Estados/Status/status_fundo");
 
             posVelNave.X = 500;
             posVelNave.Y = 115;
@@ -50,104 +52,92 @@ namespace Asteroid
             posVelCurva.Y = 215;
 
             posResetar.X = 500;
-            posResetar.Y = 290;
+            posResetar.Y = 340;
+
+            addVelNave = new btnSelect(conteudo, 1, posVelNave);
+            addVelTiro = new btnSelect(conteudo, 2, posVelTiro);
+            addVelCurva = new btnSelect(conteudo, 3, posVelCurva);
+            resetar = new btnSelect(conteudo, 4, posResetar);
         }
+
         public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState controle)
         {
-            cont_tecla++;
-            if (cont_tecla >= max) cont_tecla = max;
-            #region Escolha botão
-            if ((teclado.IsKeyDown(Keys.S) || teclado.IsKeyDown(Keys.Down) || controle.IsButtonDown(Buttons.DPadDown) || controle.IsButtonDown(Buttons.LeftThumbstickDown)) && cont_tecla == max)
+            if ((teclado.IsKeyDown(Keys.S) && tecladoanterior.IsKeyUp(Keys.S)) || (teclado.IsKeyDown(Keys.Down) && tecladoanterior.IsKeyUp(Keys.Down)) || controle.IsButtonDown(Buttons.DPadDown) || controle.IsButtonDown(Buttons.LeftThumbstickDown))
             {
                 cont++;
-                cont_tecla = 0;
             }
-            if ((teclado.IsKeyDown(Keys.W) || teclado.IsKeyDown(Keys.Up) || controle.IsButtonDown(Buttons.DPadUp) || controle.IsButtonDown(Buttons.LeftThumbstickUp)) && cont_tecla == max)
+            if ((teclado.IsKeyDown(Keys.W) && tecladoanterior.IsKeyUp(Keys.W)) || (teclado.IsKeyDown(Keys.Up) && tecladoanterior.IsKeyUp(Keys.Up)) || controle.IsButtonDown(Buttons.DPadUp) || controle.IsButtonDown(Buttons.LeftThumbstickUp))
             {
                 cont--;
-                cont_tecla = 0;
             }
+
             if (cont > 4) cont = 1;
             if (cont < 1) cont = 4;
-            #endregion
-            #region Botões
-            if (cont == 1)
+
+            switch (cont)
             {
-                addVelNave = new btnVelNave(content, cont, posVelNave);
-                addVelTiro = new btnVelTiro(content, cont, posVelTiro);
-                addVelCurva = new btnVelCurva(content, cont, posVelCurva);
-                resetar = new btnReset(content, cont, posResetar);
+                case 1:
+                    statusAtual = opcao_status.VELNAVE;
+                    break;
+                case 2:
+                    statusAtual = opcao_status.VELTIRO;
+                    break;
+                case 3:
+                    statusAtual = opcao_status.VELCURVA;
+                    break;
+                case 4:
+                    statusAtual = opcao_status.RESETAR;
+                    break;
             }
-            if (cont == 2)
-            {
-                addVelNave = new btnVelNave(content, cont, posVelNave);
-                addVelTiro = new btnVelTiro(content, cont, posVelTiro);
-                addVelCurva = new btnVelCurva(content, cont, posVelCurva);
-                resetar = new btnReset(content, cont, posResetar);
-            }
-            if (cont == 3)
-            {
-                addVelNave = new btnVelNave(content, cont, posVelNave);
-                addVelTiro = new btnVelTiro(content, cont, posVelTiro);
-                addVelCurva = new btnVelCurva(content, cont, posVelCurva);
-                resetar = new btnReset(content, cont, posResetar);
-            }
-            if (cont == 4)
-            {
-                addVelNave = new btnVelNave(content, cont, posVelNave);
-                addVelTiro = new btnVelTiro(content, cont, posVelTiro);
-                addVelCurva = new btnVelCurva(content, cont, posVelCurva);
-                resetar = new btnReset(content, cont, posResetar);
-            }
-            #endregion
+
             #region escolher botão
-            if (cont == 1 && (controle.IsButtonDown(Buttons.A) || teclado.IsKeyDown(Keys.Enter)) && pontos > 0 && cont_tecla == max)
+            if (((teclado.IsKeyDown(Keys.Enter) && tecladoanterior.IsKeyUp(Keys.Enter)) || controle.IsButtonDown(Buttons.A)) && pontos>0)
             {
-                Velnave += 1;
-                pontos -= 1;
-                cont_tecla = 0;
+                switch (statusAtual)
+                {
+                    case opcao_status.VELNAVE:
+                        VelNave ++;
+                        pontos--;
+                        break;
+                    case opcao_status.VELTIRO:
+                        VelTiro ++;
+                        pontos--;
+                        break;
+                    case opcao_status.VELCURVA:
+                        VelCurva ++;
+                        pontos--;
+                        break;
+                }
             }
-            if (cont == 2 && (controle.IsButtonDown(Buttons.A) || teclado.IsKeyDown(Keys.Enter)) && pontos > 0 && cont_tecla == max)
+
+            if (((teclado.IsKeyDown(Keys.Enter) && tecladoanterior.IsKeyUp(Keys.Enter)) || controle.IsButtonDown(Buttons.A)) && statusAtual==opcao_status.RESETAR)
             {
-                Veltiro += 1;
-                pontos -= 1;
-                cont_tecla = 0;
-            }
-            if (cont == 3 && (controle.IsButtonDown(Buttons.A) || teclado.IsKeyDown(Keys.Enter)) && pontos > 0 && cont_tecla == max)
-            {
-                VelCurva += 1;
-                pontos -= 1;
-                cont_tecla = 0;
-            }
-            if (cont == 4 && (controle.IsButtonDown(Buttons.A) || teclado.IsKeyDown(Keys.Enter)) && cont_tecla == max)
-            {
-                Velnave = 0;
-                Veltiro = 0;
+                VelNave = 0;
+                VelTiro = 0;
                 VelCurva = 0;
                 pontos = 10;
-                cont_tecla = 0;
             }
+
             #endregion
 
+            addVelNave.Update(time, cont, conteudo);
+            addVelTiro.Update(time, cont, conteudo);
+            addVelCurva.Update(time, cont, conteudo);
+            resetar.Update(time, cont, conteudo);
 
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 480), Color.White);
-            if (cont != 0)
-            {
+            spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 480), Color.White);
             addVelNave.Draw(gameTime, spriteBatch);
             addVelTiro.Draw(gameTime, spriteBatch);
             addVelCurva.Draw(gameTime, spriteBatch);
             resetar.Draw(gameTime, spriteBatch);
-            }
-            spriteBatch.DrawString(Game1.fonte, "Pontos restantes: " + pontos, new Vector2(50f), Color.White);
-            spriteBatch.DrawString(Game1.fonte, "Velocidade da nave: " + Velnave, new Vector2(100, 125), Color.White);
-            spriteBatch.DrawString(Game1.fonte, "Velocidade do tiro: " + Veltiro, new Vector2(100, 175), Color.White);
-            spriteBatch.DrawString(Game1.fonte, "Velocidade da curva: " + VelCurva, new Vector2(100, 225), Color.White);
-            spriteBatch.DrawString(Game1.fonte, "Resetar ", new Vector2(100, 300), Color.White);
-            spriteBatch.DrawString(Game1.fonte, "Aperte ESC para voltar ao menu", new Vector2(10, 450), Color.White);
-
+            spriteBatch.DrawString(Game1.fonte, "Pontos restantes: " + pontos, new Vector2(100,100), Color.White);
+            spriteBatch.DrawString(Game1.fonte, "Velocidade da nave: " + VelNave, new Vector2(100, 130), Color.White);
+            spriteBatch.DrawString(Game1.fonte, "Velocidade do tiro: " + VelTiro, new Vector2(100, 180), Color.White);
+            spriteBatch.DrawString(Game1.fonte, "Velocidade da curva: " + VelCurva, new Vector2(100, 230), Color.White);
+            spriteBatch.DrawString(Game1.fonte, "Resetar ", new Vector2(100, 355), Color.White);
         }
     }
 }
