@@ -243,6 +243,7 @@ namespace Asteroid
                     fase1.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE2;
                     }
@@ -256,6 +257,7 @@ namespace Asteroid
                     fase2.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE3;
                     }
@@ -275,6 +277,7 @@ namespace Asteroid
                     fase3.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE4;
                     }
@@ -294,6 +297,7 @@ namespace Asteroid
                     fase4.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE5;
                     }
@@ -313,6 +317,7 @@ namespace Asteroid
                     fase5.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE6;
                     }
