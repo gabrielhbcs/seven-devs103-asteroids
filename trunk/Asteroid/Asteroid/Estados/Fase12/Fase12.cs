@@ -39,7 +39,7 @@ namespace Asteroid
         public Fase12(ContentManager Content, GameWindow gw)
         {
             this.gw = gw;
-            autor = "FASE 12 - Paulo - NÃO IMPLEMENTADA";
+            autor = "FASE 12 - Paulo Roberto";
 
             playing_musica = false;
             musica = Content.Load<Song>("Estados/Fase02/musica_fase2");
