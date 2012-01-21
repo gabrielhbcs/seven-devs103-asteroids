@@ -27,6 +27,7 @@ namespace Asteroid
         Nave_jogador jogador1;
 
         List<Nave_inimigo> lista_asteroids = new List<Nave_inimigo>();
+
         Random randomizador = new Random();
 
         GameWindow gw;
@@ -35,6 +36,10 @@ namespace Asteroid
         /// </summary>
         public Fase4(ContentManager Content, GameWindow gw)
         {
+            autor = "colocar seu nome auqi";
+
+            this.gw = gw;
+
             playing_musica = false;
             musica = Content.Load<Song>("Kalimba");
 
