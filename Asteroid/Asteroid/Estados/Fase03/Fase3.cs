@@ -56,7 +56,7 @@ namespace Asteroid
             posicao_j1.Y = (gw.ClientBounds.Height / 2) - texturaNave.Height / 2;
             jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, Content);
 
-            texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
+            texturaInimigo = Content.Load<Texture2D>(file_path + "nave_inimiga");
 
             for (int i = 0; i < 5; i++)
             {
@@ -102,10 +102,13 @@ namespace Asteroid
                 // checa a colisao da nava com os inimigos
                 if (jogador1.Colisao(listaInimigos[i].hitBox))
                 {
+                    listaInimigos.RemoveAt(i);
                     Nave_jogador.vidas--;
                 }
             }
 
+
+            #region tiros hit
             for (int i = 0; i < Shot.listaTiros.Count; i++)
             {
                 for (int j = 0; j < listaInimigos.Count; j++)
@@ -117,13 +120,14 @@ namespace Asteroid
                     }
                 }
             }
+            #endregion
 
             if (listaInimigos.Count < 5)
             {
                 posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
                 posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content);
-                listaInimigos.Add(inimigo1);
+               
+                listaInimigos.Add(new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content));
             }
 
             if (inimigosRestantes == 0)
