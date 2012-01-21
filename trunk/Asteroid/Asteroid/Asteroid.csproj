@@ -152,6 +152,7 @@
     <Compile Include="Ship_player.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Estados\Menu\a terra.jpg" />
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
