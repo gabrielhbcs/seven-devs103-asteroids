@@ -31,7 +31,7 @@ namespace Asteroid
 
         List<Nave_inimigo> listaInimigos = new List<Nave_inimigo>();
 
-        int qtdInimigos = 1;
+        int qtdInimigos = 25;
 
         ContentManager _Content;
         
@@ -73,7 +73,7 @@ namespace Asteroid
 
             for (int i = 0; i < listaInimigos.Count; i++)
             {
-                //listaInimigos[i].Update(gameTime);
+                listaInimigos[i].Update(gameTime);
             }
 
             for (int i = 0; i < Shot.listaTiros.Count; i++)
@@ -93,7 +93,7 @@ namespace Asteroid
 
                 posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
                 posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content);
+                inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, _Content, randomizador.Next(60));
                 listaInimigos.Add(inimigo1);
 
             }
