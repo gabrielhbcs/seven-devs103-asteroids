@@ -23,10 +23,10 @@ namespace Asteroid
         Vector2 posicaoInicial_j1;
         Vector2 posicao_a1;
         Texture2D texturaNave;
-        Texture2D texturaAsteroids;
+        //Texture2D texturaAsteroids;
         Nave_jogador jogador1;
 
-        List<Nave_inimigo> lista_asteroids = new List<Nave_inimigo>();
+        //List<Nave_inimigo> lista_asteroids = new List<Nave_inimigo>();
 
         Random randomizador = new Random();
 
@@ -36,7 +36,7 @@ namespace Asteroid
         /// </summary>
         public Fase4(ContentManager Content, GameWindow gw)
         {
-            autor = "colocar seu nome auqi";
+            autor = "Fábio";
 
             this.gw = gw;
 
@@ -44,7 +44,7 @@ namespace Asteroid
             musica = Content.Load<Song>("Kalimba");
             texturaFundo = Content.Load<Texture2D>("Estados/Fase04/fundoFase4");
             texturaNave = Content.Load<Texture2D>("Estados/Fase04/naveFase4");
-            texturaAsteroids = Content.Load<Texture2D>("Estados/Fase04/asteroidsFase4");
+            //texturaAsteroids = Content.Load<Texture2D>("Estados/Fase04/asteroidsFase4");
 
             posicaoInicial_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
             posicaoInicial_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
@@ -52,7 +52,7 @@ namespace Asteroid
 
             posicao_a1.X = randomizador.Next(gw.ClientBounds.Width);
             posicao_a1.Y = randomizador.Next(gw.ClientBounds.Height);
-            lista_asteroids.Add(new Nave_inimigo(1, texturaAsteroids, posicao_a1, 0f, gw, 15, Content));
+            //lista_asteroids.Add(new Nave_inimigo(1, texturaAsteroids, posicao_a1, 0f, gw, 15, Content));
         }
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
         {
@@ -73,10 +73,10 @@ namespace Asteroid
 
             jogador1.Draw(gameTime, spriteBatch);
 
-            foreach (Nave_inimigo asteroids in lista_asteroids)
-            {
-                asteroids.Draw(gameTime, spriteBatch);
-            }
+            //foreach (Nave_inimigo asteroids in lista_asteroids)
+            //{
+            //    asteroids.Draw(gameTime, spriteBatch);
+            //}
         }
     }
 }
