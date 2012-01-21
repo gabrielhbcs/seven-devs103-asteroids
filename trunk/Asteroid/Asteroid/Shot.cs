@@ -17,16 +17,16 @@ namespace Asteroid
     class Shot
     {
         #region atributos
-        static Texture2D textura;
-        Vector2 posicao;
-        Vector2 velocidade;
-        float angulo;
-        Rectangle hitBox;
-        GameWindow janela;
-        String tipo;
-        ContentManager Content;
-        public static List<Shot> listaTiros = new List<Shot>();
-
+            static Texture2D textura;
+            Vector2 posicao;
+            Vector2 velocidade;
+            float angulo;
+            Rectangle hitBox;
+            GameWindow janela;
+            String tipo;
+            ContentManager Content;
+            public static List<Shot> listaTiros = new List<Shot>();
+            public bool remover;
         #endregion
 
         public Shot(Vector2 _posicao, GameWindow _janela, float _angulo, ContentManager _content)
@@ -40,6 +40,7 @@ namespace Asteroid
             Content = _content;
             textura = Content.Load<Texture2D>("Estados/Fase02/tiroFase2");
             hitBox = new Rectangle((int)posicao.X, (int) posicao.Y, textura.Width, textura.Height);
+            remover = false;
         }
 
         public static void Update(GameTime _gameTime) 
@@ -88,10 +89,10 @@ namespace Asteroid
             }
         }
 
-        public void Remove()
-        {
+        //public void Remove()
+        //{
             
-        }
+        //}
 
     }
 }
