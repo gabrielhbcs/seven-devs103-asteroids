@@ -29,11 +29,15 @@ namespace Asteroid
         Sair sair;
         Vector2 posSair;
 
+        Texture2D fundo;
+
         int cont_tecla;
         int max = 10;
 
         public MenuInicial(ContentManager Content, GameWindow Window)
         {
+            fundo = Content.Load<Texture2D>("Estados/Menu/tela_inicial");
+
             posComecar.X = 100;
             posComecar.Y = Window.ClientBounds.Height / 6;
             comecar = new Comecar(Content, cont, posComecar);
@@ -119,6 +123,11 @@ namespace Asteroid
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(
+                fundo,
+                new Rectangle(0, 0, 800, 480),
+                Color.White);
+
             comecar.Draw(gameTime, spriteBatch);
             sair.Draw(gameTime, spriteBatch);
             controles.Draw(gameTime, spriteBatch);
