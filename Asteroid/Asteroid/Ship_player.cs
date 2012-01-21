@@ -120,6 +120,9 @@ namespace Asteroid
                 #endregion
 
 
+                hitBox.X = (int)posicao.X;
+                hitBox.Y = (int)posicao.Y;
+
             }
 
             #region Jogador 2 (Não implementado)
