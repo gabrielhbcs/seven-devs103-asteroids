@@ -60,6 +60,7 @@ namespace Asteroid
         TheEnd theEnd;
 
         public enum dispositivos_controle { TECLADO, JOYSTICK };
+
         public static dispositivos_controle controleAtual = dispositivos_controle.TECLADO;
 
         public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE, STATUS,
@@ -70,6 +71,10 @@ namespace Asteroid
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 480;
+            graphics.ApplyChanges();
+
             Content.RootDirectory = "Content";
             toggleAtivado = false;
         }
