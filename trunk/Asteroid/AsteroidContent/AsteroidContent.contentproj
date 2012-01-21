@@ -266,18 +266,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Estados\Status\botao.png">
-      <Name>botao</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Estados\Status\botao2.png">
-      <Name>botao2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Estados\Fase13\bg.png">
       <Name>bg</Name>
       <Importer>TextureImporter</Importer>
