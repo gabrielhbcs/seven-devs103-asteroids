@@ -23,6 +23,8 @@ namespace Asteroid
         KeyboardState teclado;
         KeyboardState tecladoanterior;
 
+        Boolean toggleAtivado;
+
         GamePadState controle;
         GamePadState controleanterior;
 
@@ -69,6 +71,7 @@ namespace Asteroid
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            toggleAtivado = false;
         }
 
         /// <summary>
@@ -181,6 +184,27 @@ namespace Asteroid
             teclado = Keyboard.GetState();
             controle = GamePad.GetState(PlayerIndex.One);
 
+            //if (teclado.IsKeyDown(Keys.F2))
+            //{
+            //    if (toggleAtivado == false)
+            //    {
+            //        graphics.ToggleFullScreen();
+            //        toggleAtivado = true;
+            //    }
+            //}
+
+            //if (teclado.IsKeyUp(Keys.F2))
+            //{
+            //    toggleAtivado = false;
+            //    //graphics.ToggleFullScreen();
+            //}
+
+             if ((teclado.IsKeyDown(Keys.F2) && !(tecladoanterior.IsKeyDown(Keys.F2))))
+             {
+                 graphics.ToggleFullScreen();
+             }
+
+
             switch (estadoAtual)
             {
                 case estados.MENU:
@@ -268,7 +292,7 @@ namespace Asteroid
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
-                        estadoAtual = estados.FASE5;
+                        estadoAtual = estados.FASE3;
                     }
                     break;
 

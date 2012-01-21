@@ -50,7 +50,7 @@ namespace Asteroid.Estados.Fase01
                 gw,
                 Content);
 
-            //Console.WriteLine("PASSANDO PELO CONTRUTOR DA FASE 1");
+            Console.WriteLine("PASSANDO PELO CONTRUTOR DA FASE 1");
 
             //objetosemtipo = new Object(desenhoParam, Vector2.Zero, 0f, gw);//NAO posso fazer isso
         }
@@ -71,7 +71,9 @@ namespace Asteroid.Estados.Fase01
             if ((teclado.IsKeyDown(Keys.PageDown)) && !(tecladoanterior.IsKeyDown(Keys.PageDown)))
             {
                 MediaPlayer.Volume -= 0.1f;
-            } 
+            }
+
+
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
