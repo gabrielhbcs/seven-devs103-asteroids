@@ -38,22 +38,22 @@ namespace Asteroid
         {
             fundo = Content.Load<Texture2D>("Estados/Menu/tela_inicial");
 
-            posComecar.X = 100;
+            posComecar.X = 50;
             posComecar.Y = Window.ClientBounds.Height / 6;
             comecar = new Comecar(Content, cont, posComecar);
 
-            posControles.X = 100;
+            posControles.X = 50;
             posControles.Y = 2 * Window.ClientBounds.Height / 6;
             controles = new Controles_Botao(Content, cont, posControles);
 
-            posCreditos.X = 100;
+            posCreditos.X = 50;
             posCreditos.Y = 3 * Window.ClientBounds.Height / 6;
             creditos = new menuCredito(Content, cont, posCreditos);
 
-            posStatus.X = 100;
+            posStatus.X = 50;
             posStatus.Y = 4 * Window.ClientBounds.Height / 6;
 
-            posSair.X = 100;
+            posSair.X = 50;
             posSair.Y = 5 * Window.ClientBounds.Height / 6;
             sair = new Sair(Content, cont, posSair);
 
