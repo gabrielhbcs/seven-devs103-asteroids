@@ -29,7 +29,6 @@ namespace Asteroid
         double dx;
         double dy;
         int w;
-        int _t;
         Random randomizador = new Random();
 
         public Nave_inimigo(

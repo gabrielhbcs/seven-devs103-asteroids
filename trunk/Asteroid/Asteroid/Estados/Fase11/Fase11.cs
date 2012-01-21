@@ -17,15 +17,15 @@ namespace Asteroid
     class Fase11
     {
         String autor;
-        Boolean playing_musica;
-        Song musica;
-        Texture2D texturaFundo;
-        Texture2D texturaNave;
-        Texture2D texturaInimigo;
-        Vector2 posicao_j1;
-        Vector2 posicao_i1;
-        Nave_jogador jogador1;
-        Nave_inimigo inimigo1;
+        //Boolean playing_musica;
+        //Song musica;
+        //Texture2D texturaFundo;
+        //Texture2D texturaNave;
+        //Texture2D texturaInimigo;
+        //Vector2 posicao_j1;
+        //Vector2 posicao_i1;
+        //Nave_jogador jogador1;
+        //Nave_inimigo inimigo1;
         GameWindow gw;
         Random randomizador = new Random();
 

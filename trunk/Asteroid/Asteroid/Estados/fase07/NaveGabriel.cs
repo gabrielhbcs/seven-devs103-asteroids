@@ -27,8 +27,6 @@ namespace Asteroid
 
         int maxCont = 15;
         #region Tiro
-        int maxTiro = 10;
-        int contTiro;
         #endregion
         #region Escudo e Barra do escudo
         public bool ativar_escudo = false;

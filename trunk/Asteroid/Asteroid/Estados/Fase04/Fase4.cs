@@ -42,7 +42,6 @@ namespace Asteroid
 
             playing_musica = false;
             musica = Content.Load<Song>("Kalimba");
-
             texturaFundo = Content.Load<Texture2D>("Estados/Fase04/fundoFase4");
             texturaNave = Content.Load<Texture2D>("Estados/Fase04/naveFase4");
             texturaAsteroids = Content.Load<Texture2D>("Estados/Fase04/asteroidsFase4");
