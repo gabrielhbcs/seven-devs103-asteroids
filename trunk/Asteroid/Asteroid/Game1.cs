@@ -44,6 +44,7 @@ namespace Asteroid
         Fase14 fase14;
         Fase15 fase15;
         Fase16 fase16;
+
         MenuInicial Menu;
         
         Creditos creditos;
@@ -51,7 +52,9 @@ namespace Asteroid
         Controles controles;
 
         Status status;
+
         GameOver gameOver;
+
         TheEnd theEnd;
 
         public enum dispositivos_controle { TECLADO, JOYSTICK };
@@ -60,7 +63,7 @@ namespace Asteroid
         public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE, STATUS,
             FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15, FASE16 };
 
-        public static estados estadoAtual = estados.FASE9;
+        public static estados estadoAtual = estados.MENU;
         
         public Game1()
         {
@@ -361,10 +364,10 @@ namespace Asteroid
                     }
                     break;
                 case estados.GAME_OVER:
-                    gameOver.Update(gameTime, spriteBatch, teclado);
+                    gameOver.Update(gameTime, teclado);
                     break;
                 case estados.THE_END:
-                    theEnd.Update(gameTime, spriteBatch, teclado);
+                    theEnd.Update(gameTime, teclado);
                     break;
             }
             tecladoanterior = teclado;
@@ -446,7 +449,7 @@ namespace Asteroid
                         gameOver.Draw(gameTime, spriteBatch);
                         break;
                     case estados.THE_END:
-                        theEnd.Update(gameTime, spriteBatch);
+                        theEnd.Draw(gameTime, spriteBatch);
                         break;
                 }
             spriteBatch.End();
