@@ -91,12 +91,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Estados\Fase07\Barra.png">
+    <Compile Include="Barra.png">
       <Name>Barra</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Estados\Fase07\Escudo.png">
+    <Compile Include="Escudo.png">
       <Name>Escudo</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

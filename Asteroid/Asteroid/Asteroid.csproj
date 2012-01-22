@@ -110,8 +110,8 @@
     <Compile Include="Asteroid.cs" />
     <Compile Include="Estados\Controles\btnSelect.cs" />
     <Compile Include="Estados\Controles\Controles.cs" />
-    <Compile Include="Estados\fase07\Barra.cs" />
-    <Compile Include="Estados\fase07\Escudo.cs" />
+    <Compile Include="Barra.cs" />
+    <Compile Include="Escudo.cs" />
     <Compile Include="Estados\Fase10\Fase10.cs" />
     <Compile Include="Estados\Fase11\Fase11.cs" />
     <Compile Include="Estados\Fase12\Fase12.cs" />
