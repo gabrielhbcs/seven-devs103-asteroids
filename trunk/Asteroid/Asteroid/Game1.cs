@@ -100,6 +100,7 @@ namespace Asteroid
         /// </summary>
         protected override void LoadContent()
         {
+            #region Loads
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             fase1 = new Fase1(Content, Window);
@@ -132,7 +133,8 @@ namespace Asteroid
             theEnd = new TheEnd(Content);
 
             fonte = Content.Load<SpriteFont>("Arial");
-            
+            #endregion
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -140,6 +142,7 @@ namespace Asteroid
 
         public void Resetar()
         {
+            #region Resetar loads
             fase1 = new Fase1(Content, Window);
             fase2 = new Fase2(Content, Window);
             fase3 = new Fase3(Content, Window);
@@ -166,8 +169,7 @@ namespace Asteroid
             status = new Status(Content);
 
             gameOver = new GameOver(Content);
-
-            
+            #endregion
         }   
 
         /// <summary>

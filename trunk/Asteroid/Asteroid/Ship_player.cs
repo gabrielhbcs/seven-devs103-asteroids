@@ -21,6 +21,15 @@ namespace Asteroid
         /// </summary>
         int jogador;
 
+        //Variáveis do escudo e barra
+        public bool _escudo = false;
+        Texture2D texturaEscudo;
+        Texture2D texturaBarra;
+        int cont_escudo; // ter um limite de tempo entre cada ativação do escudo
+        int cont_max = 20;
+        Barra barra;
+        Escudo escudo;
+
         /// <summary>
         /// qtd de vidas do jogador
         /// </summary>
@@ -47,6 +56,11 @@ namespace Asteroid
             gw,
             Content)
         {
+            texturaBarra = Content.Load<Texture2D>("Barra");
+            texturaEscudo = Content.Load<Texture2D>("Escudo");
+            barra = new Barra(texturaBarra);
+            escudo = new Escudo(texturaEscudo);
+
             this.jogador = jogador;
             Nave_jogador.vidas = 7;
             Nave_jogador.pontos = 0;
@@ -65,6 +79,26 @@ namespace Asteroid
             {
                 movePlayerOne(ref _teclado, ref _tecladoAnterior, ref _controle, ref _controleanterior);
             }
+
+            #region Criar escudo
+            cont_escudo++;
+            if (cont_escudo >= cont_max) cont_escudo = cont_max;
+            barra.Update(_escudo);
+            if (_teclado.IsKeyDown(Keys.E) && cont_escudo == cont_max)
+            {
+                if (!_escudo)
+                {
+                    _escudo = true;
+                }
+                else
+                {
+                    _escudo = false;
+                }
+                cont_escudo = 0;
+            }
+            if (!barra.permicao) _escudo = false;
+            if (_escudo) escudo.Update(posicao);
+            #endregion
 
             #region Jogador 2 (Não implementado)
             if (jogador == 2)
@@ -128,6 +162,12 @@ namespace Asteroid
                 0);
 
             Shot.Draw(gameTime, sb);
+
+            if (_escudo)
+            {
+                escudo.Draw(gameTime, sb);
+            }
+            barra.Draw(gameTime, sb);
 
         }
 

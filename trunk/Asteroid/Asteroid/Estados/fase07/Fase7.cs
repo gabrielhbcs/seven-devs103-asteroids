@@ -40,9 +40,6 @@ namespace Asteroid
             this.gw = Window;
             autor = "FASE 7 - Gabriel Henrique";
             Texture2D texturaNave = Content.Load<Texture2D>(Endereco + "Nave");
-            Texture2D texturaEscudo = Content.Load<Texture2D>(Endereco + "Escudo");
-            Texture2D texturaTiro = Content.Load<Texture2D>(Endereco + "Tiro");
-            Texture2D texturaBarra = Content.Load<Texture2D>(Endereco + "Barra");
             fundo1 = Content.Load<Texture2D>(Endereco + "Galaxia");
             fundo2 = Content.Load<Texture2D>(Endereco + "Galaxia");
             musica = Content.Load<Song>(Endereco + "Space music");
