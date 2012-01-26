@@ -119,7 +119,14 @@ namespace Asteroid
 
             #region Verificar os limites de velocidade
             int maxSpeed = Status.VelNave * 4;
-            if (isMaxSpeed(maxSpeed)) { velocidade.X = maxSpeed; }
+            if (isMaxSpeed(maxSpeed)) { 
+               if (velocidade.X < 0)
+               {
+                   velocidade.X = -maxSpeed;
+               }
+               else velocidade.X = maxSpeed;
+               }
+
             #endregion
 
             posicao += velocidade;
