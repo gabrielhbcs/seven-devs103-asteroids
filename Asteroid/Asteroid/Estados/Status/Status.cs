@@ -32,6 +32,9 @@ namespace Asteroid
         Texture2D fundo;
         int cont = 1;
 
+        int cont_tecla = 0;
+        int max = 15;
+
         ContentManager conteudo;
 
         enum opcao_status { VELNAVE, VELTIRO, VELCURVA, RESETAR };
@@ -60,15 +63,20 @@ namespace Asteroid
             resetar = new btnSelect(conteudo, 4, posResetar);
         }
 
-        public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState controle)
+        public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState controle, GamePadState controleAnterior)
         {
-            if ((teclado.IsKeyDown(Keys.S) && tecladoanterior.IsKeyUp(Keys.S)) || (teclado.IsKeyDown(Keys.Down) && tecladoanterior.IsKeyUp(Keys.Down)) || controle.IsButtonDown(Buttons.DPadDown) || controle.IsButtonDown(Buttons.LeftThumbstickDown))
+            cont_tecla++;
+            if (cont_tecla >= max) cont_tecla = max;
+
+            if ((teclado.IsKeyDown(Keys.S) || teclado.IsKeyDown(Keys.Down) || controle.IsButtonDown(Buttons.DPadDown) || controle.IsButtonDown(Buttons.LeftThumbstickDown)) && cont_tecla==max)
             {
                 cont++;
+                cont_tecla = 0;
             }
-            if ((teclado.IsKeyDown(Keys.W) && tecladoanterior.IsKeyUp(Keys.W)) || (teclado.IsKeyDown(Keys.Up) && tecladoanterior.IsKeyUp(Keys.Up)) || controle.IsButtonDown(Buttons.DPadUp) || controle.IsButtonDown(Buttons.LeftThumbstickUp))
+            if ((teclado.IsKeyDown(Keys.W) || teclado.IsKeyDown(Keys.Up) || controle.IsButtonDown(Buttons.DPadUp) || controle.IsButtonDown(Buttons.LeftThumbstickUp)) && cont_tecla==max)
             {
                 cont--;
+                cont_tecla = 0;
             }
 
             if (cont > 4) cont = 1;
@@ -91,7 +99,7 @@ namespace Asteroid
             }
 
             #region escolher botão
-            if (((teclado.IsKeyDown(Keys.Enter) && tecladoanterior.IsKeyUp(Keys.Enter)) || controle.IsButtonDown(Buttons.A)) && pontos>0)
+            if (((teclado.IsKeyDown(Keys.Enter) && tecladoanterior.IsKeyUp(Keys.Enter)) || (controle.IsButtonDown(Buttons.A) && controleAnterior.IsButtonUp(Buttons.A))) && pontos>0)
             {
                 switch (statusAtual)
                 {
