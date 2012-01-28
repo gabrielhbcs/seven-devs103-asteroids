@@ -13,8 +13,6 @@ namespace Asteroid
 {
     class Controles
     {
-        
-        
         Texture2D fundo;
         int cont = 0;
 
@@ -25,6 +23,9 @@ namespace Asteroid
         Vector2 posGamepad;
 
         ContentManager conteudo;
+
+        int cont_tecla = 0;
+        int max = 20;
 
         public Controles(ContentManager _content)
         {
@@ -46,18 +47,22 @@ namespace Asteroid
 
         public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState controle)
         {
-            if ((teclado.IsKeyDown(Keys.D) && tecladoanterior.IsKeyUp(Keys.D)) || (teclado.IsKeyDown(Keys.Right) && tecladoanterior.IsKeyUp(Keys.Right)) || controle.IsButtonDown(Buttons.DPadRight) || controle.IsButtonDown(Buttons.LeftThumbstickRight))
+            cont_tecla++;
+            if (cont_tecla >= max) cont_tecla = max;
+
+            if ((teclado.IsKeyDown(Keys.D) || teclado.IsKeyDown(Keys.Right) || controle.IsButtonDown(Buttons.DPadRight) || controle.IsButtonDown(Buttons.LeftThumbstickRight)) && cont_tecla==max)
             {
                 cont++;
+                cont_tecla = 0;
             }
-            if ((teclado.IsKeyDown(Keys.A) && tecladoanterior.IsKeyUp(Keys.A)) || (teclado.IsKeyDown(Keys.Left) && tecladoanterior.IsKeyUp(Keys.Left)) || controle.IsButtonDown(Buttons.DPadLeft) || controle.IsButtonDown(Buttons.LeftThumbstickLeft))
+            if ((teclado.IsKeyDown(Keys.A) || teclado.IsKeyDown(Keys.Left) || controle.IsButtonDown(Buttons.DPadLeft) || controle.IsButtonDown(Buttons.LeftThumbstickLeft)) && cont_tecla == max)
             {
                 cont--;
+                cont_tecla = 0;
             }
 
             if (cont > 2) cont = 1;
             if (cont < 1) cont = 2;
-
             if (cont == 1) { Game1.controleAtual = Game1.dispositivos_controle.TECLADO; }
             if (cont == 2) { Game1.controleAtual = Game1.dispositivos_controle.JOYSTICK; }
 

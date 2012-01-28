@@ -238,7 +238,7 @@ namespace Asteroid
                     break;
                 case estados.STATUS:
                     {
-                        status.Update(gameTime, teclado, tecladoanterior, controle);
+                        status.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                         if ((teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape))) || (controle.IsButtonDown(Buttons.Back) && !(controleanterior.IsButtonDown(Buttons.Back))))
                         {
                             estadoAtual = estados.MENU;

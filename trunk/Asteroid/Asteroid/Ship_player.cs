@@ -84,7 +84,7 @@ namespace Asteroid
             cont_escudo++;
             if (cont_escudo >= cont_max) cont_escudo = cont_max;
             barra.Update(_escudo);
-            if (_teclado.IsKeyDown(Keys.E) && cont_escudo == cont_max)
+            if ((_teclado.IsKeyDown(Keys.E) && _tecladoAnterior.IsKeyUp(Keys.E)) || (_controle.IsButtonDown(Buttons.B) && _controleanterior.IsButtonUp(Buttons.B)) && cont_escudo == cont_max)
             {
                 if (!_escudo)
                 {

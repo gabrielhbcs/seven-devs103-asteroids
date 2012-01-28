@@ -40,25 +40,20 @@ namespace Asteroid
 
             posComecar.X = 50;
             posComecar.Y = Window.ClientBounds.Height / 6;
-            comecar = new Comecar(Content, cont, posComecar);
 
             posControles.X = 50;
             posControles.Y = 2 * Window.ClientBounds.Height / 6;
-            controles = new Controles_Botao(Content, cont, posControles);
 
             posCreditos.X = 50;
             posCreditos.Y = 3 * Window.ClientBounds.Height / 6;
-            creditos = new menuCredito(Content, cont, posCreditos);
 
             posStatus.X = 50;
             posStatus.Y = 4 * Window.ClientBounds.Height / 6;
 
             posSair.X = 50;
             posSair.Y = 5 * Window.ClientBounds.Height / 6;
-            sair = new Sair(Content, cont, posSair);
-
-            status = new menuStatus(Content, 1, Vector2.Zero);
         }
+
         public void Update(GameTime time, KeyboardState teclado, GamePadState controle, ContentManager Content)
         {
             cont_tecla++;
@@ -78,49 +73,16 @@ namespace Asteroid
             if (cont > 5) cont = 1;
             if (cont < 1) cont = 5;
             #endregion
+
             #region Seleção dos botões
-            if (cont == 1)
-            {
-                comecar = new Comecar(Content, cont, posComecar);
-                sair = new Sair(Content, cont, posSair);
-                controles = new Controles_Botao(Content, cont, posControles);
-                creditos = new menuCredito(Content, cont, posCreditos);
-                status = new menuStatus(Content, cont, posStatus);
-            }
-            if (cont == 2)
-            {
-                comecar = new Comecar(Content, cont, posComecar);
-                sair = new Sair(Content, cont, posSair);
-                controles = new Controles_Botao(Content, cont, posControles);
-                creditos = new menuCredito(Content, cont, posCreditos);
-                status = new menuStatus(Content, cont, posStatus);
-            }
-            if (cont == 3)
-            {
-                comecar = new Comecar(Content, cont, posComecar);
-                sair = new Sair(Content, cont, posSair);
-                controles = new Controles_Botao(Content, cont, posControles);
-                creditos = new menuCredito(Content, cont, posCreditos);
-                status = new menuStatus(Content, cont, posStatus);
-            }
-            if (cont == 4)
-            {
-                comecar = new Comecar(Content, cont, posComecar);
-                sair = new Sair(Content, cont, posSair);
-                controles = new Controles_Botao(Content, cont, posControles);
-                creditos = new menuCredito(Content, cont, posCreditos);
-                status = new menuStatus(Content, cont, posStatus);
-            }
-            if (cont == 5)
-            {
-               comecar = new Comecar(Content, cont, posComecar);
-               sair = new Sair(Content, cont, posSair);
-               controles = new Controles_Botao(Content, cont, posControles);
-               creditos = new menuCredito(Content, cont, posCreditos);
-               status = new menuStatus(Content, cont, posStatus);
-            }
+            comecar = new Comecar(Content, cont, posComecar);
+            controles = new Controles_Botao(Content, cont, posControles);
+            creditos = new menuCredito(Content, cont, posCreditos);
+            status = new menuStatus(Content, cont, posStatus);
+            sair = new Sair(Content, cont, posSair);
             #endregion
         }
+
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
