@@ -70,6 +70,8 @@ namespace Asteroid
 
         public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
         {
+            
+
             if (isGameOver())
             {
                 doGameOver();
@@ -222,7 +224,7 @@ namespace Asteroid
         {
             velocidade.X -= (float)Math.Cos(Math.PI * angulo / 180) * 0.3f;
             velocidade.Y -= (float)Math.Sin(Math.PI * angulo / 180) * 0.3f;
-            Shot.listaTiros.Add(new Shot(posicao, gw, angulo, Content));
+            Shot.listaTiros.Add(new Shot(hitBox, gw, angulo, Content));
         }
 
         private static bool upButtonWasPressed(ref KeyboardState _teclado, ref GamePadState _controle)

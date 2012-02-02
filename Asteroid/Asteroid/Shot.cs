@@ -18,10 +18,9 @@ namespace Asteroid
     {
         #region atributos
             static Texture2D textura;
-            Vector2 posicao;
+            public Rectangle posicao;
             Vector2 velocidade;
             float angulo;
-            Rectangle hitBox;
             GameWindow janela;
             String tipo;
             ContentManager Content;
@@ -29,17 +28,18 @@ namespace Asteroid
             public bool remover;
         #endregion
 
-        public Shot(Vector2 _posicao, GameWindow _janela, float _angulo, ContentManager _content)
+        public Shot(Rectangle _posicao, GameWindow _janela, float _angulo, ContentManager _content)
         {
             janela = _janela;
             angulo = _angulo;
             velocidade = Vector2.Zero;
-            posicao = _posicao;
-            posicao.X = _posicao.X + ((float)Math.Cos(Math.PI * angulo / 180) * 30);
-            posicao.Y = _posicao.Y + ((float)Math.Sin(Math.PI * angulo / 180) * 30);
+            //posicao = _posicao;
+            posicao.X = (int)(_posicao.X + ((float)Math.Cos(Math.PI * angulo / 180) * 30));
+            posicao.Y = (int)(_posicao.Y + ((float)Math.Sin(Math.PI * angulo / 180) * 30));
             Content = _content;
             textura = Content.Load<Texture2D>("Estados/Fase02/tiroFase2");
-            hitBox = new Rectangle((int)posicao.X, (int) posicao.Y, textura.Width, textura.Height);
+            posicao.Height = textura.Height;
+            posicao.Width = textura.Width;
             remover = false;
         }
 
@@ -49,10 +49,10 @@ namespace Asteroid
             {
                 listaTiros[i].velocidade.X = (float)Math.Cos(Math.PI * listaTiros[i].angulo / 180) * Status.VelTiro;
                 listaTiros[i].velocidade.Y = (float)Math.Sin(Math.PI * listaTiros[i].angulo / 180) * Status.VelTiro;
-                listaTiros[i].posicao += listaTiros[i].velocidade;
+                listaTiros[i].posicao.X += (int)listaTiros[i].velocidade.X;
+                listaTiros[i].posicao.Y += (int)listaTiros[i].velocidade.Y;
 
-                listaTiros[i].hitBox.X = (int) listaTiros[i].posicao.X;
-                listaTiros[i].hitBox.Y = (int) listaTiros[i].posicao.Y;
+
 
                 if (listaTiros[i].posicao.X > listaTiros[i].janela.ClientBounds.Width)
                 {
@@ -75,7 +75,7 @@ namespace Asteroid
         //TODO Colisão com o inimigo
         public bool Colisao(Rectangle hit)
         {
-            if (hitBox.Intersects(hit)) return true;
+            if (posicao.Intersects(hit)) return true;
             return false;
         }
 
@@ -85,7 +85,8 @@ namespace Asteroid
 
             foreach (Shot tiro in Shot.listaTiros)
             {
-                sb.Draw(textura, tiro.posicao, new Rectangle(0, 0, textura.Width, textura.Height), Color.White, MathHelper.ToRadians(tiro.angulo), new Vector2(textura.Width / 2, textura.Height / 2), 1, SpriteEffects.None, 0);
+                //sb.Draw(textura, tiro.posicao, new Rectangle(0, 0, textura.Width, textura.Height), Color.White, MathHelper.ToRadians(tiro.angulo), new Vector2(textura.Width / 2, textura.Height / 2), 1, SpriteEffects.None, 0);
+                sb.Draw(textura, tiro.posicao, Color.White);
             }
         }
 
