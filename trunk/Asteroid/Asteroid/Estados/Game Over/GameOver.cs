@@ -38,7 +38,7 @@ namespace Asteroid
 
             spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, 800, 480), Color.White);
             
-            Console.WriteLine("Desenhar GameOver");
+            //Console.WriteLine("Desenhar GameOver");
         }
 
     }
