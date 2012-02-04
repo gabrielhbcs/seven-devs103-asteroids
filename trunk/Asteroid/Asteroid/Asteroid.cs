@@ -102,6 +102,22 @@ namespace Asteroid
             //o Update é chamado uma vez só para a classe e atualiza todos os objetos da lista
             for (int i = 0; i < Asteroide.lista.Count; i++)
             {
+                if (lista[i].posicao.X > gw.ClientBounds.Width + 120)
+                {
+                    lista[i].posicao.X = - 120;
+                }
+                if (lista[i].posicao.X < - 120)
+                {
+                    lista[i].posicao.X = gw.ClientBounds.Width + 120;
+                }
+                if (lista[i].posicao.Y > gw.ClientBounds.Height + 120)
+                {
+                    lista[i].posicao.Y = -120;
+                }
+                if (lista[i].posicao.Y < -120)
+                {
+                    lista[i].posicao.Y = gw.ClientBounds.Height + 120;
+                }
                 lista[i].posicao += lista[i].velocidade;
             }
         }
