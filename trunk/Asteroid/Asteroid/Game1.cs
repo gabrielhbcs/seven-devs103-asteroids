@@ -13,7 +13,7 @@ using Asteroid.Estados.Fase01;
 namespace Asteroid
 {
     /// <summary>
-    /// Jogo da turma DEVS103
+    /// Jogo da turma DEVS103b
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
@@ -22,9 +22,7 @@ namespace Asteroid
         
         KeyboardState teclado;
         KeyboardState tecladoanterior;
-
-        Boolean toggleAtivado;
-
+        
         GamePadState controle;
         GamePadState controleanterior;
 
@@ -47,6 +45,8 @@ namespace Asteroid
         Fase15 fase15;
         Fase16 fase16;
 
+        Intro intro;
+
         MenuInicial Menu;
         
         Creditos creditos;
@@ -63,8 +63,7 @@ namespace Asteroid
 
         public static dispositivos_controle controleAtual = dispositivos_controle.TECLADO;
 
-        public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE, STATUS,
-            FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15, FASE16 };
+        public enum estados { INTRO, MENU, CREDITOS, CONTROLES, GAME_OVER, THE_END, PAUSE, STATUS, FASE1, FASE2, FASE3, FASE4, FASE5, FASE6, FASE7, FASE8, FASE9, FASE10, FASE11, FASE12, FASE13, FASE14, FASE15, FASE16 };
 
         public static estados estadoAtual = estados.MENU;
         
@@ -75,32 +74,25 @@ namespace Asteroid
             graphics.PreferredBackBufferHeight = 480;
             graphics.ApplyChanges();
 
+            Window.Title = "Jogo da turma DEVS103b";
+
+            IsMouseVisible = false;
+
             Content.RootDirectory = "Content";
-            toggleAtivado = false;
+           
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
         // MUDAR A FUNÇÃO RESETAR() QUANDO TROCAR A FUNÇÃO LOADCONTENT!
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
         protected override void LoadContent()
         {
             #region Loads
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             fase1 = new Fase1(Content, Window);
@@ -120,6 +112,8 @@ namespace Asteroid
             fase15 = new Fase15(Content, Window);
             fase16 = new Fase16(Content, Window);
 
+            intro = new Intro(Content);
+
             Menu = new MenuInicial(Content, Window);
 
             creditos = new Creditos(Content);
@@ -133,16 +127,18 @@ namespace Asteroid
             theEnd = new TheEnd(Content);
 
             fonte = Content.Load<SpriteFont>("Arial");
+
             #endregion
 
-            // TODO: use this.Content to load your game content here
         }
 
         // MUDAR A FUNÇÃO RESETAR() QUANDO TROCAR A FUNÇÃO LOADCONTENT!
+        //não seria mais fácil simplesmente ao resetar chamar o load de novo?
 
         public void Resetar()
         {
             #region Resetar loads
+
             fase1 = new Fase1(Content, Window);
             fase2 = new Fase2(Content, Window);
             fase3 = new Fase3(Content, Window);
@@ -160,6 +156,8 @@ namespace Asteroid
             fase15 = new Fase15(Content, Window);
             fase16 = new Fase16(Content, Window);
 
+            intro = new Intro(Content);
+
             Menu = new MenuInicial(Content, Window);
              
             controles = new Controles(Content);
@@ -169,51 +167,33 @@ namespace Asteroid
             status = new Status(Content);
 
             gameOver = new GameOver(Content);
+
             #endregion
         }   
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
             teclado = Keyboard.GetState();
             controle = GamePad.GetState(PlayerIndex.One);
 
-            //if (teclado.IsKeyDown(Keys.F2))
-            //{
-            //    if (toggleAtivado == false)
-            //    {
-            //        graphics.ToggleFullScreen();
-            //        toggleAtivado = true;
-            //    }
-            //}
-
-            //if (teclado.IsKeyUp(Keys.F2))
-            //{
-            //    toggleAtivado = false;
-            //    //graphics.ToggleFullScreen();
-            //}
-
+            //F2 vai de janela para tela cheia e vice-versa
              if ((teclado.IsKeyDown(Keys.F2) && !(tecladoanterior.IsKeyDown(Keys.F2))))
              {
                  graphics.ToggleFullScreen();
              }
 
-
             switch (estadoAtual)
             {
+                case estados.INTRO:
+                    if ((teclado.IsKeyDown(Keys.Enter)) && !(tecladoanterior.IsKeyDown(Keys.Enter))) 
+                        estadoAtual = estados.MENU;
+                    break;
+
                 case estados.MENU:
                     if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 1) estadoAtual = estados.FASE1;
                     if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 2) estadoAtual = estados.CONTROLES;
@@ -222,6 +202,7 @@ namespace Asteroid
                     if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 5) this.Exit();
                     Menu.Update(gameTime, teclado, controle, Content);
                     break;
+
                 case estados.CREDITOS:
                     if ((teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape))) || (controle.IsButtonDown(Buttons.Back) && !(controleanterior.IsButtonDown(Buttons.Back))))
                     {
@@ -229,6 +210,7 @@ namespace Asteroid
                     }
                
                     break;
+
                 case estados.CONTROLES:
                     controles.Update(gameTime, teclado, tecladoanterior, controle);
                     if ((teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape))) || (controle.IsButtonDown(Buttons.Back) && !(controleanterior.IsButtonDown(Buttons.Back))))
@@ -236,6 +218,7 @@ namespace Asteroid
                         estadoAtual = estados.MENU;
                     }
                     break;
+
                 case estados.STATUS:
                     {
                         status.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
@@ -246,6 +229,7 @@ namespace Asteroid
                     }
 
                     break;
+
                 case estados.FASE1:
                     fase1.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
@@ -260,6 +244,7 @@ namespace Asteroid
                         estadoAtual = estados.MENU;
                     }
                     break;
+
                 case estados.FASE2:
                     fase2.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
@@ -534,6 +519,7 @@ namespace Asteroid
                         estadoAtual = estados.MENU;
                     }
                     break;
+
                 case estados.FASE16:
                     fase16.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
@@ -553,28 +539,34 @@ namespace Asteroid
                         estadoAtual = estados.MENU;
                     }
                     break;
+
                 case estados.GAME_OVER:
                     gameOver.Update(gameTime, teclado);
                     break;
+
                 case estados.THE_END:
                     theEnd.Update(gameTime, teclado);
                     break;
+
             }
+
             tecladoanterior = teclado;
             controleanterior = controle;
+
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+
             spriteBatch.Begin();
+
                 switch (estadoAtual)
                 {
+                    case estados.INTRO:
+                        intro.Draw(gameTime, spriteBatch);
+                        break;
                     case estados.MENU:
                         Menu.Draw(gameTime, spriteBatch);
                         break;
@@ -642,7 +634,9 @@ namespace Asteroid
                         theEnd.Draw(gameTime, spriteBatch);
                         break;
                 }
+
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }
