@@ -61,7 +61,7 @@ namespace Asteroid
             Content)
         {
             morto = false;
-            explosao = Content.Load<Texture2D>("explosao");
+        //    explosao = Content.Load<Texture2D>("explosao");
 
             texturaBarra = Content.Load<Texture2D>("Barra");
             texturaEscudo = Content.Load<Texture2D>("Escudo");
@@ -74,13 +74,16 @@ namespace Asteroid
             hitBox = new Rectangle((int)posicao.X, (int)posicao.Y, textura.Width, textura.Height);
         }
 
-
         public void Update(GameTime _gameTime, KeyboardState _teclado, KeyboardState _tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
         {
-            
-
             if (isGameOver())
             {
+                vidas = 7;
+                velocidade.X = 0;
+                velocidade.Y = 0;
+                posicao.X = (gw.ClientBounds.Width / 2) - textura.Width / 2 - 150;
+                posicao.Y = (gw.ClientBounds.Height / 2) - textura.Height / 2;
+                angulo = 0;
                 doGameOver();
             }
 

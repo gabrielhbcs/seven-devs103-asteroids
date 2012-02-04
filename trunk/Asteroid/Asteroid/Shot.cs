@@ -52,8 +52,6 @@ namespace Asteroid
                 listaTiros[i].posicao.X += (int)listaTiros[i].velocidade.X;
                 listaTiros[i].posicao.Y += (int)listaTiros[i].velocidade.Y;
 
-
-
                 if (listaTiros[i].posicao.X > listaTiros[i].janela.ClientBounds.Width)
                 {
                     listaTiros.RemoveAt(i);
