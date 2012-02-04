@@ -55,6 +55,7 @@ namespace Asteroid
             jogador1 = new Nave_jogador(1, texturaNave, posicao, 0f, gw, Content);            
             Texto.X = 0;
             Texto.Y = Window.ClientBounds.Height - 30;
+            jogador1.morto = false;
             #endregion
             #region Load do fundo
             Tamanho1.Width = gw.ClientBounds.Width;
@@ -82,14 +83,14 @@ namespace Asteroid
         }
         public void Update(GameTime time, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState _controle, GamePadState _controleanterior)
         {
-            #region HitTest do inimigo com a nave
+            #region HitTest do inimigo com a nave e tiro
             for (int i = 0; i< inimigos.Count; i++)
             {
                 inimigos[i].Update(time);
 
                 if (jogador1.hitBox.Intersects(inimigos[i].hitBox))
                 {
-                    Game1.estadoAtual = Game1.estados.GAME_OVER;
+                    jogador1.morto = true;
                     MediaPlayer.Stop();
                 }
                 for (int i2 = 0; i2 < Shot.listaTiros.Count; i2++)

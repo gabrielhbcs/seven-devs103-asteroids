@@ -15,18 +15,18 @@ namespace Asteroid
     {
         public int cont = 1;
         Vector2 posComecar;
-        Comecar comecar;
+        new static Comecar comecar;
 
         Vector2 posControles;
-        Controles_Botao controles;
+        new static Controles_Botao controles;
 
         Vector2 posCreditos;
-        menuCredito creditos;
+        new static menuCredito creditos;
 
         Vector2 posStatus;
-        menuStatus status;
-        
-        Sair sair;
+        new static menuStatus status;
+
+        new static Sair sair;
         Vector2 posSair;
 
         Texture2D fundo;
@@ -36,6 +36,8 @@ namespace Asteroid
 
         public MenuInicial(ContentManager Content, GameWindow Window)
         {
+            cont = 1;
+
             fundo = Content.Load<Texture2D>("Estados/Menu/tela_inicial");
 
             posComecar.X = 50;

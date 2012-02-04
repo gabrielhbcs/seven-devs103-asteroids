@@ -35,6 +35,10 @@ namespace Asteroid
         /// </summary>
         public static int vidas;
 
+        public bool morto = false;
+        Texture2D explosao;
+        int frame_x = 0;
+
         /// <summary>
         /// qtd de pontos do jogador
         /// </summary>
@@ -56,6 +60,9 @@ namespace Asteroid
             gw,
             Content)
         {
+            morto = false;
+            explosao = Content.Load<Texture2D>("explosao");
+
             texturaBarra = Content.Load<Texture2D>("Barra");
             texturaEscudo = Content.Load<Texture2D>("Escudo");
             barra = new Barra(texturaBarra);
@@ -159,16 +166,40 @@ namespace Asteroid
 
         public void Draw(GameTime gameTime, SpriteBatch sb)
         {
-            sb.Draw(
-                textura,
-                posicao,
-                new Rectangle(0, 0, textura.Width, textura.Height),
-                cor,
-                MathHelper.ToRadians(angulo),
-                new Vector2(textura.Width / 2, textura.Height / 2),
-                1,
-                SpriteEffects.None,
-                0);
+            if (!morto)
+            {
+                sb.Draw(
+                    textura,
+                    posicao,
+                    new Rectangle(0, 0, textura.Width, textura.Height),
+                    cor,
+                    MathHelper.ToRadians(angulo),
+                    new Vector2(textura.Width / 2, textura.Height / 2),
+                    1,
+                    SpriteEffects.None,
+                    0);
+            }
+            else
+            {
+                velocidade.X = 0;
+                velocidade.Y = 0;
+                frame_x = (int)(gameTime.TotalGameTime.TotalSeconds * 8) % 12;
+                sb.Draw(explosao, posicao, new Rectangle(frame_x * 120, 0, 120, 120), Color.White);
+
+                if (frame_x == 11) Game1.estadoAtual = Game1.estados.GAME_OVER;
+
+                //for (int i = 0; i < 96; i++ )
+                //{
+                //    if (i % 8 == 0)
+                //    {
+                //        frame_x++;
+                //        Console.WriteLine(frame_x);
+                //        sb.Draw(explosao, posicao, new Rectangle(frame_x * 120, 0, 120, 120), Color.White);
+                //    }
+                //    if (frame_x >= 5) frame_x = 0;
+                //}
+                
+            }
 
             Shot.Draw(gameTime, sb);
 

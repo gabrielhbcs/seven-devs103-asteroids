@@ -139,6 +139,8 @@ namespace Asteroid
         {
             #region Resetar loads
 
+            Asteroide.lista.Clear();
+
             fase1 = new Fase1(Content, Window);
             fase2 = new Fase2(Content, Window);
             fase3 = new Fase3(Content, Window);
@@ -542,6 +544,7 @@ namespace Asteroid
 
                 case estados.GAME_OVER:
                     gameOver.Update(gameTime, teclado);
+                    Resetar();
                     break;
 
                 case estados.THE_END:
