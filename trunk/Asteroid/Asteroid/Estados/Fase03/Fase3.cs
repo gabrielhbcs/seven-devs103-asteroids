@@ -31,6 +31,7 @@ namespace Asteroid
         List<Nave_inimigo> listaInimigos = new List<Nave_inimigo>();
         ContentManager _Content;
         int inimigosRestantes;
+        Asteroide asteroide_gerenciador;
 
         string file_path = "Estados/Fase03/";
 
@@ -65,6 +66,14 @@ namespace Asteroid
                 inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, Content, randomizador.Next(60));
                 listaInimigos.Add(inimigo1);
             }
+
+            asteroide_gerenciador = new Asteroide(
+                Content.Load<Texture2D>( "Asteroides"),
+                Vector2.Zero,
+                0.0f,
+                gw,
+                Content
+                );
         }
 
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoanterior, GamePadState _controle, GamePadState _controleanterior)
@@ -142,6 +151,7 @@ namespace Asteroid
             }
 
 
+            asteroide_gerenciador.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -175,6 +185,8 @@ namespace Asteroid
             {
                 listaInimigos[i].Draw(gameTime, spriteBatch);
             }
+
+            asteroide_gerenciador.Draw(gameTime, spriteBatch);
         }
 
     }
