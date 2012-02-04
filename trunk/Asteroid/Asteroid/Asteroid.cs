@@ -116,5 +116,20 @@ namespace Asteroid
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gt"></param>
+        /// <param name="sb"></param>
+        public void Draw(GameTime gt, SpriteBatch sb, int frameWidth, int frameHeight)
+        {
+            int frame = (int)(gt.TotalGameTime.TotalSeconds * 12) % 8;
+            //o Draw é chamado uma vez só para a classe e desenha todos os objetos da lista
+            for (int i = 0; i < lista.Count; i++)
+            {
+                sb.Draw(Asteroide.textura, lista[i].posicao, new Rectangle(frame * frameWidth, 0, frameWidth, frameHeight), Color.White);
+            }
+        }
+
     }
 }
