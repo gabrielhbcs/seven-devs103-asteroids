@@ -190,7 +190,7 @@ namespace Asteroid
                 sb.Draw(explosao, posicao, new Rectangle(frame_x * 120, 0, 120, 120), Color.White);
 
                 if (frame_x == 11) Game1.estadoAtual = Game1.estados.GAME_OVER;
-
+             
                 //for (int i = 0; i < 96; i++ )
                 //{
                 //    if (i % 8 == 0)
