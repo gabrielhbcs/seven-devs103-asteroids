@@ -17,7 +17,7 @@ namespace Asteroid
     /// </summary>
     class Asteroide : Objeto
     {
-        static List<Asteroide> lista = new List<Asteroide>();
+        public static List<Asteroide> lista = new List<Asteroide>();
 
         new static Texture2D textura;
 
@@ -65,10 +65,12 @@ namespace Asteroid
             this.velocidade = new Vector2(
                 (float)random.Next(-2, 3),
                 (float)random.Next(-2, 3));
-
-           if (this.velocidade.X == 0) { this.velocidade.X++; }
-           if (this.velocidade.Y == 0) { this.velocidade.Y++; }
-
+            while (this.velocidade.X == 0 && this.velocidade.Y == 0)
+            {
+                this.velocidade = new Vector2(
+                (float)random.Next(-2, 3),
+                (float)random.Next(-2, 3));
+            }
             Asteroide.lista.Add(this);
         }
 
