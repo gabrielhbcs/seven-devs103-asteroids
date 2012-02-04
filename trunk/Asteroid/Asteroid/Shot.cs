@@ -47,8 +47,8 @@ namespace Asteroid
         {            
             for (int i = 0; i< listaTiros.Count; i++)
             {
-                listaTiros[i].velocidade.X = (float)Math.Cos(Math.PI * listaTiros[i].angulo / 180) * Status.VelTiro;
-                listaTiros[i].velocidade.Y = (float)Math.Sin(Math.PI * listaTiros[i].angulo / 180) * Status.VelTiro;
+                listaTiros[i].velocidade.X = (float)Math.Cos(Math.PI * listaTiros[i].angulo / 180) * (Status.VelTiro + 1);
+                listaTiros[i].velocidade.Y = (float)Math.Sin(Math.PI * listaTiros[i].angulo / 180) * (Status.VelTiro + 1);
                 listaTiros[i].posicao.X += (int)listaTiros[i].velocidade.X;
                 listaTiros[i].posicao.Y += (int)listaTiros[i].velocidade.Y;
 
