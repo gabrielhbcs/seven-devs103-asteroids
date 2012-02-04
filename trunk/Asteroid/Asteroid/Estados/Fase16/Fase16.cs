@@ -40,7 +40,7 @@ namespace Asteroid
             playing_musica = false;
             musica = Content.Load<Song>("Kalimba");
             texturaFundo = Content.Load<Texture2D>("Estados/Fase16/FundoFase16");
-            texturaNave = Content.Load<Texture2D>("Nave");
+            texturaNave = Content.Load<Texture2D>("Estados/Fase16/NaveFase16");
             posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
             posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
             jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, Content);
