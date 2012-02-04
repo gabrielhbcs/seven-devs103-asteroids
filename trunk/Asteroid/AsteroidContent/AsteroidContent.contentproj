@@ -450,11 +450,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asteroides.jpg">
+    <Compile Include="Asteroides.png">
       <Name>Asteroides</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>237, 0, 140, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
