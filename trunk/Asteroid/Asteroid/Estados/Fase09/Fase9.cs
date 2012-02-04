@@ -26,6 +26,7 @@ namespace Asteroid
         Nave_jogador jogador1;
         //Nave_fase9 jogador1;
         // Nave_fase9 jogador2;
+        Asteroide asteroide_gerenciador;
 
         Song musica;
         bool inicio_fase9 = true;
@@ -52,6 +53,8 @@ namespace Asteroid
             /* posicao2.X = (janela.ClientBounds.Width / 2) - nave.Width / 2 + 150;
             posicao2.Y = (janela.ClientBounds.Height / 2) - nave.Height / 2;
             jogador2 = new Nave_fase9(nave, posicao2, Color.Blue, janela, conteudo.Load<SoundEffect>("ding")); */
+
+            asteroide_gerenciador = new Asteroide(conteudo.Load<Texture2D>("Asteroides"), Vector2.Zero, 0.0f, gw, conteudo);
         }
 
         public void Update(GameTime time, /* int keyboardType,*/ KeyboardState teclado, KeyboardState tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
@@ -94,12 +97,16 @@ namespace Asteroid
                 }
                 // Console.WriteLine(MediaPlayer.Volume);
             }
+
+            asteroide_gerenciador.Update(time);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             // spriteBatch.Draw(desenho, new Rectangle(0, 0, desenho.Width, desenho.Height), Color.Blue, new Vector2(desenho.Width / 2, desenho.Height / 2), 1, SpriteEffects.None, 0);
             spriteBatch.Draw(desenho, new Rectangle(0, 0, gw.ClientBounds.Width, gw.ClientBounds.Height), Color.Blue);
+
+            asteroide_gerenciador.Draw(gameTime, spriteBatch);
 
             spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
             spriteBatch.DrawString(Game1.fonte, autor,

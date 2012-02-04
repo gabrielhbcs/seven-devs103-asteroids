@@ -328,13 +328,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Estados\Fase09\naveFase13.png">
-      <Name>naveFase13</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Estados\Fase09\Nave_fase9.png">
       <Name>Nave_fase9</Name>
       <Importer>TextureImporter</Importer>
