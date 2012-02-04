@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+
 namespace Asteroid
 {
     /// <summary>
@@ -21,13 +22,15 @@ namespace Asteroid
         Song musica;
         Texture2D texturaFundo;
         Texture2D texturaNave;
-        //Texture2D texturaInimigo;
+        Texture2D texturaInimigo;
         Vector2 posicao_j1;
-        //Vector2 posicao_i1;
+        Vector2 posicao_i1;
         Nave_jogador jogador1;
-        //Nave_inimigo inimigo1;
+        Nave_inimigo inimigo1;
+        Asteroide asteroide_gerenciador;
         GameWindow gw;
         Random randomizador = new Random();
+
 
         public Fase16(ContentManager Content, GameWindow gw)
         {
@@ -37,15 +40,16 @@ namespace Asteroid
             playing_musica = false;
             musica = Content.Load<Song>("Kalimba");
             texturaFundo = Content.Load<Texture2D>("Estados/Fase16/FundoFase16");
-            texturaNave = Content.Load<Texture2D>("Estados/Fase16/NaveFase1");
+            texturaNave = Content.Load<Texture2D>("Estados/Fase16/NaveFase16");
             posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
             posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
             jogador1 = new Nave_jogador(1, texturaNave, posicao_j1, 0f, gw, Content);
 
-            //texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
-            //posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
-            //posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
-            //inimigo1 = new Nave_inimigo(1, texturaInimigo, posicao_i1, 0f, gw, 15, Content);
+            texturaInimigo = Content.Load<Texture2D>("Estados/Fase02/nave_inimiga1");
+            posicao_i1.X = randomizador.Next(gw.ClientBounds.Width);
+            posicao_i1.Y = randomizador.Next(gw.ClientBounds.Height);
+            inimigo1 = new Nave_inimigo(0, texturaInimigo, posicao_i1, 0f, gw, 15, Content, randomizador.Next(60));
+            asteroide_gerenciador = new Asteroide(Content.Load<Texture2D>("Asteroides"),Vector2.Zero, 0.0f, gw, Content);
         }
 
         public void Update(GameTime gameTime, KeyboardState teclado, KeyboardState tecladoAnterior, GamePadState _controle, GamePadState _controleanterior)
@@ -55,8 +59,19 @@ namespace Asteroid
                 MediaPlayer.Play(musica);
                 playing_musica = true;
             }
+
+            if ((teclado.IsKeyDown(Keys.PageUp)) && !(tecladoAnterior.IsKeyDown(Keys.PageUp)))
+            {
+                MediaPlayer.Volume += 0.1f;
+            }
+
+            if ((teclado.IsKeyDown(Keys.PageDown)) && !(tecladoAnterior.IsKeyDown(Keys.PageDown)))
+            {
+                MediaPlayer.Volume -= 0.1f;
+            }
             jogador1.Update(gameTime, teclado, tecladoAnterior, _controle, _controleanterior);
-            //inimigo1.Update(gameTime);
+            inimigo1.Update(gameTime);
+            asteroide_gerenciador.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -70,7 +85,7 @@ namespace Asteroid
                     5), Color.White);
 
             jogador1.Draw(gameTime, spriteBatch);
-            //inimigo1.Draw(gameTime, spriteBatch);
+            inimigo1.Draw(gameTime, spriteBatch);
         }
 
     }//fim da classe
