@@ -27,6 +27,8 @@ namespace Asteroid.Estados.Fase01
         Nave_jogador jogador1;
         GameWindow gw;
 
+        Asteroide asteroide_gerenciador;
+
         /// <summary>
         /// Construtor da fase1
         /// </summary>
@@ -49,6 +51,14 @@ namespace Asteroid.Estados.Fase01
                 0f,
                 gw,
                 Content);
+
+            asteroide_gerenciador = new Asteroide(
+                Content.Load<Texture2D>("Asteroides"),
+                Vector2.Zero,
+                0.0f,
+                gw,
+                Content
+                );
 
             Console.WriteLine("PASSANDO PELO CONTRUTOR DA FASE 1");
 
@@ -73,6 +83,7 @@ namespace Asteroid.Estados.Fase01
                 MediaPlayer.Volume -= 0.1f;
             }
 
+            asteroide_gerenciador.Update(time);
 
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -80,13 +91,16 @@ namespace Asteroid.Estados.Fase01
             spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, gw.ClientBounds.Width, 
                 gw.ClientBounds.Height), Color.White);
 
+            asteroide_gerenciador.Draw(gameTime, spriteBatch);
+
+            jogador1.Draw(gameTime, spriteBatch);
+            
             spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
             spriteBatch.DrawString(Game1.fonte, autor,
                 new Vector2(
                     gw.ClientBounds.Width-Game1.fonte.MeasureString(autor).X - 5,
                     5), Color.White);
 
-            jogador1.Draw(gameTime, spriteBatch);
         }
 
     }

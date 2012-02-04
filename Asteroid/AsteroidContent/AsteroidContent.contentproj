@@ -121,7 +121,6 @@
     <Folder Include="Estados\Fase05\" />
     <Folder Include="Estados\Fase11\" />
     <Folder Include="Estados\Fase15\" />
-    <Folder Include="Estados\Intro\" />
     <Folder Include="Estados\The End\" />
   </ItemGroup>
   <ItemGroup>
@@ -441,6 +440,21 @@
       <Name>asteroid</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estados\Intro\intro.png">
+      <Name>intro</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Asteroides.jpg">
+      <Name>Asteroides</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <ProcessorParameters_ColorKeyColor>237, 0, 140, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

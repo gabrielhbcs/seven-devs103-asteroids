@@ -13,7 +13,7 @@
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <XnaProfile>HiDef</XnaProfile>
+    <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>953c7a3e-b111-43fc-a4c5-70b8b8ec0252</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
@@ -130,6 +130,7 @@
     <Compile Include="Estados\Fase02\Fase2.cs" />
     <Compile Include="Estados\fase07\NaveGabriel.cs" />
     <Compile Include="Estados\Fase16\Fase16.cs" />
+    <Compile Include="Estados\Intro\Intro.cs" />
     <Compile Include="Estados\Menu\Comecar.cs" />
     <Compile Include="Estados\Menu\Controles.cs" />
     <Compile Include="Estados\Menu\menuCredito.cs" />
@@ -189,9 +190,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Estados\Intro\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--
