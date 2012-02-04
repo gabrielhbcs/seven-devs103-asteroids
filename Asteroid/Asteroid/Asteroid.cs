@@ -58,7 +58,7 @@ namespace Asteroid
             Asteroide.lista.Add(this);
         }
 
-        public Asteroide(Vector2 posicao)
+        private Asteroide(Vector2 posicao)
         {
             this.posicao = posicao;
 
