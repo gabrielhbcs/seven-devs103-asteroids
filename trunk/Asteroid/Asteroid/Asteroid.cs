@@ -66,6 +66,9 @@ namespace Asteroid
                 (float)random.Next(-2, 3),
                 (float)random.Next(-2, 3));
 
+           if (this.velocidade.X == 0) { this.velocidade.X++; }
+           if (this.velocidade.Y == 0) { this.velocidade.Y++; }
+
             Asteroide.lista.Add(this);
         }
 
