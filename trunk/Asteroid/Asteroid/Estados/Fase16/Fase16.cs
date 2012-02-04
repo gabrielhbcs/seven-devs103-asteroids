@@ -86,6 +86,7 @@ namespace Asteroid
 
             jogador1.Draw(gameTime, spriteBatch);
             inimigo1.Draw(gameTime, spriteBatch);
+            asteroide_gerenciador.Draw(gameTime, spriteBatch);
         }
 
     }//fim da classe
