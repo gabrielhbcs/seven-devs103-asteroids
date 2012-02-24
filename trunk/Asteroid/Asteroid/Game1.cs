@@ -47,7 +47,7 @@ namespace Asteroid
 
         Intro intro;
 
-        MenuInicial Menu;
+        MenuInicial menu;
         
         Creditos creditos;
 
@@ -95,37 +95,8 @@ namespace Asteroid
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            fase1 = new Fase1(Content, Window);
-            fase2 = new Fase2(Content, Window);
-            fase3 = new Fase3(Content, Window);
-            fase4 = new Fase4(Content, Window);
-            fase5 = new Fase5(Content, Window);
-            fase6 = new Fase6(Content, Window);
-            fase7 = new Fase7(Content, Window);
-            fase8 = new Fase8(Content, Window);
-            fase9 = new Fase9(Content, Window);
-            fase10 = new Fase10(Content, Window);
-            fase11 = new Fase11(Content, Window);
-            fase12 = new Fase12(Content, Window);
-            fase13 = new Fase13(Content, Window);
-            fase14 = new Fase14(Content, Window);
-            fase15 = new Fase15(Content, Window);
-            fase16 = new Fase16(Content, Window);
-
-            intro = new Intro(Content);
-
-            Menu = new MenuInicial(Content, Window);
-
-            creditos = new Creditos(Content);
-
-            controles = new Controles(Content);
-
-            status = new Status(Content);
-
-            gameOver = new GameOver(Content);
-
-            theEnd = new TheEnd(Content);
-
+            Iniciar();
+         
             fonte = Content.Load<SpriteFont>("Arial");
 
             #endregion
@@ -135,7 +106,7 @@ namespace Asteroid
         // MUDAR A FUNÇÃO RESETAR() QUANDO TROCAR A FUNÇÃO LOADCONTENT!
         //não seria mais fácil simplesmente ao resetar chamar o load de novo?
 
-        public void Resetar()
+        public void Iniciar()
         {
             #region Resetar loads
 
@@ -158,17 +129,19 @@ namespace Asteroid
             fase15 = new Fase15(Content, Window);
             fase16 = new Fase16(Content, Window);
 
-            intro = new Intro(Content);
+            intro = new Intro(Content, Window);
 
-            Menu = new MenuInicial(Content, Window);
-             
-            controles = new Controles(Content);
+            menu = new MenuInicial(Content, Window);
 
-            creditos = new Creditos(Content);
+            controles = new Controles(Content, Window);
 
-            status = new Status(Content);
+            creditos = new Creditos(Content, Window);
 
-            gameOver = new GameOver(Content);
+            status = new Status(Content, Window);
+
+            gameOver = new GameOver(Content, Window);
+
+            theEnd = new TheEnd(Content, Window);
 
             #endregion
         }   
@@ -197,12 +170,12 @@ namespace Asteroid
                     break;
 
                 case estados.MENU:
-                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 1) estadoAtual = estados.FASE1;
-                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 2) estadoAtual = estados.CONTROLES;
-                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 3) estadoAtual = estados.CREDITOS;
-                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 4) estadoAtual = estados.STATUS;
-                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && Menu.cont == 5) this.Exit();
-                    Menu.Update(gameTime, teclado, controle, Content);
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && menu.cont == 1) estadoAtual = estados.FASE1;
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && menu.cont == 2) estadoAtual = estados.CONTROLES;
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && menu.cont == 3) estadoAtual = estados.CREDITOS;
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && menu.cont == 4) estadoAtual = estados.STATUS;
+                    if (((teclado.IsKeyDown(Keys.Enter) && !(tecladoanterior.IsKeyDown(Keys.Enter))) || (controle.IsButtonDown(Buttons.A) && !(controleanterior.IsButtonDown(Buttons.A)))) && menu.cont == 5) this.Exit();
+                    menu.Update(gameTime, teclado, controle, Content);
                     break;
 
                 case estados.CREDITOS:
@@ -528,7 +501,7 @@ namespace Asteroid
                     {
                         MediaPlayer.Stop();
                         estadoAtual = estados.THE_END;
-                        Resetar();
+                        Iniciar();
                     }
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
@@ -544,7 +517,7 @@ namespace Asteroid
 
                 case estados.GAME_OVER:
                     gameOver.Update(gameTime, teclado);
-                    Resetar();
+                    Iniciar();
                     break;
 
                 case estados.THE_END:
@@ -571,7 +544,7 @@ namespace Asteroid
                         intro.Draw(gameTime, spriteBatch);
                         break;
                     case estados.MENU:
-                        Menu.Draw(gameTime, spriteBatch);
+                        menu.Draw(gameTime, spriteBatch);
                         break;
                     case estados.CREDITOS:
                         creditos.Draw(gameTime, spriteBatch);

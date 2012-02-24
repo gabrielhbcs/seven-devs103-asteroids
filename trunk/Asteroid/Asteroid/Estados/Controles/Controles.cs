@@ -27,8 +27,12 @@ namespace Asteroid
         int cont_tecla = 0;
         int max = 20;
 
-        public Controles(ContentManager _content)
+        GameWindow gw;
+
+        public Controles(ContentManager _content, GameWindow gw)
         {
+            this.gw = gw;
+
             this.conteudo = _content;
             fundo = conteudo.Load<Texture2D>("Estados/Controles/controles");
 
@@ -76,7 +80,8 @@ namespace Asteroid
         {
             spriteBatch.Draw(
                 fundo,
-                new Rectangle(0, 0, 800, 480),
+                new Rectangle(0, 0, gw.ClientBounds.Width,
+                gw.ClientBounds.Height),
                 Color.White);
             selTeclado.Draw(gameTime, spriteBatch);
             selGamepad.Draw(gameTime, spriteBatch);
