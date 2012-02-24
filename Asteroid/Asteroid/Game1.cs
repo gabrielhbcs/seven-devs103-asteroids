@@ -500,7 +500,7 @@ namespace Asteroid
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         MediaPlayer.Stop();
-                        estadoAtual = estados.THE_END;
+                        estadoAtual = estados.GAME_OVER;
                         Iniciar();
                     }
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
@@ -522,6 +522,7 @@ namespace Asteroid
 
                 case estados.THE_END:
                     theEnd.Update(gameTime, teclado);
+                    Iniciar();
                     break;
 
             }

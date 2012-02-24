@@ -19,7 +19,7 @@ namespace Asteroid
         String autor;
         //Boolean playing_musica;
         //Song musica;
-        //Texture2D texturaFundo;
+        Texture2D texturaFundo;
         //Texture2D texturaNave;
         //Texture2D texturaInimigo;
         //Vector2 posicao_j1;
@@ -36,7 +36,7 @@ namespace Asteroid
 
             //playing_musica = false;
             //musica = Content.Load<Song>("Estados/Fase02/musica_fase2");
-            //texturaFundo = Content.Load<Texture2D>("Estados/Fase02/fundoFase2");
+            texturaFundo = Content.Load<Texture2D>("Estados/Fase02/fundoFase2");
             //texturaNave = Content.Load<Texture2D>("Estados/Fase02/naveFase2");
             //posicao_j1.X = (gw.ClientBounds.Width - texturaNave.Bounds.Width) / 2;
             //posicao_j1.Y = (gw.ClientBounds.Height - texturaNave.Bounds.Height) / 2;
@@ -61,7 +61,8 @@ namespace Asteroid
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(texturaFundo, Vector2.Zero, Color.White);
+            spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, gw.ClientBounds.Width,
+               gw.ClientBounds.Height), Color.White);
 
             //spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
             spriteBatch.DrawString(Game1.fonte, autor,

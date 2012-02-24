@@ -18,10 +18,14 @@ namespace Asteroid
 
         GameWindow gw;
 
+        Texture2D texturaFundo;
+
         public TheEnd(ContentManager Content, GameWindow gw)
         {
             this.gw = gw;
             this.Content = Content;
+            texturaFundo = Content.Load<Texture2D>("Estados/GameOver/game-over");
+            
         }
 
         public void Update(GameTime gameTime, KeyboardState teclado)
@@ -34,7 +38,8 @@ namespace Asteroid
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            Console.WriteLine("Desenhar GameOver");
+            spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, gw.ClientBounds.Width,
+               gw.ClientBounds.Height), Color.White);
         }
     }
 }

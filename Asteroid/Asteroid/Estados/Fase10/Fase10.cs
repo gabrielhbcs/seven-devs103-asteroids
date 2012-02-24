@@ -61,7 +61,8 @@ namespace Asteroid
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, 800, 500), Color.White);
+            spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, gw.ClientBounds.Width,
+               gw.ClientBounds.Height), Color.White);
 
             //spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
             spriteBatch.DrawString(Game1.fonte, autor,

@@ -38,10 +38,8 @@ namespace Asteroid
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
-            spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, 800, 480), Color.White);
-            
-            //Console.WriteLine("Desenhar GameOver");
+            spriteBatch.Draw(texturaFundo, new Rectangle(0, 0, gw.ClientBounds.Width,
+               gw.ClientBounds.Height), Color.White);
         }
 
     }
