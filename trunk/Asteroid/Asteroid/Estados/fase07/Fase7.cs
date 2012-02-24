@@ -157,8 +157,12 @@ namespace Asteroid
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             #region Desenhar fundo
-            spriteBatch.Draw(fundo1, Tamanho1, Color.White);
-            spriteBatch.Draw(fundo2, Tamanho2, Color.White);
+            //spriteBatch.Draw(fundo1, Tamanho1, Color.White);
+            spriteBatch.Draw(fundo1, new Rectangle(0, 0, gw.ClientBounds.Width,
+                gw.ClientBounds.Height), Color.White);
+            spriteBatch.Draw(fundo2, new Rectangle(0, 0, gw.ClientBounds.Width,
+                gw.ClientBounds.Height), Color.White);
+            //spriteBatch.Draw(fundo2, Tamanho2, Color.White);
             #endregion
             #region Textos
             spriteBatch.DrawString(Game1.fonte, "PONTOS: " , new Vector2(5, 5), Color.White);

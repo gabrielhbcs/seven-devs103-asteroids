@@ -96,6 +96,7 @@ namespace Asteroid.Estados.Fase01
             jogador1.Draw(gameTime, spriteBatch);
             
             spriteBatch.DrawString(Game1.fonte, "PONTOS: ", new Vector2(5, 5), Color.White);
+
             spriteBatch.DrawString(Game1.fonte, autor,
                 new Vector2(
                     gw.ClientBounds.Width-Game1.fonte.MeasureString(autor).X - 5,
