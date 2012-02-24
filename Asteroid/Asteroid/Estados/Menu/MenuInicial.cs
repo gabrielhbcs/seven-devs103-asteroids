@@ -34,26 +34,30 @@ namespace Asteroid
         int cont_tecla;
         int max = 10;
 
-        public MenuInicial(ContentManager Content, GameWindow Window)
+        GameWindow gw;
+
+        public MenuInicial(ContentManager Content, GameWindow gw)
         {
+            this.gw = gw;
+
             cont = 1;
 
             fundo = Content.Load<Texture2D>("Estados/Menu/tela_inicial");
 
             posComecar.X = 50;
-            posComecar.Y = Window.ClientBounds.Height / 6;
+            posComecar.Y = gw.ClientBounds.Height / 6;
 
             posControles.X = 50;
-            posControles.Y = 2 * Window.ClientBounds.Height / 6;
+            posControles.Y = 2 * gw.ClientBounds.Height / 6;
 
             posCreditos.X = 50;
-            posCreditos.Y = 3 * Window.ClientBounds.Height / 6;
+            posCreditos.Y = 3 * gw.ClientBounds.Height / 6;
 
             posStatus.X = 50;
-            posStatus.Y = 4 * Window.ClientBounds.Height / 6;
+            posStatus.Y = 4 * gw.ClientBounds.Height / 6;
 
             posSair.X = 50;
-            posSair.Y = 5 * Window.ClientBounds.Height / 6;
+            posSair.Y = 5 * gw.ClientBounds.Height / 6;
         }
 
         public void Update(GameTime time, KeyboardState teclado, GamePadState controle, ContentManager Content)
@@ -89,7 +93,8 @@ namespace Asteroid
         {
             spriteBatch.Draw(
                 fundo,
-                new Rectangle(0, 0, 800, 480),
+                new Rectangle(0, 0, gw.ClientBounds.Width,
+                gw.ClientBounds.Height),
                 Color.White);
 
             comecar.Draw(gameTime, spriteBatch);

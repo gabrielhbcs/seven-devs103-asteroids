@@ -16,8 +16,11 @@ namespace Asteroid
     {
         private ContentManager Content;
 
-        public TheEnd(ContentManager Content)
+        GameWindow gw;
+
+        public TheEnd(ContentManager Content, GameWindow gw)
         {
+            this.gw = gw;
             this.Content = Content;
         }
 

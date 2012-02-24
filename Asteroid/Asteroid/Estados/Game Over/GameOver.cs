@@ -18,8 +18,11 @@ namespace Asteroid
 
         Texture2D texturaFundo;
 
-        public GameOver(ContentManager Content)
+        GameWindow gw;
+
+        public GameOver(ContentManager Content, GameWindow gw)
         {
+            this.gw = gw;
             texturaFundo = Content.Load<Texture2D>("Estados/GameOver/game-over");
             
             this.Content = Content;

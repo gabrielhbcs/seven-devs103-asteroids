@@ -15,8 +15,12 @@ namespace Asteroid
     {
         Texture2D fundo;
 
-        public Intro(ContentManager Content)
+        GameWindow gw;
+
+        public Intro(ContentManager Content, GameWindow gw)
         {
+            this.gw = gw;
+
             fundo = Content.Load<Texture2D>("Estados/Intro/intro");
         }
 
@@ -26,7 +30,8 @@ namespace Asteroid
         {
             spriteBatch.Draw(
                 fundo,
-                new Rectangle(0,0, 800, 480),
+                new Rectangle(0, 0, gw.ClientBounds.Width,
+                gw.ClientBounds.Height),
                 Color.White);
         }
     }

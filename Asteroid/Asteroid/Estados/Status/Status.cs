@@ -37,11 +37,15 @@ namespace Asteroid
 
         ContentManager conteudo;
 
+        GameWindow gw;
+
         enum opcao_status { VELNAVE, VELTIRO, VELCURVA, RESETAR };
         opcao_status statusAtual = opcao_status.VELNAVE;
 
-        public Status(ContentManager Content)
+        public Status(ContentManager Content, GameWindow gw)
         {
+            this.gw = gw;
+
             this.conteudo = Content;
             fundo = conteudo.Load<Texture2D>("Estados/Status/status_fundo");
 
@@ -136,7 +140,8 @@ namespace Asteroid
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(fundo, new Rectangle(0, 0, 800, 480), Color.White);
+            spriteBatch.Draw(fundo, new Rectangle(0, 0, gw.ClientBounds.Width,
+                gw.ClientBounds.Height), Color.White);
             addVelNave.Draw(gameTime, spriteBatch);
             addVelTiro.Draw(gameTime, spriteBatch);
             addVelCurva.Draw(gameTime, spriteBatch);
