@@ -22,7 +22,9 @@ namespace Asteroid
         
         KeyboardState teclado;
         KeyboardState tecladoanterior;
-        
+
+        bool troca = false;
+
         GamePadState controle;
         GamePadState controleanterior;
 
@@ -162,6 +164,7 @@ namespace Asteroid
                  graphics.ToggleFullScreen();
              }
 
+
             switch (estadoAtual)
             {
                 case estados.INTRO:
@@ -213,6 +216,7 @@ namespace Asteroid
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE2;
                     }
+                   
                     if ((teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape))) || (controle.IsButtonDown(Buttons.Back) && !(controleanterior.IsButtonDown(Buttons.Back))))
                     {
                         MediaPlayer.Stop();
@@ -222,6 +226,7 @@ namespace Asteroid
 
                 case estados.FASE2:
                     fase2.Update(gameTime, teclado, tecladoanterior, controle, controleanterior);
+                    troca = true;
                     if ((teclado.IsKeyDown(Keys.F) && !(tecladoanterior.IsKeyDown(Keys.F))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
                         Shot.removeAllShots();
@@ -230,6 +235,7 @@ namespace Asteroid
                     }
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE1;
                     }
@@ -250,6 +256,7 @@ namespace Asteroid
                     }
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE2;
                     }
@@ -270,6 +277,7 @@ namespace Asteroid
                     }
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE3;
                     }
@@ -290,6 +298,7 @@ namespace Asteroid
                     }
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE4;
                     }
@@ -309,6 +318,7 @@ namespace Asteroid
                     }
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE5;
                     }
@@ -333,7 +343,9 @@ namespace Asteroid
                     }
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
-                        MediaPlayer.Stop();
+
+                        Shot.removeAllShots(); 
+                       MediaPlayer.Stop();
                         estadoAtual = estados.FASE6;
                     }
                     if ((teclado.IsKeyDown(Keys.Escape) && !(tecladoanterior.IsKeyDown(Keys.Escape))) || (controle.IsButtonDown(Buttons.Back) && !(controleanterior.IsButtonDown(Buttons.Back))))
@@ -352,6 +364,7 @@ namespace Asteroid
                     }
                     if ((teclado.IsKeyDown(Keys.B) && !(tecladoanterior.IsKeyDown(Keys.B))) || (controle.IsButtonDown(Buttons.RightShoulder) && !(controleanterior.IsButtonDown(Buttons.RightShoulder))))
                     {
+                        Shot.removeAllShots();
                         MediaPlayer.Stop();
                         estadoAtual = estados.FASE7;
                     }
